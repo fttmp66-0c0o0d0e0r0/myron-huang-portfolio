@@ -1,4 +1,4 @@
-# Reflection: Human-AI Collaborative Development
+# Reflection: Building My Coursework Website with AI
 
 **Coursework:** HW#1: Build Your CourseWork Website with Generative AI  
 **Student:** Ting-Yen (Myron) Huang (黃婷琰)  
@@ -7,28 +7,27 @@
 
 ---
 
-### Process Overview
+### 1. Project Approach & Workflow
 
-Developing this portfolio website was an exercise in pairing autonomous generative AI capabilities with disciplined human engineering judgment. Rather than writing static HTML/CSS from scratch or accepting generic pre-built website templates, I utilized Google Antigravity as an agentic pair programmer. The end-to-end development process followed a four-stage lifecycle: architectural blueprinting, visual asset synthesis, iterative front-end refinement, and production deployment via GitHub Pages.
-
----
-
-### Human Edits and Domain Judgment
-
-While modern generative models excel at code generation and image synthesis, they frequently exhibit conceptual drift and default to generic design tropes. My primary responsibility as the human engineer was steering, critical evaluation, and contextual correction:
-
-1. **Aesthetic Steering**: The model's initial inclination was a dark-mode cyberpunk palette with glowing neon accents. Given my research in clinical medical imaging and enterprise computing at HP and Quanta, I actively redirected the design system toward a bright, approachable "Baby-Blue & Clean White" aesthetic (`#eaf4fd`). This tone aligns with healthcare software and professional credibility.
-2. **Correcting Domain Misconceptions**: During the generation of the MayaMiner surgical systems diorama, the AI mistakenly dressed my 3D mascot in a doctor's lab coat with a stethoscope. As a systems programmer who engineered operating room software rather than performing surgery, I intervened to specify that the avatar must wear modern glasses, a button-up shirt, and operate a laptop at a software control station.
-3. **Information Density & Executive Scannability**: AI tends to produce verbosely worded self-descriptions. I repeatedly pruned multi-sentence introductory paragraphs into four crisp, high-impact career pillars (`Medical Imaging AI research`, `Laptop system security validation`, `Laptop driver/OS engineer`, `Real estate sales manager`), strictly adhering to the "2-Minute Rule" for academic reviewers.
+Instead of starting from a blank template or writing CSS boilerplate from scratch, I used Google Antigravity as a pair-programming assistant to build this portfolio. The workflow followed four practical stages: outlining the site architecture, creating custom 3D image assets, refining the front-end code, and deploying the build to GitHub Pages.
 
 ---
 
-### Key Learnings on Human-AI Collaboration
+### 2. Practical Adjustments & Manual Overrides
 
-This project demonstrated that generative AI is not a turnkey replacement for engineering, but a powerful force multiplier when guided by domain expertise:
+While generative tools can produce code and draft graphics quickly, they often default to generic templates or misunderstand role-specific details. Much of my time was spent steering the output and making direct corrections:
 
-* **The Engineer as Product Manager**: In an AI-assisted workflow, the developer's role shifts from syntax memorization to intent specification, architectural governance, and quality assurance.
-* **Deterministic Verification of Probabilistic Outputs**: Generative models produce plausible yet occasionally flawed components (e.g., misaligned icons, broken relative asset links, or occupational hallucinations). Thorough local testing, responsive breakpoint auditing, and disciplined code inspection remain non-negotiable.
-* **Rapid Prototyping Velocity**: The ability to brainstorm complex CSS grid layouts, generate tailored 3D dioramas with character persistence, and immediately test variations in real-time compressed weeks of web development into a matter of hours.
+* **Refining the Color Palette:** The initial suggestions leaned heavily toward a dark cyberpunk look with neon accents. Given my background in clinical medical imaging and enterprise engineering at HP and Quanta, I redirected the styling toward a clean baby-blue and white theme (`#eaf4fd`). This provides a calmer, more credible tone suited for medical technology.
+* **Correcting Occupational Context:** In the 3D diorama for MayaMiner, the generator assumed an operating room context meant a surgeon, placing the avatar in a lab coat with a stethoscope. Because my actual role was developing surgical software rather than practicing medicine, I adjusted the prompts to show the figure in office attire with glasses, working on a laptop at a control terminal.
+* **Clarifying Career Highlights:** The initial text drafts were overly wordy. I replaced long paragraphs with four concise career anchors—Medical Imaging AI Research, Laptop Security Validation, Driver/OS Engineering, and Real Estate Management—allowing reviewers to grasp my background quickly.
 
-In summary, effective human-AI collaboration requires clear intent, prompt precision, and unwavering editorial scrutiny to transform raw generative output into a polished, professional production artifact.
+---
+
+### 3. What I Took Away from This Project
+
+Working with generative AI reinforced that fundamental engineering skills remain essential. The experience felt much like a tech lead role focused on code review and quality assurance:
+
+* **Attention to Detail:** While generated layouts look complete on the surface, resolving layout quirks—such as subtle flexbox alignment bugs, responsive breakpoints on mobile, and correct relative file paths—still required manual inspection with browser DevTools.
+* **Faster Prototyping:** The primary benefit was prototyping speed. Being able to test alternative layout variations and draft visual concepts in an afternoon significantly shortened the exploration phase.
+
+In summary, AI handles routine boilerplate effectively, but creating a professional, accurate portfolio still relies on hands-on debugging, personal judgment, and careful editorial oversight.
