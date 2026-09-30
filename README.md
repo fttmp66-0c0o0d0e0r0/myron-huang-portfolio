@@ -4,7 +4,7 @@
 > **Master's Program in Artificial Intelligence, Chang Gung University (CGU)**  
 > **Live Website:** [https://<username>.github.io/<repo-name>/](https://<username>.github.io/<repo-name>/)  
 > **Student:** Ting-Yen (Myron) Huang (黃婷琰)  
-> **Student ID:** `[STUDENT_ID_PLACEHOLDER]`  
+> **Student ID:** `M1461035`  
 
 ---
 

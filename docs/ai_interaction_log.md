@@ -2,7 +2,7 @@
 
 **Coursework:** HW#1: Build Your CourseWork Website with Generative AI  
 **Student:** Ting-Yen (Myron) Huang (黃婷琰)  
-**Student ID:** `[STUDENT_ID_PLACEHOLDER]`  
+**Student ID:** `M1461035`  
 **AI Collaborator:** Antigravity Generative AI  
 
 ---
