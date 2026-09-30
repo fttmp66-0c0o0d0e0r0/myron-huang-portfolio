@@ -1,0 +1,19 @@
+========================================================================
+HW#1: Build Your CourseWork Website with Generative AI - Submission Info
+========================================================================
+Student Name: Ting-Yen (Myron) Huang (黃婷琰)
+Student ID: M1461035
+Course: Master's Program in Artificial Intelligence, Chang Gung University
+
+1. Live Website URL:
+   https://<your-github-username>.github.io/<your-repo-name>/
+
+2. GitHub Repository Link:
+   https://github.com/<your-github-username>/<your-repo-name>
+
+3. Deliverables Included in this Archive:
+   - Live Website & Repository URLs (SUBMISSION_INFO.txt / README.md)
+   - Source Code (index.html, style.css, script.js, assets/)
+   - AI Interaction Log (docs/ai_interaction_log.md)
+   - Reflection Report (docs/reflection_M1461035.pdf)
+========================================================================

@@ -8,3 +8,4 @@ scratch/
 *.log
 *.tmp
 run_local.bat
+*.zip
