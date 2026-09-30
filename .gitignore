@@ -1,0 +1,10 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Scratch and Temp Files
+scratch/
+*.log
+*.tmp
+run_local.bat

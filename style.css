@@ -1,0 +1,65 @@
+/* Bright Baby-Blue & Friendly Styling for Ting-Yen (Myron) Huang Portfolio */
+
+/* Smooth Card Hover Transitions */
+.experience-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.experience-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Filter Buttons */
+.filter-btn {
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.filter-btn.active {
+  background-color: #0ea5e9;
+  color: #ffffff;
+  border-color: #0ea5e9;
+  box-shadow: 0 4px 14px rgba(14, 165, 233, 0.35);
+}
+
+/* Custom friendly scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f0f7ff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bae0fd;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7cc7fb;
+}
+
+/* Print Optimization for saving as PDF or grading */
+@media print {
+  body {
+    background-color: #ffffff !important;
+    color: #1e293b !important;
+  }
+  
+  header, footer, #filter-buttons, .fixed {
+    display: none !important;
+  }
+  
+  .experience-card {
+    border: 1px solid #cbd5e1 !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+    margin-bottom: 24px !important;
+  }
+
+  img {
+    max-height: 250px !important;
+  }
+}
