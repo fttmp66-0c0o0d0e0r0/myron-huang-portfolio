@@ -77,8 +77,8 @@ As mandated by the course guidelines, this portfolio showcases deliberate **Huma
 To run locally:
 ```bash
 # Using Python built-in HTTP server:
-python -m http.server 8080
+python -m http.server 8038
 
 # Then open in your browser:
-http://localhost:8080
+http://localhost:8038
 ```
