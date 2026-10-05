@@ -37,6 +37,7 @@ It adopts an executive **"2-Minute Rule" layout** tailored for academic advisors
    - **Scope**: PyTorch deep learning models for MRI segmentation, computer-assisted surgical navigation, and real-time medical image diagnosis.
 
 4. **Contact & Verified Links (`#contact`)**:
+   - Email: [fttmp66@gmail.com](mailto:fttmp66@gmail.com)
    - LinkedIn: [Ting-Yen (Myron) Huang](https://www.linkedin.com/in/%E9%BB%83%E5%A9%B7%E7%90%B0-ting-yen-huang-57aa9772/)
    - GitHub Repository: [Project Source Code](https://github.com)
    - Location: Taoyuan & Taipei, Taiwan
