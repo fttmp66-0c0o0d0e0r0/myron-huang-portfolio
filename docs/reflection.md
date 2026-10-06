@@ -25,9 +25,9 @@ Antigravity also drew the figurine in my MayaMiner picture as a doctor in a whit
 
 Whatever material I gave to the AI, it filled the page with all of it and made the homepage look mess, so I cut it down to a few labels and let the pictures show what each job was. When the work was about 70% done, I told Antigravity not to add features on its own or search the web for extra information unless I approved it with a new instruction.
 
-### 3. What I learned
+### 3. What I learned (HTML5 Certification vs. AI Web Development)
 
-A generated page looks complete very quickly, which makes it easy to relax and stop checking. I still had to read the detail of website myself, confirm that the image paths would work on GitHub Pages, and reopen the page in the browser after every change.
+Back when I earned my Microsoft HTML5 certification, building a website meant memorizing syntax, manually writing DOM tags, styling CSS box models, and debugging layout bugs line by line. Collaborating with Antigravity completely transformed this workflow: instead of hand-coding boilerplate, the AI scaffolded modern semantic layouts and responsive components in seconds.
 
-The tool saved me a lot of time on layout and image generation also coding, but the facts about my own career and each coding permition from AI asking for changing still had to come from me and decided by me.
+However, my foundational HTML5 knowledge remained indispensable. Because I understood web architecture and DOM hierarchy, I could quickly identify styling flaws, audit the generated code, and guide the AI with precise structural feedback. Generative AI fundamentally shifts the developer's role from a manual syntax writer to an architect and quality reviewer—AI provides extraordinary speed, but human technical discernment and domain judgment guarantee the final outcome.
 
