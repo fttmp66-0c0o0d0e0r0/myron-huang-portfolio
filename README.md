@@ -2,7 +2,7 @@
 
 > **HW#1: Build Your CourseWork Website with Generative AI**  
 > **Master's Program in Artificial Intelligence, Chang Gung University (CGU)**  
-> **Live Website:** [https://<username>.github.io/<repo-name>/](https://<username>.github.io/<repo-name>/)  
+> **Live Website:** [https://fttmp66-0c0o0d0e0r0.github.io/myron-huang-portfolio/](https://fttmp66-0c0o0d0e0r0.github.io/myron-huang-portfolio/)  
 > **Student:** Ting-Yen (Myron) Huang (黃婷琰)  
 > **Student ID:** `M1461035`  
 
@@ -39,7 +39,7 @@ It adopts an executive **"2-Minute Rule" layout** tailored for academic advisors
 4. **Contact & Verified Links (`#contact`)**:
    - Email: [fttmp66@gmail.com](mailto:fttmp66@gmail.com)
    - LinkedIn: [Ting-Yen (Myron) Huang](https://www.linkedin.com/in/%E9%BB%83%E5%A9%B7%E7%90%B0-ting-yen-huang-57aa9772/)
-   - GitHub Repository: [Project Source Code](https://github.com)
+   - GitHub Repository: [https://github.com/fttmp66-0c0o0d0e0r0/myron-huang-portfolio](https://github.com/fttmp66-0c0o0d0e0r0/myron-huang-portfolio)
    - Location: Taoyuan & Taipei, Taiwan
 
 ---

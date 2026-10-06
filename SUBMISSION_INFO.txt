@@ -7,10 +7,10 @@ Email: fttmp66@gmail.com
 Course: Master's Program in Artificial Intelligence, Chang Gung University
 
 1. Live Website URL:
-   https://<your-github-username>.github.io/<your-repo-name>/
+   https://fttmp66-0c0o0d0e0r0.github.io/myron-huang-portfolio/
 
 2. GitHub Repository Link:
-   https://github.com/<your-github-username>/<your-repo-name>
+   https://github.com/fttmp66-0c0o0d0e0r0/myron-huang-portfolio
 
 3. Deliverables Included in this Archive:
    - Live Website & Repository URLs (SUBMISSION_INFO.txt / README.md)
