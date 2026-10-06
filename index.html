@@ -48,13 +48,14 @@
 
   <!-- Navbar -->
   <header class="sticky top-0 z-50 backdrop-blur-md bg-white/85 border-b border-sky-100 shadow-sm transition-all">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-sky-400 to-blue-500 flex items-center justify-center font-bold text-white shadow-md shadow-sky-200 group-hover:scale-105 transition-transform">
+    <div class="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2 group flex-shrink-0">
+        <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-sky-400 to-blue-500 flex items-center justify-center font-bold text-xs sm:text-base text-white shadow-md shadow-sky-200 group-hover:scale-105 transition-transform flex-shrink-0">
           MH
         </div>
-        <div>
-          <span class="font-extrabold text-base sm:text-lg tracking-tight text-slate-900 group-hover:text-sky-600 transition-colors">Ting-Yen (Myron) Huang</span>
+        <div class="hidden min-[400px]:block">
+          <span class="hidden sm:inline font-extrabold text-base lg:text-lg tracking-tight text-slate-900 group-hover:text-sky-600 transition-colors">Ting-Yen (Myron) Huang</span>
+          <span class="inline sm:hidden font-extrabold text-sm tracking-tight text-slate-900 group-hover:text-sky-600 transition-colors">Myron</span>
         </div>
       </a>
 
@@ -71,21 +72,21 @@
       </nav>
 
       <!-- Action Buttons -->
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-1 sm:gap-2 flex-shrink-0">
         <a href="mailto:fttmp66@gmail.com"
-           class="inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs sm:text-sm font-bold rounded-xl bg-white text-slate-700 hover:text-red-600 border border-slate-200 transition-all shadow-sm" title="Email: fttmp66@gmail.com">
-          <i data-lucide="mail" class="w-4 h-4 text-red-500"></i>
-          <span class="hidden sm:inline">Gmail</span>
+           class="inline-flex items-center justify-center gap-1 px-2 py-1 sm:px-3 sm:py-2 text-[11px] sm:text-sm font-semibold sm:font-bold rounded-lg sm:rounded-xl bg-white text-slate-700 hover:text-red-600 border border-slate-200 transition-all shadow-sm" title="Email: fttmp66@gmail.com">
+          <i data-lucide="mail" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-red-500"></i>
+          <span>Gmail</span>
         </a>
         <a href="https://github.com/fttmp66-0c0o0d0e0r0/myron-huang-portfolio" target="_blank" rel="noopener noreferrer" id="github-link"
-           class="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 text-xs sm:text-sm font-bold rounded-xl bg-slate-900 text-white hover:bg-slate-800 transition-all shadow-sm" title="GitHub Repository">
-          <i data-lucide="github" class="w-4 h-4"></i>
-          <span class="hidden sm:inline">GitHub</span>
+           class="inline-flex items-center justify-center gap-1 px-2 py-1 sm:px-3.5 sm:py-2 text-[11px] sm:text-sm font-semibold sm:font-bold rounded-lg sm:rounded-xl bg-slate-900 text-white hover:bg-slate-800 transition-all shadow-sm" title="GitHub Repository">
+          <i data-lucide="github" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
+          <span>GitHub</span>
         </a>
         <a href="https://www.linkedin.com/in/%E9%BB%83%E5%A9%B7%E7%90%B0-ting-yen-huang-57aa9772/" target="_blank" rel="noopener noreferrer" 
-           class="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 text-xs sm:text-sm font-bold rounded-xl bg-[#0077b5] text-white hover:bg-[#006097] transition-all shadow-sm shadow-blue-200">
-          <i data-lucide="linkedin" class="w-4 h-4"></i>
-          <span class="hidden sm:inline">LinkedIn</span>
+           class="inline-flex items-center justify-center gap-1 px-2 py-1 sm:px-3.5 sm:py-2 text-[11px] sm:text-sm font-semibold sm:font-bold rounded-lg sm:rounded-xl bg-[#0077b5] text-white hover:bg-[#006097] transition-all shadow-sm shadow-blue-200" title="LinkedIn Profile">
+          <i data-lucide="linkedin" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
+          <span>LinkedIn</span>
         </a>
       </div>
     </div>
