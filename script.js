@@ -34,4 +34,43 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   });
+
+  // Poster Lightbox Modal Handler
+  const modal = document.getElementById('poster-modal');
+  const modalImg = document.getElementById('modal-img');
+  const modalTitle = document.getElementById('modal-title');
+  const modalClose = document.getElementById('modal-close');
+  const triggers = document.querySelectorAll('.poster-lightbox-trigger');
+
+  if (modal && modalImg && modalClose) {
+    triggers.forEach(trig => {
+      trig.addEventListener('click', () => {
+        const src = trig.getAttribute('data-img');
+        const title = trig.getAttribute('data-title') || '金門五日遊海報';
+        modalImg.src = src;
+        if (modalTitle) modalTitle.innerText = title;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    const closeModal = () => {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      modalImg.src = '';
+      document.body.style.overflow = '';
+    };
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeModal();
+      }
+    });
+  }
 });
