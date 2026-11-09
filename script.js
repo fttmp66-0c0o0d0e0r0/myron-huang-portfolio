@@ -73,4 +73,20 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // Smooth scroll & focus on About Me section when Brand/About button is clicked
+  const navAboutBtn = document.getElementById('nav-about-btn');
+  const aboutSection = document.getElementById('about');
+  if (navAboutBtn && aboutSection) {
+    navAboutBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      aboutSection.classList.add('ring-2', 'ring-sky-400', 'ring-offset-4', 'rounded-3xl', 'transition-all', 'duration-500');
+      setTimeout(() => {
+        aboutSection.classList.remove('ring-2', 'ring-sky-400', 'ring-offset-4');
+      }, 1500);
+      history.pushState(null, '', '#about');
+    });
+  }
 });
+
