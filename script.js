@@ -227,12 +227,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  let currentLang = localStorage.getItem('myron_portfolio_lang') || 'zh';
+  // Default language is English ('en')
+  let currentLang = localStorage.getItem('myron_portfolio_lang_v3') || 'en';
 
   const applyLanguage = (lang) => {
     currentLang = lang;
-    localStorage.setItem('myron_portfolio_lang', lang);
-    const dict = i18nDictionary[lang] || i18nDictionary.zh;
+    localStorage.setItem('myron_portfolio_lang_v3', lang);
+    const dict = i18nDictionary[lang] || i18nDictionary.en;
 
     // Update all elements with data-i18n
     document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -254,11 +255,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const langToggleBtn = document.getElementById('lang-toggle-btn');
   if (langToggleBtn) {
     langToggleBtn.addEventListener('click', () => {
-      const nextLang = currentLang === 'zh' ? 'en' : 'zh';
+      const nextLang = currentLang === 'en' ? 'zh' : 'en';
       applyLanguage(nextLang);
     });
   }
 
-  // Apply saved language initially
+  // Apply default English language initially
   applyLanguage(currentLang);
 });
