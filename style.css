@@ -1,58 +1,109 @@
-/* Bright Baby-Blue & Friendly Styling for Ting-Yen (Myron) Huang Portfolio */
+/* ==========================================================================
+   Giorgio Morandi (1890–1964) Palette Design System
+   Primary Palette:
+   - Slate Gray (滑脫灰): #708090 | RGB(112, 128, 144)
+   - Navy Blue (海軍藍): #162840 ~ #000080 | RGB(22, 40, 64)
+   - Pure / Linen White (白): #FFFFFF | RGB(255, 255, 255)
+   - Charcoal / Matte Black (黑): #11151a ~ #000000 | RGB(17, 21, 26)
+   ========================================================================== */
+
+:root {
+  --morandi-slate: #708090;
+  --morandi-slate-rgb: 112, 128, 144;
+  --morandi-slate-light: #94a3b8;
+  --morandi-slate-wash: #f1f4f7;
+  --morandi-slate-border: rgba(112, 128, 144, 0.28);
+  
+  --morandi-navy: #162840;
+  --morandi-navy-rgb: 22, 40, 64;
+  --morandi-navy-soft: #233c5e;
+  
+  --morandi-white: #ffffff;
+  --morandi-white-linen: #f8fafc;
+  
+  --morandi-black: #11151a;
+  --morandi-black-rgb: 17, 21, 26;
+}
+
+/* Base Body Ambient Gradient */
+body {
+  background: linear-gradient(180deg, #edf1f5 0%, #f7f9fa 50%, #e9edf2 100%);
+  color: var(--morandi-black);
+}
 
 /* Smooth Card Hover Transitions */
-.experience-card {
+.experience-card, .research-card {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.experience-card:hover {
-  transform: translateY(-4px);
+.experience-card:hover, .research-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px -6px rgba(112, 128, 144, 0.22);
 }
 
-/* Filter Buttons */
+/* Filter Buttons (Morandi Slate & Navy) */
 .filter-btn {
   cursor: pointer;
   user-select: none;
-  transition: all 0.2s ease-in-out;
+  background-color: #ffffff;
+  color: #475569;
+  border: 1px solid rgba(112, 128, 144, 0.3);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.filter-btn:hover {
+  background-color: #f1f5f9;
+  color: var(--morandi-navy);
+  border-color: var(--morandi-slate);
 }
 
 .filter-btn.active {
-  background-color: #0ea5e9;
+  background-color: var(--morandi-navy);
   color: #ffffff;
-  border-color: #0ea5e9;
-  box-shadow: 0 4px 14px rgba(14, 165, 233, 0.35);
+  border-color: var(--morandi-navy);
+  box-shadow: 0 4px 14px rgba(22, 40, 64, 0.32);
 }
 
-/* Custom friendly scrollbar */
+/* Scrollbar None Utility */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom Morandi scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f0f7ff;
+  background: #edf1f5;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #bae0fd;
+  background: #b0bdcb;
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #7cc7fb;
+  background: var(--morandi-slate);
 }
 
-/* Print Optimization for saving as PDF or grading */
+/* Print Optimization */
 @media print {
   body {
     background-color: #ffffff !important;
-    color: #1e293b !important;
+    color: #11151a !important;
   }
   
   header, footer, #filter-buttons, .fixed {
     display: none !important;
   }
   
-  .experience-card {
+  .experience-card, .research-card {
     border: 1px solid #cbd5e1 !important;
     box-shadow: none !important;
     break-inside: avoid;
