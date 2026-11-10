@@ -1,53 +1,62 @@
 /* ==========================================================================
-   Giorgio Morandi (1890–1964) Palette Design System
-   Primary Palette:
-   - Slate Gray (滑脫灰): #708090 | RGB(112, 128, 144)
-   - Navy Blue (海軍藍): #162840 ~ #000080 | RGB(22, 40, 64)
-   - Pure / Linen White (白): #FFFFFF | RGB(255, 255, 255)
-   - Charcoal / Matte Black (黑): #11151a ~ #000000 | RGB(17, 21, 26)
+   Giorgio Morandi (1890–1964) Editorial Architecture Design System
+   Sharp-yet-soft borders (6px - 12px), Cross-browser safe (Chrome/Edge/Safari/Firefox)
    ========================================================================== */
 
 :root {
   --morandi-slate: #708090;
-  --morandi-slate-rgb: 112, 128, 144;
-  --morandi-slate-light: #94a3b8;
-  --morandi-slate-wash: #f1f4f7;
-  --morandi-slate-border: rgba(112, 128, 144, 0.28);
-  
+  --morandi-slate-border: rgba(112, 128, 144, 0.3);
   --morandi-navy: #162840;
-  --morandi-navy-rgb: 22, 40, 64;
   --morandi-navy-soft: #233c5e;
-  
   --morandi-white: #ffffff;
-  --morandi-white-linen: #f8fafc;
-  
   --morandi-black: #11151a;
-  --morandi-black-rgb: 17, 21, 26;
+  --morandi-gray-bg: #d3d9df;
 }
 
-/* Base Body Ambient Gradient - Morandi Gray (喬治·莫蘭迪灰) */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Base Body - Calm Morandi Gray Canvas */
 body {
-  background: linear-gradient(180deg, #cfd6dc 0%, #dce1e6 45%, #cad2d9 100%);
+  background: linear-gradient(180deg, #cfd6dc 0%, #dce1e6 50%, #cbd2d9 100%);
   color: var(--morandi-black);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Smooth Card Hover Transitions */
-.experience-card, .research-card {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* Cross-browser Backdrop Glass Support */
+.glass-panel {
+  background-color: rgba(255, 255, 255, 0.92);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
 }
 
-.experience-card:hover, .research-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 28px -6px rgba(112, 128, 144, 0.22);
+/* Clean Card Hover (Sharp Architectural 12px Corners) */
+.experience-card, .research-card, .news-card {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.25s ease;
 }
 
-/* Filter Buttons (Morandi Slate & Navy) */
+.experience-card:hover, .research-card:hover, .news-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -6px rgba(22, 40, 64, 0.14);
+}
+
+/* Focus Highlight without clipping text (Safe on Safari, Firefox, Chrome, Edge) */
+.section-focus-active {
+  box-shadow: 0 0 0 3px #162840, 0 12px 30px rgba(22, 40, 64, 0.16) !important;
+  background-color: rgba(255, 255, 255, 0.72);
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+/* Filter Buttons */
 .filter-btn {
   cursor: pointer;
+  -webkit-user-select: none;
   user-select: none;
   background-color: #ffffff;
   color: #475569;
-  border: 1px solid rgba(112, 128, 144, 0.3);
+  border: 1px solid rgba(112, 128, 144, 0.35);
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -61,10 +70,63 @@ body {
   background-color: var(--morandi-navy);
   color: #ffffff;
   border-color: var(--morandi-navy);
-  box-shadow: 0 4px 14px rgba(22, 40, 64, 0.32);
+  box-shadow: 0 3px 10px rgba(22, 40, 64, 0.25);
 }
 
-/* Scrollbar None Utility */
+/* Eye-catching Top-Right Kinmen Recruitment Tag: GIF-like Flash & Gleam */
+@keyframes kinmenBeaconPulse {
+  0%, 100% {
+    background-color: #0b232e;
+    border-color: #2dd4bf;
+    box-shadow: 0 0 0 0 rgba(45, 212, 191, 0.55), 0 4px 14px rgba(11, 35, 46, 0.35);
+    transform: translateY(0);
+  }
+  50% {
+    background-color: #133b4a;
+    border-color: #99f6e4;
+    box-shadow: 0 0 18px 2px rgba(45, 212, 191, 0.65), 0 6px 20px rgba(15, 76, 92, 0.45);
+    transform: translateY(-1px);
+  }
+}
+
+@keyframes kinmenShimmer {
+  0% {
+    left: -60%;
+  }
+  60%, 100% {
+    left: 140%;
+  }
+}
+
+.kinmen-flash-badge {
+  position: relative;
+  overflow: hidden;
+  animation: kinmenBeaconPulse 1.1s steps(2, end) infinite;
+}
+
+.kinmen-flash-badge::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.32), transparent);
+  transform: skewX(-20deg);
+  animation: kinmenShimmer 2.2s infinite;
+  pointer-events: none;
+}
+
+.kinmen-new-pill {
+  transition: all 0.15s ease;
+}
+
+.kinmen-new-pill.flash-alt {
+  background-color: #ffffff !important;
+  color: #0b232e !important;
+}
+
+/* Cross-Browser Scrollbar Hide */
 .scrollbar-none::-webkit-scrollbar {
   display: none;
 }
@@ -73,19 +135,28 @@ body {
   scrollbar-width: none;
 }
 
-/* Custom Morandi scrollbar */
+/* Line Clamp Fallback for Safari/Chrome/Firefox/Edge */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+/* Custom Morandi Scrollbar */
 ::-webkit-scrollbar {
   width: 7px;
   height: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #edf1f5;
+  background: #d8dee4;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #b0bdcb;
-  border-radius: 9999px;
+  background: #9aa8b6;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -98,19 +169,13 @@ body {
     background-color: #ffffff !important;
     color: #11151a !important;
   }
-  
   header, footer, #filter-buttons, .fixed {
     display: none !important;
   }
-  
   .experience-card, .research-card {
     border: 1px solid #cbd5e1 !important;
     box-shadow: none !important;
     break-inside: avoid;
-    margin-bottom: 24px !important;
-  }
-
-  img {
-    max-height: 250px !important;
+    margin-bottom: 20px !important;
   }
 }

@@ -1,4 +1,4 @@
-// script.js - Portfolio Interaction, Navigation Focus & Trilingual Switcher (EN / 繁中 / 简中)
+// script.js - Editorial Portfolio Interaction, Focus Without Clipping, GIF-like Kinmen Flash & Trilingual Engine
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Initialize Lucide Icons
@@ -9,15 +9,21 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   initIcons();
 
-  // 2. Filter Experience Cards
+  // 2. GIF-like Flash Interval for Kinmen Recruitment Badge (Top Right)
+  const kinmenNewPill = document.getElementById('kinmen-new-pill');
+  if (kinmenNewPill) {
+    setInterval(() => {
+      kinmenNewPill.classList.toggle('flash-alt');
+    }, 450);
+  }
+
+  // 3. Experience Timeline Filter Logic
   const filterBtns = document.querySelectorAll('.filter-btn');
   const cards = document.querySelectorAll('.experience-card');
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      filterBtns.forEach(b => {
-        b.classList.remove('active');
-      });
+      filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
       const filterValue = btn.getAttribute('data-filter');
@@ -30,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
           card.style.opacity = '0';
           setTimeout(() => {
             card.style.opacity = '1';
-          }, 50);
+          }, 40);
         } else {
           card.style.display = 'none';
         }
@@ -38,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 3. Image Lightbox Modal Handler (Posters & Research Scans)
+  // 4. Image Lightbox Modal Handler (Research & Posters)
   const modal = document.getElementById('poster-modal');
   const modalImg = document.getElementById('modal-img');
   const modalTitle = document.getElementById('modal-title');
@@ -49,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     triggers.forEach(trig => {
       trig.addEventListener('click', () => {
         const src = trig.getAttribute('data-img');
-        const title = trig.getAttribute('data-title') || 'Image Preview';
+        const title = trig.getAttribute('data-title') || 'Preview';
         modalImg.src = src;
         if (modalTitle) modalTitle.innerText = title;
         modal.classList.remove('hidden');
@@ -77,441 +83,444 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 4. Smooth scroll & Focus on About Me section
-  const navAboutBtn = document.getElementById('nav-about-btn');
-  const aboutSection = document.getElementById('about');
-  if (navAboutBtn && aboutSection) {
-    navAboutBtn.addEventListener('click', (e) => {
+  // 5. Clean Smooth Scroll & Non-Clipping Focus Highlight Helper
+  const bindSectionFocus = (btnId, sectionId) => {
+    const btn = document.getElementById(btnId);
+    const section = document.getElementById(sectionId);
+    if (!btn || !section) return;
+
+    btn.addEventListener('click', (e) => {
       e.preventDefault();
-      aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      aboutSection.classList.add('ring-4', 'ring-[#708090]', 'ring-offset-4', 'rounded-3xl', 'transition-all', 'duration-500');
+      // Compute offset scroll so sticky navbar (approx 72px) never covers section focus frame
+      const yOffset = -84;
+      const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+
+      // Apply spacious box-shadow focus class (.section-focus-active) so text is NEVER cut
+      section.classList.add('section-focus-active');
       setTimeout(() => {
-        aboutSection.classList.remove('ring-4', 'ring-[#708090]', 'ring-offset-4');
-      }, 1600);
-      history.pushState(null, '', '#about');
+        section.classList.remove('section-focus-active');
+      }, 1700);
+      history.pushState(null, '', '#' + sectionId);
     });
-  }
+  };
 
-  // 5. Smooth scroll & Focus on Experience Timeline
-  const navExpBtn = document.getElementById('nav-experience-btn');
-  const expSection = document.getElementById('experience');
-  if (navExpBtn && expSection) {
-    navExpBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      expSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      
-      // Focus outline on entire container
-      expSection.classList.add('ring-4', 'ring-[#162840]', 'ring-offset-6', 'rounded-3xl', 'transition-all', 'duration-500');
-      
-      const expTitle = expSection.querySelector('h2');
-      if (expTitle) {
-        expTitle.classList.add('text-[#162840]', 'scale-[1.02]', 'transition-all', 'duration-300');
-        setTimeout(() => {
-          expTitle.classList.remove('text-[#162840]', 'scale-[1.02]');
-        }, 1800);
-      }
+  bindSectionFocus('nav-about-btn', 'about');
+  bindSectionFocus('nav-experience-btn', 'experience');
+  bindSectionFocus('nav-research-btn', 'research-spotlight');
 
-      setTimeout(() => {
-        expSection.classList.remove('ring-4', 'ring-[#162840]', 'ring-offset-6');
-      }, 1800);
-      history.pushState(null, '', '#experience');
-    });
-  }
-
-  // 6. Smooth scroll on Research
-  const navResearchBtn = document.getElementById('nav-research-btn');
-  const researchSection = document.getElementById('research-spotlight') || document.getElementById('research');
-  if (navResearchBtn && researchSection) {
-    navResearchBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      researchSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      researchSection.classList.add('ring-4', 'ring-[#708090]', 'ring-offset-4', 'rounded-3xl', 'transition-all', 'duration-500');
-      setTimeout(() => {
-        researchSection.classList.remove('ring-4', 'ring-[#708090]', 'ring-offset-4');
-      }, 1600);
-      history.pushState(null, '', '#research-spotlight');
-    });
-  }
-
-  // 7. Trilingual Dictionary (EN / zh-TW / zh-CN)
+  // 6. Comprehensive Trilingual Dictionary (EN / zh-TW / zh-CN)
   const i18nDictionary = {
     'en': {
       'lang-btn-text': '繁體中文',
       'nav-about': 'About',
       'nav-experience': 'Experience',
       'nav-research': 'Research',
-      'kinmen-recruit-btn': 'Kinmen Bowknot Cycling Challenge: Challengers Wanted NEW →',
-      
-      // What's New in AI
-      'ai-badge': 'Daily AI Pulse',
-      'ai-sync': '08:00 TST Sync',
-      'ai-title': "What's New in AI",
-      'ai-sub': 'Global Daily AI Headlines & Breakthroughs',
-      'ai-desc': 'Daily 8:00 AM TST automated curation of AI breakthroughs, security defenses, frontier developments & Silicon Valley insider gossip.',
-      'ai-top-badge': 'Daily Featured Breakthrough',
-      'ai-item1-tag': 'Multimodal AI & Robotics',
-      'ai-item1-title': 'Next-Gen Multimodal Foundation Models Accelerate Real-Time Surgical AI & Precision Clinical Robotics',
-      'ai-item1-desc': 'Global medical multimodal foundation models combine real-time computer vision and robotic systems for millisecond anatomical segmentation and margin prediction in clinical surgery navigation.',
-      'ai-read-btn': 'Read Article',
-      'ai-highlights-title': 'Global AI Highlights',
-      'ai-item2-tag': 'AI Security',
-      'ai-item2-title': 'Anthropic & MIT Unveil Next-Gen LLM Jailbreak Defense Framework to Prevent Prompt Injections',
-      'ai-item3-tag': 'AI Architecture · MoE',
-      'ai-item3-title': 'DeepSeek & Open Community Release Next-Gen MoE Reasoning Models Nearing Top Proprietary Frontiers',
-      'ai-item4-tag': 'Silicon Valley Gossip',
-      'ai-item4-title': "【SV Insider】Ilya's SSI Valuation Surpasses Multi-Billions; Musk's xAI Battles OpenAI for Top AI Talent",
-      'ai-item5-tag': 'Clinical Standards',
-      'ai-item5-title': 'FDA Updates Adaptive AI/ML SaMD Guidance, Strengthening Clinical Explainability & Real-Time Monitoring',
-      
+      'kinmen-recruit-btn': 'Kinmen Bowknot Cycling Challenge: Challengers Wanted →',
+
+      // Left Sidebar: 5 Categorized AI Intelligence Pillars
+      'ai-badge': 'AI BRIEFING',
+      'ai-sync': '08:00 TST',
+      'ai-title': 'Daily & Weekly AI News',
+      'ai-desc': 'Daily AI tech & news curated alongside weekly global milestones, AI security, and insider rumors.',
+      'ai-cat1-tag': 'Weekly AI Milestones',
+      'ai-freq-weekly': 'Weekly · Global',
+      'ai-cat1-title': 'Multimodal Surgical Foundation Models Set New Global Clinical Robotics Benchmark',
+      'ai-cat2-tag': 'Weekly AI Security',
+      'ai-freq-sec': 'Weekly · Defense',
+      'ai-cat2-title': 'Anthropic & MIT Unveil Next-Gen LLM Jailbreak & Prompt Injection Defense Architecture',
+      'ai-cat3-tag': 'Daily AI New Tech',
+      'ai-freq-daily': 'Daily · Models',
+      'ai-cat3-title': 'Open MoE Reasoning Algorithms Reach Frontier Math & Code Inference Parity',
+      'ai-cat4-tag': 'Daily AI News',
+      'ai-freq-news': 'Daily · Policy',
+      'ai-cat4-title': 'FDA Updates Adaptive Clinical AI/ML Monitoring Guidance for Medical Imaging Systems',
+      'ai-cat5-tag': 'Weekly AI Gossip',
+      'ai-freq-gossip': 'Weekly · Insider',
+      'ai-cat5-title': 'Silicon Valley Talent War Intensifies Across Frontier Labs Amid Multi-Billion Valuations',
+      'ai-read-short': 'Read',
+
       // About Me & Certifications
       'about-title': 'About Me',
       'about-name-label': 'Name:',
       'about-program-label': 'Program:',
       'about-student-label': 'Student ID:',
-      'cert-tag': 'Official Certifications',
-      'cert-title': 'Verified Technical Certifications',
-      
-      // Experience Timeline & Filters
+      'cert-tag': 'Verified Credentials',
+      'cert-title': 'Technical Certifications',
+
+      // Experience Timeline & Filters (AI / Research before AI Instructor)
       'exp-title': 'Experience Timeline',
       'filter-all': 'All Roles',
       'filter-software': 'Clinical Software',
       'filter-business': 'Commercial Sales',
       'filter-hardware': 'Drivers & Validation',
-      'filter-instructor': 'AI Instructor',
       'filter-ai': 'AI / Research',
-      
-      // Research Spotlight Section
-      'research-spotlight-tag': 'Spotlight Medical AI Research',
-      'research-spotlight-title': 'Clinical Computer Vision & Surgical Intelligence',
-      'research-spotlight-desc': 'Key translational research projects conducted at Chang Gung University Brain Ma Lab, bridging advanced 3D deep learning and real-time intraoperative surgical assistance.',
-      'res1-badge': '3D CT Lymph Node Detection',
-      'res1-title': 'Abdominal CT Lymph Node Automated Detection System',
-      'res1-sub': '3D nnDetection Deep Learning on Volumetric Abdominal Scans',
-      'res1-p1': '<strong>High-Precision Localization:</strong> Implemented 3D deep learning detection on volumetric CT scans (e.g. <code>ABD_LYMPH_026 | z=13</code>), achieving tight ground-truth reference vs predicted bounding box alignment.',
-      'res1-p2': '<strong>Oncological Confidence:</strong> Reached high prediction confidence (score = 0.98, IoU = 0.79), distinguishing subtle lymph nodes from adjacent vessels to assist metastatic staging.',
-      'res2-badge': 'Intraoperative Surgical AI',
-      'res2-title': 'Real-Time Vessel Prediction in Laparoscopic Colorectal Resection',
-      'res2-sub': 'Minimally Invasive Computer Vision & Educational Cartoon Guidance',
-      'res2-p1': '<strong>Real-Time Video Segmentation:</strong> Deployed deep learning segmentation on endoscopic video streams to track critical mesenteric vascular branches during laparoscopic resection.',
-      'res2-p2': '<strong>Intraoperative Safety & Anatomy Teaching:</strong> Created interactive cartoon anatomy navigation ("Teach me?") to prevent accidental vessel laceration and improve surgical clarity.',
-      
-      // Instructor Experience Card (English Priority)
-      'inst-tag': 'Medical AI Lecturer & Mentor',
+      'filter-instructor': 'AI Instructor',
+
+      'exp1-cat': 'Clinical Software',
+      'exp1-date': 'Dec 2013 – Jan 2016',
+      'exp1-org': 'Clinico Hearing Aid Co., Ltd.',
+      'exp1-role': 'Assistant Software Engineer · New Taipei City',
+      'exp1-b1': 'Maintained ENT surgical software & clinical diagnostic applications.',
+      'exp1-b2': 'Operated web server infrastructure and hospital network diagnostics.',
+
+      'exp2-cat': 'Commercial Sales',
+      'exp2-date': 'Jul 2016 – Aug 2017',
+      'exp2-org': 'Yung-Ching Realty',
+      'exp2-role': 'Manager of Sales · Taipei City',
+      'exp2-b1': 'Achieved $415,666 USD debut property sellout within 5 hours.',
+      'exp2-b2': 'Led high-net-worth client negotiations and contract legal compliance.',
+
+      'exp3-cat': 'Drivers & Validation',
+      'exp3-date': 'Dec 2019 – Feb 2023',
+      'exp3-org': 'Quanta Computer Inc.',
+      'exp3-role': 'Consumer Laptop Driver Engineer · Taoyuan',
+      'exp3-b1': 'Managed official device driver releases across global laptop product lines.',
+      'exp3-b2': 'Debugged hardware defects jointly with Intel, AMD, and NVIDIA teams.',
+
+      'exp4-cat': 'Drivers & Validation',
+      'exp4-date': '2023 – 2025',
+      'exp4-org': 'HP / Intel Security Validation Laboratory',
+      'exp4-role': 'Security Validation Engineer · Taipei',
+      'exp4-b1': 'Conducted system-level security validation at the joint HP/Intel lab.',
+      'exp4-b2': 'Verified Secure Boot, TPM encryption, and enterprise firmware integrity.',
+
+      'exp5-cat': 'AI / Research',
+      'exp5-date': 'Feb 2026 – Present',
+      'exp5-org': 'Chang Gung University · Brain Ma Lab',
+      'exp5-role': 'M.S. Student in AI · Taoyuan',
+      'exp5-b1': 'Researching 3D nnDetection for abdominal CT lymph node detection.',
+      'exp5-b2': 'Developing real-time endoscopic surgical segmentation for colorectal surgery.',
+
+      'inst-cat': 'AI Instructor',
       'inst-period': '2026 – Present',
       'inst-org': 'KMU & Hungkuang University',
-      'inst-role': 'AI Healthcare Instructor & Project Mentor · Taichung & Kaohsiung',
-      'inst-p1': '<strong>KMU Smart Healthcare Summer Camp:</strong> Guided undergraduate/graduate students and elderly care professionals across 7-day intensive camps to develop innovative elderly AI smart living prototypes and conceptual AI video demonstrations. Mentored two cohorts that achieved 2nd Place and the Best Presentation Award.',
-      'inst-p2': '<strong>Hungkuang University Nursing Department:</strong> Introduced foundational medical AI imaging principles, instructing students through hands-on practice to identify real-world recognition errors and artifacts to watch out for, and exploring innovative AI image recognition in daily healthcare.',
-      
-      // Contact
-      'contact-title': "Let's Connect & Discuss New Possibilities",
+      'inst-role': 'AI Healthcare Instructor & Mentor · Taichung & Kaohsiung',
+      'inst-p1': '<strong>KMU 7-Day Camp:</strong> Mentored students & care pros on elderly AI prototypes; won 2nd Place & Best Presentation.',
+      'inst-p2': '<strong>Hungkuang Nursing:</strong> Taught AI imaging fundamentals, practical recognition errors, and daily care innovation.',
 
-      // Kinmen Tour Page 2 Keys
-      'km-back-portfolio': '← Back to Portfolio',
-      'km-page-badge': 'Page 2 · Kinmen Cycling Adventure',
-      'km-recruit-tag': '🔥 CHALLENGERS WANTED · Kinmen Bowknot Cycling Challenge',
+      // Simplified Ongoing Research (2-column, Title First + Image Below)
+      'research-spotlight-title': 'Ongoing Research',
+      'res1-title': 'nnDetection for Automated CT Lymph Node Detection',
+      'res2-title': 'Real-Time Endoscopic Surgical Segmentation (Colorectal Surgery)',
+      'res-unpublished': 'Ongoing Research · Unpublished',
+      'km-zoom': 'Zoom',
+
+      // Contact & Kinmen Page 2
+      'contact-title': "Let's Connect & Discuss New Possibilities",
+      'km-back-portfolio': 'Back to Portfolio',
+      'km-page-badge': 'Page 2 · Kinmen Cycling Challenge',
+      'km-recruit-tag': 'CHALLENGERS WANTED · 120km Bowknot Route',
       'km-hero-title': 'Kinmen 5D4N Bowknot Cycling Challenge',
-      'km-hero-desc': 'Ride 120km across Greater and Lesser Kinmen drawing a massive GPS Bowknot. Experience historic battlefields, Minnan heritage, ocean bridges, and authentic walk-in B&Bs!',
-      'km-bonus-badge': 'Completion Cash Bonus',
-      'km-bonus-amount': 'NT$ 5,000 Bonus Reward',
-      'km-bonus-terms': 'Complete all 4 checklist mission criteria below with GPS tracks & photo verification to claim the extra reward!',
-      'km-check-missions': 'View Missions & Rules',
+      'km-hero-desc': 'Ride 120km across Greater & Lesser Kinmen drawing a massive GPS Bowknot, with historic battlefields, bridges & walk-in B&Bs.',
+      'km-bonus-amount': 'NT$ 5,000 Completion Cash Bonus',
+      'km-bonus-terms': 'Complete all 4 checklist missions below with GPS tracks & photos to claim the extra NT$5,000 reward!',
+      'km-check-missions': 'View Missions',
       'km-stat-route': 'Total Route',
-      'km-stat-route-sub': 'Dual Figure-8 Loops',
       'km-stat-days': 'Duration',
-      'km-stat-days-sub': 'Greater & Lesser Kinmen',
-      'km-stat-cost': 'Estimated Budget',
-      'km-stat-cost-sub': 'All Flights & Lodging',
-      'km-stat-bonus': 'Challenge Bonus',
-      'km-stat-bonus-sub': 'Checklist Reward',
-      'km-posters-title': 'Official Challenge Posters',
-      'km-posters-sub': 'High-resolution visual itinerary, GPS art layout, and all-inclusive budget breakdown',
+      'km-stat-cost': 'Est. Budget',
+      'km-stat-bonus': 'Extra Bonus',
+      'km-posters-title': 'Challenge Posters',
       'km-poster1-tag': 'Route & GPS Art Poster',
-      'km-poster2-tag': 'Budget Breakdown Poster',
-      'km-zoom': 'Click to Zoom',
-      'km-view-full': 'View Full Poster',
-      'km-poster1-caption': 'Centered on Qionglin village to cycle a giant figure-eight bowknot across Kinmen.',
-      'km-poster2-caption': 'Flights, 4 nights lodging, local meals, bike rentals, and emergency reserve fund.',
-      'km-missions-header': '4 Core Missions & NT$5,000 Bonus Claim Rules',
-      'km-missions-desc': 'Participants who complete the 5-day bike journey, fulfill all 4 checklist mission requirements with GPS recording and landmark checkpoint photos, will receive an additional NT$5,000 completion cash reward!',
-      'km-m1-title': 'Mission 1: Cross Kinmen Bridge (金門大橋跨海騎行)',
-      'km-m1-desc': '5.4km ocean bridge crossing from Greater Kinmen to Lieyu (Lesser Kinmen). Photo required at bridge entry & exit.',
-      'km-m2-title': 'Mission 2: 120km Bowknot Art (120km 蝴蝶結 GPS 軌跡)',
-      'km-m2-desc': 'Complete dual loops centered at Qionglin. Record complete GPS track on Strava/Garmin without vehicular shortcuts.',
-      'km-m3-title': 'Mission 3: Wind Lion God Hunt (風獅爺打卡尋訪)',
-      'km-m3-desc': 'Spot and photograph at least 8 distinctive guardian Wind Lion God statues across Jinhu, Jinsha, and Jinning townships.',
-      'km-m4-title': 'Mission 4: Mt. Taiwu Summit (登頂太武山毋忘在莒)',
-      'km-m4-desc': 'Hike/bike to Kinmen\'s highest peak (253m) and photograph the iconic "Wu Wang Zai Ju" rock inscription with panoramic view.',
-      'km-claim-title': '📋 Bonus Claim & Verification:',
-      'km-claim-step1': '1. Export your 120km GPX/FIT track file showing continuous timestamps across all 5 days.',
-      'km-claim-step2': '2. Upload photo proofs for all 4 missions to the portfolio contact channel (fttmp66@gmail.com).',
-      'km-claim-step3': '3. Once verified by Myron, the NT$5,000 cash reward will be wired directly or presented in person.',
-      'km-itinerary-header': '5-Day Route Itinerary',
-      'km-itinerary-sub': 'Recommended day-by-day distances, attractions, and local culinary stops',
-      'km-d1-title': 'D1 · SW Coast & Houpu (15km)',
-      'km-d1-detail': 'Arrive at KNH airport, pick up rental bike, ride to Deyue Tower, Zhaishan Tunnel, and Houpu old streets for Cantonese congee.',
-      'km-d2-title': 'D2 · Lieyu / Lesser Kinmen (40km)',
-      'km-d2-detail': "Ride across 5.4km Kinmen Bridge, circle Lieyu coastal loop, visit Cat's Eye Stone, Shatou defense trenches, and eat taro shaved ice.",
-      'km-d3-title': 'D3 · NW Coast & Guningtou (30km)',
-      'km-d3-detail': 'Explore Guningtou Battle Museum, bullet-riddled Beishan Old Mansion, Cihu sunset estuary, and taste authentic oyster noodles.',
-      'km-d4-title': 'D4 · Mt. Taiwu & NE Coast (25km)',
-      'km-d4-detail': 'Ascend Mt. Taiwu summit, witness Shishan Artillery howitzer drill, visit Shanhou Folk Culture Village, and eat Mashan meat buns.',
-      'km-d5-title': 'D5 · Jinhu & Flight Home (10km)',
-      'km-d5-detail': 'Complete the bowknot center at Qionglin Tunnel, take pictures at Taihu 3D crosswalk, return bikes, and take afternoon flight home.'
+      'km-poster2-tag': 'Budget Breakdown Poster (NT$14,200)',
+      'km-missions-header': '4 Core Missions & NT$5,000 Bonus Checklist',
+      'km-missions-desc': 'Complete all 4 checklist missions with GPX track logs and landmark photos to claim the extra NT$5,000 reward!',
+      'km-m1-title': 'Mission 1: Cross Kinmen Bridge (5.4km)',
+      'km-m1-desc': 'Ride across Kinmen Bridge to Lieyu with entry/exit photos.',
+      'km-m2-title': 'Mission 2: 120km Bowknot GPS Track',
+      'km-m2-desc': 'Complete dual loops centered at Qionglin via Strava/Garmin.',
+      'km-m3-title': 'Mission 3: Wind Lion God Hunt',
+      'km-m3-desc': 'Photograph at least 8 village guardian Wind Lion God statues.',
+      'km-m4-title': 'Mission 4: Mt. Taiwu Summit',
+      'km-m4-desc': 'Reach 253m peak & photograph "Wu Wang Zai Ju" monument.',
+      'km-claim-summary': 'Submit your continuous 5-day GPX file & 4 mission photos to <strong>fttmp66@gmail.com</strong> for NT$5,000 verification.',
+      'km-itinerary-header': '5-Day Itinerary',
+      'km-d1-title': 'SW Coast & Houpu',
+      'km-d1-detail': 'Deyue Tower, Zhaishan Tunnel & Houpu congee.',
+      'km-d2-title': 'Lesser Kinmen',
+      'km-d2-detail': 'Kinmen Bridge, Lieyu coast & taro ice.',
+      'km-d3-title': 'NW Coast & Guningtou',
+      'km-d3-detail': 'Beishan Old Mansion & Cihu sunset.',
+      'km-d4-title': 'Mt. Taiwu & NE Coast',
+      'km-d4-detail': 'Summit climb, Shishan Artillery & Shanhou.',
+      'km-d5-title': 'Jinhu & Return',
+      'km-d5-detail': 'Qionglin Tunnel loop & flight home.'
     },
 
     'zh-TW': {
       'lang-btn-text': '简体中文',
       'nav-about': '關於我',
       'nav-experience': '經歷歷程',
-      'nav-research': '學術研究',
-      'kinmen-recruit-btn': '金門單車蝴蝶之旅挑戰者招募中 NEW →',
-      
-      // What's New in AI
-      'ai-badge': '每日 AI 脈動',
-      'ai-sync': '每日 08:00 TST 更新',
-      'ai-title': "What's New in AI",
-      'ai-sub': '全球每日 AI 科技頭條與前沿快訊',
-      'ai-desc': '每日上午 8:00 自動精選全球 AI 前沿技術突破、AI 資安對抗防禦、領域最新動態與產業名人八卦內幕。',
-      'ai-top-badge': '每日精選突破',
-      'ai-item1-tag': '多模態 AI 與手術機器人',
-      'ai-item1-title': '次世代醫學多模態基礎模型加速即時手術 AI 與精準臨床機器人系統',
-      'ai-item1-desc': '全球最新醫學多模態基礎模型結合即時電腦視覺與手術機器人系統，達成毫秒級解剖結構分割與邊界預測，為次世代智慧臨床手術導航帶來重大技術飛躍。',
-      'ai-read-btn': '閱讀全文',
-      'ai-highlights-title': '全球 AI 焦點時報',
-      'ai-item2-tag': 'AI 資安 · Security',
-      'ai-item2-title': 'Anthropic 與 MIT 揭露次世代 LLM 越獄防禦架構，防範惡意提示注入與隱私外洩風險',
-      'ai-item3-tag': 'AI 架構 · MoE',
-      'ai-item3-title': 'DeepSeek 與開源社群釋出新一代開源 MoE 推理模型，數學推理與代碼生成逼近頂級閉源',
-      'ai-item4-tag': '矽谷八卦 · Gossip',
-      'ai-item4-title': '【矽谷名人八卦】Ilya 創辦 SSI 估值飆破數十億美元；馬斯克 xAI 槓上 OpenAI 掀頂尖科學家挖角大戰',
-      'ai-item5-tag': '醫療規範 · Standards',
-      'ai-item5-title': 'FDA 更新自適應 AI/ML 醫療設備監管指南，強化臨床演算法可解釋性與即時安全監控',
-      
+      'nav-research': '研究領域',
+      'kinmen-recruit-btn': '金門單車蝴蝶之旅挑戰者招募中 →',
+
+      // Left Sidebar: 5 Categorized AI Intelligence Pillars
+      'ai-badge': 'AI 情報站',
+      'ai-sync': '08:00 TST',
+      'ai-title': '每日 / 每週 AI 新聞精選',
+      'ai-desc': '涵蓋每週全球重大 AI 影響力事件、每週 AI 資安、每日 AI 新技術、每日 AI News 與每週八卦。',
+      'ai-cat1-tag': '每週 AI 大事 · 全球影響',
+      'ai-freq-weekly': '每週精選 · 全球',
+      'ai-cat1-title': '次世代多模態基礎模型樹立全球臨床手術機器人新里程碑',
+      'ai-cat2-tag': '每週 AI 資安 · 防禦應用',
+      'ai-freq-sec': '每週追蹤 · 資安',
+      'ai-cat2-title': 'Anthropic 與 MIT 發表新型 LLM 越獄與提示注入防禦技術架構',
+      'ai-cat3-tag': '每日 AI 新技術 · 模型演算法',
+      'ai-freq-daily': '每日更新 · 技術',
+      'ai-cat3-title': '開源 MoE 推理演算法突破，數學與程式生成效能追平頂尖閉源模型',
+      'ai-cat4-tag': '每日 AI News · 綜合要聞',
+      'ai-freq-news': '每日追蹤 · 快訊',
+      'ai-cat4-title': 'FDA 更新適應性醫療影像 AI/ML 即時安全監控與監管指南',
+      'ai-cat5-tag': '每週 AI 八卦 · 產業內幕',
+      'ai-freq-gossip': '每週熱議 · 八卦',
+      'ai-cat5-title': '矽谷頂尖 AI 實驗室爆高薪挖角戰，新創估值飆破數十億美元',
+      'ai-read-short': '閱讀',
+
       // About Me & Certifications
       'about-title': '關於我 (About Me)',
       'about-name-label': '姓名：',
       'about-program-label': '就讀學程：',
       'about-student-label': '碩士學號：',
-      'cert-tag': '官方技術認證',
-      'cert-title': '已驗證之專業技術證照',
-      
+      'cert-tag': '官方專業認證',
+      'cert-title': '專業技術證照',
+
       // Experience Timeline & Filters
-      'exp-title': '個人經歷時間軸 (Experience Timeline)',
-      'filter-all': '全部職歷',
+      'exp-title': '經歷時間軸 (Experience Timeline)',
+      'filter-all': '全部經歷',
       'filter-software': '臨床醫療軟體',
       'filter-business': '商務銷售管理',
       'filter-hardware': '驅動與系統驗證',
-      'filter-instructor': '醫療 AI 講師與導師',
-      'filter-ai': 'AI 與學術研究',
-      
-      // Research Spotlight Section
-      'research-spotlight-tag': '重點醫療 AI 前沿研究',
-      'research-spotlight-title': '臨床電腦視覺與手術智慧系統',
-      'research-spotlight-desc': '於長庚大學 Brain Ma Lab 開展之核心醫療 AI 專案，結合 3D 深度學習影像偵測與術中即時影像輔助。',
-      'res1-badge': '3D 腹部 CT 淋巴結偵測',
-      'res1-title': '腹部 CT 淋巴結智慧偵測系統',
-      'res1-sub': '基於 3D nnDetection 深度學習之腹部電腦斷層容積分析',
-      'res1-p1': '<strong>高精準度病灶定位：</strong>在腹部 CT 斷層（如 <code>ABD_LYMPH_026 | z=13</code>）成功實現 3D 物件偵測，精準比對 Ground Truth 標註基準框與模型預測邊界框。',
-      'res1-p2': '<strong>腫瘤臨床輔助分期：</strong>在微小且周遭血管干擾嚴重的淋巴結上達到高置信度（score = 0.98，IoU = 0.79），有效輔助臨床轉移性淋巴病變篩檢。',
-      'res2-badge': '術中即時手術導航 AI',
-      'res2-title': '腹腔鏡直腸結腸切除術之即時血管預測系統',
-      'res2-sub': '微創內視鏡即時影像辨識與教學卡通可視化輔助',
-      'res2-p1': '<strong>手術影像即時分割：</strong>將深度學習即時推理整合於微創腹腔鏡影像流，在煙霧與手術反光干擾下精準追蹤腸系膜下動靜脈及分支出血高危區。',
-      'res2-p2': '<strong>術中防誤傷解剖導航：</strong>結合生動之解剖引導卡通角色（"Teach me?"），清楚指引手術夾與血管相對位置，避免誤傷大血管，提升微創手術安全。',
-      
-      // Instructor Experience Card
-      'inst-tag': '醫療 AI 講師與導師',
-      'inst-period': '2026 – 迄今',
-      'inst-org': '高雄醫學大學 & 弘光科技大學護理系',
-      'inst-role': '智慧醫療講師與專案輔導導師 · 台中 & 高雄',
-      'inst-p1': '<strong>KMU 高齡智慧醫療夏令營：</strong>指導大學生、碩士生與高齡照護業界人士在七天營隊中製作高齡 AI 智慧生活創新主題原型（Prototype）與 AI 影片展示構想，帶領兩梯次組別分別榮獲第二名與最佳簡報獎。',
-      'inst-p2': '<strong>弘光科技大學護理系：</strong>介紹 AI 影像基礎概念，指導學生透過實際操作深入了解 AI 影像辨識需要注意的各類誤差與限制，並學習將 AI 影像辨識應用於日常健康照護中創新。',
-      
-      // Contact
-      'contact-title': '與我聯繫 · 探索未來合作契機',
+      'filter-ai': 'AI / 學術研究',
+      'filter-instructor': 'AI 醫療講師',
 
-      // Kinmen Tour Page 2 Keys
-      'km-back-portfolio': '← 返回個人主頁',
-      'km-page-badge': '第 2 頁 · 金門單車壯遊特企',
-      'km-recruit-tag': '🔥 挑戰者熱烈招募中 · 金門單車蝴蝶之旅',
+      'exp1-cat': '臨床醫療軟體',
+      'exp1-date': 'Dec 2013 – Jan 2016',
+      'exp1-org': '科林助聽器 (Clinico)',
+      'exp1-role': '助理軟體工程師 · 新北市',
+      'exp1-b1': '維護耳鼻喉科臨床診斷工具與手術相關醫療軟體系統。',
+      'exp1-b2': '負責醫院端網頁伺服器運作維護與網路環境異常診斷。',
+
+      'exp2-cat': '商務銷售管理',
+      'exp2-date': 'Jul 2016 – Aug 2017',
+      'exp2-org': '永慶房屋 (Yung-Ching Realty)',
+      'exp2-role': '業務襄理 · 台北市',
+      'exp2-b1': '創下首案接手後 5 小時內以 41.5 萬美元成交紀錄。',
+      'exp2-b2': '主導高資產客戶談判、合約法規檢核與資產規劃管理。',
+
+      'exp3-cat': '驅動與系統驗證',
+      'exp3-date': 'Dec 2019 – Feb 2023',
+      'exp3-org': '廣達電腦 (Quanta Computer)',
+      'exp3-role': '消費型筆電驅動工程師 · 桃園',
+      'exp3-b1': '統籌全球各系列消費性筆記型電腦之官方驅動程式發布流程。',
+      'exp3-b2': '與 Intel、AMD、NVIDIA 技術團隊協作解決硬體與相容性異常。',
+
+      'exp4-cat': '驅動與系統驗證',
+      'exp4-date': '2023 – 2025',
+      'exp4-org': 'HP / Intel 資安驗證實驗室',
+      'exp4-role': '資安系統驗證工程師 · 台北',
+      'exp4-b1': '於 HP 與 Intel 聯合實驗室執行商用筆電系統級資安驗證。',
+      'exp4-b2': '負責 Secure Boot、TPM 加密機制與韌體完整性弱點檢測。',
+
+      'exp5-cat': 'AI / 學術研究',
+      'exp5-date': 'Feb 2026 – Present',
+      'exp5-org': '長庚大學 · Brain Ma Lab',
+      'exp5-role': '人工智慧碩士班研究生 · 桃園',
+      'exp5-b1': '進行 3D nnDetection 應用於腹部 CT 淋巴結自動偵測研究。',
+      'exp5-b2': '開發直腸外科微創腹腔鏡手術之即時內視鏡影像分割技術。',
+
+      'inst-cat': 'AI 醫療講師',
+      'inst-period': '2026 – Present',
+      'inst-org': '高雄醫學大學 & 弘光科技大學護理系',
+      'inst-role': '智慧醫療 AI 講師與輔導導師 · 台中 & 高雄',
+      'inst-p1': '<strong>KMU 七日夏令營：</strong>指導大學、碩士生與高齡照護業界人士開發 AI 原型與展示影片，帶領兩梯次分獲第二名與最佳簡報獎。',
+      'inst-p2': '<strong>弘光科大護理系：</strong>教授 AI 影像基礎，引導學生透過實作辨別模型誤差與限制，將影像辨識創新應用於生活照護。',
+
+      // Simplified Ongoing Research
+      'research-spotlight-title': '目前進行中研究 (Ongoing Research)',
+      'res1-title': 'nnDetection 應用於腹部 CT 淋巴結自動偵測',
+      'res2-title': '直腸外科微創手術即時內視鏡影像分割預測',
+      'res-unpublished': '目前進行中研究 · 尚未發表',
+      'km-zoom': '放大檢視',
+
+      // Contact & Kinmen Page 2
+      'contact-title': '聯繫交流 · 探索合作契機',
+      'km-back-portfolio': '返回個人主頁',
+      'km-page-badge': '第 2 頁 · 金門單車蝴蝶之旅',
+      'km-recruit-tag': '挑戰者招募中 · 120km 蝴蝶結路線',
       'km-hero-title': '金門五天四夜單車蝴蝶之旅挑戰',
-      'km-hero-desc': '騎行 120km 貫穿大金門與烈嶼小金門，繪製巨大的 GPS 蝴蝶結軌跡！體驗戰地風光、閩南聚落古厝、跨海大橋與背包客自由行民宿。',
-      'km-bonus-badge': '挑戰完賽專屬加碼',
-      'km-bonus-amount': '加碼現金獎金 NT$ 5,000',
-      'km-bonus-terms': '完成傳單下方 4 大挑戰任務 Checkbox Lists 並附上 GPS 軌跡與照片認證，即可獲得額外加碼獎金！',
-      'km-check-missions': '查看任務與領取規則',
+      'km-hero-desc': '騎乘 120km 貫穿大小金門繪製 GPS 蝴蝶結，探索戰地古蹟、跨海大橋與背包客古厝民宿。',
+      'km-bonus-amount': '完成任務加碼獎金新台幣 NT$5,000 元',
+      'km-bonus-terms': '成功完成傳單上的所有 Checkbox Lists 挑戰任務並附上軌跡與照片認證，即可額外獲得獎金新台幣 5,000 元！',
+      'km-check-missions': '查看挑戰清單',
       'km-stat-route': '總騎行里程',
-      'km-stat-route-sub': '雙環蝴蝶結軌跡',
-      'km-stat-days': '壯遊天數',
-      'km-stat-days-sub': '大小金門雙島環遊',
+      'km-stat-days': '天數規劃',
       'km-stat-cost': '預估總花費',
-      'km-stat-cost-sub': '含機票、住宿與餐飲',
-      'km-stat-bonus': '挑戰加碼獎金',
-      'km-stat-bonus-sub': '完成清單立領',
-      'km-posters-title': '挑戰特企官方宣傳海報',
-      'km-posters-sub': '高清行程時程、GPS 軌跡藝術規劃與全包式預算費用明細',
-      'km-poster1-tag': '行程路線與 GPS 藝術海報',
-      'km-poster2-tag': '五天四夜費用估算表海報',
-      'km-zoom': '點擊放大',
-      'km-view-full': '查看高清大圖',
-      'km-poster1-caption': '以瓊林聚落為核心樞紐，騎乘出 120km 雙環蝴蝶結軌跡。',
-      'km-poster2-caption': '含往返機票、4晚住宿、道地美食三餐、裝備與緊急應急金。',
-      'km-missions-header': '四大核心任務清單與 NT$5,000 獎金領取辦法',
-      'km-missions-desc': '挑戰者於五天旅程中達成傳單上的四大核心任務 Checkbox Lists，並上傳完整 GPS 軌跡檔與打卡佐證照片，即可額外領取挑戰獎金新台幣 5,000 元整！',
-      'km-m1-title': '任務一：金門大橋跨海騎行',
-      'km-m1-desc': '騎行 5.4km 跨海大橋由大金門前往烈嶼（小金門），需於橋頭標誌拍照打卡。',
-      'km-m2-title': '任務二：120km 蝴蝶結 GPS 軌跡',
-      'km-m2-desc': '以瓊林為中心完成東西雙環閉合軌跡，使用 Strava/Garmin 記錄全程，無機動載具代步。',
-      'km-m3-title': '任務三：風獅爺打卡尋訪',
-      'km-m3-desc': '尋訪並拍攝至少 8 尊分布於金湖、金沙與金寧聚落的代表性守護風獅爺。',
+      'km-stat-bonus': '完成加碼獎金',
+      'km-posters-title': '挑戰活動官方海報',
+      'km-poster1-tag': '路線規劃與 GPS 藝術海報',
+      'km-poster2-tag': '費用明細估算海報 (NT$14,200)',
+      'km-missions-header': '四大核心任務與 NT$5,000 獎金檢查清單',
+      'km-missions-desc': '完成下方所有任務並附上完整 GPX 軌跡與拍照佐證，即可領取新台幣 5,000 元挑戰獎金！',
+      'km-m1-title': '任務一：騎行跨越金門大橋 (5.4km)',
+      'km-m1-desc': '騎車跨越金門大橋往返烈嶼（小金門），需於橋頭拍照紀錄。',
+      'km-m2-title': '任務二：120km 蝴蝶結 GPS 軌跡閉合',
+      'km-m2-desc': '以瓊林為中心完成東西雙環騎行並使用 Strava/Garmin 記錄。',
+      'km-m3-title': '任務三：聚落風獅爺打卡尋訪',
+      'km-m3-desc': '於金門各聚落尋找並拍攝至少 8 尊守護風獅爺合照。',
       'km-m4-title': '任務四：登頂太武山毋忘在莒',
-      'km-m4-desc': '登上海拔 253m 之金門最高峰，與指標性「毋忘在莒」勒石合影並俯瞰全島景觀。',
-      'km-claim-title': '📋 獎金審核與領取流程：',
-      'km-claim-step1': '1. 匯出涵蓋 5 天完整時間戳記的 120km GPX 或 FIT 運動軌跡檔。',
-      'km-claim-step2': '2. 將 4 大任務的照片佐證發送至個人主頁信箱（fttmp66@gmail.com）。',
-      'km-claim-step3': '3. 經 Myron 審核無誤後，獎金新台幣 5,000 元將以匯款或現場親授方式頒發！',
-      'km-itinerary-header': '五天精華時程',
-      'km-itinerary-sub': '每日推薦騎乘距離、景點與道地美食巡禮',
-      'km-d1-title': 'D1 · 西南海岸與後浦老街 (15km)',
-      'km-d1-detail': '抵達金門尚義機場，取車後前往得月樓、翟山坑道、建功嶼夕陽與後浦老街永春廣東粥。',
-      'km-d2-title': 'D2 · 烈嶼小金門跨海長征 (40km)',
-      'km-d2-detail': '騎上 5.4km 金門大橋跨海抵達烈嶼，環騎車轍道、貓公石海岸、沙溪堡與黃厝芋頭冰。',
-      'km-d3-title': 'D3 · 西北戰地與古寧頭 (30km)',
-      'km-d3-detail': '探訪古寧頭戰史館、彈痕累累的北山古洋樓、慈湖落日夕陽與品嚐道地金門石蚵麵線。',
-      'km-d4-title': 'D4 · 太武山與東北聚落 (25km)',
-      'km-d4-detail': '徒步登頂太武山、參訪獅山砲陣地榴彈砲操演、漫步山后民俗文化村與品嚐高粱牛肉麵。',
-      'km-d5-title': 'D5 · 瓊林樞紐與滿載賦歸 (10km)',
-      'km-d5-detail': '閉合金門蝴蝶結中心點於瓊林戰鬥村，打卡太湖 3D 斑馬線，歸還單車後搭機返程。'
+      'km-m4-desc': '登頂太武山 253m 制高點並與「毋忘在莒」勒石合影。',
+      'km-claim-summary': '完賽後請將連續 5 日 GPX 軌跡與 4 項任務照片寄至 <strong>fttmp66@gmail.com</strong> 審核領獎！',
+      'km-itinerary-header': '五日精選行程',
+      'km-d1-title': '西南海岸與後浦老街',
+      'km-d1-detail': '得月樓、翟山坑道、建功嶼夕陽與廣東粥。',
+      'km-d2-title': '烈嶼小金門跨海長征',
+      'km-d2-detail': '跨越金門大橋、貓公石海岸與芋頭冰。',
+      'km-d3-title': '西北戰地與古寧頭',
+      'km-d3-detail': '北山古洋樓彈孔、慈湖夕陽與石蚵麵線。',
+      'km-d4-title': '太武山與東北聚落',
+      'km-d4-detail': '登太武山、獅山砲陣地與山后民俗村。',
+      'km-d5-title': '瓊林樞紐與搭機返程',
+      'km-d5-detail': '瓊林戰鬥村閉合蝴蝶軌跡並搭機賦歸。'
     },
 
     'zh-CN': {
       'lang-btn-text': 'English',
       'nav-about': '关于我',
       'nav-experience': '经历历程',
-      'nav-research': '学术研究',
-      'kinmen-recruit-btn': '金门单车蝴蝶之旅挑战者招募中 NEW →',
-      
-      // What's New in AI
-      'ai-badge': '每日 AI 脉动',
-      'ai-sync': '每日 08:00 TST 更新',
-      'ai-title': "What's New in AI",
-      'ai-sub': '全球每日 AI 科技头条与前沿快讯',
-      'ai-desc': '每日上午 8:00 自动精选全球 AI 前沿技术突破、AI 网络安全防御、领域最新动态与产业名人八卦内幕。',
-      'ai-top-badge': '每日精选突破',
-      'ai-item1-tag': '多模态 AI 与手术机器人',
-      'ai-item1-title': '次世代医学多模态基础模型加速实时手术 AI 与精准临床机器人系统',
-      'ai-item1-desc': '全球最新医学多模态基础模型结合实时计算机视觉与手术机器人系统，达成毫秒级解剖结构分割与边界预测，为次世代智能临床手术导航带来重大技术飞跃。',
-      'ai-read-btn': '阅读全文',
-      'ai-highlights-title': '全球 AI 焦点时报',
-      'ai-item2-tag': 'AI 安全 · Security',
-      'ai-item2-title': 'Anthropic 与 MIT 揭露次世代 LLM 越狱防御架构，防范恶意提示注入与隐私外泄风险',
-      'ai-item3-tag': 'AI 架构 · MoE',
-      'ai-item3-title': 'DeepSeek 与开源社区释出新一代开源 MoE 推理模型，数学推理与代码生成逼近顶级闭源',
-      'ai-item4-tag': '硅谷八卦 · Gossip',
-      'ai-item4-title': '【硅谷名人八卦】Ilya 创办 SSI 估值飙破数十亿美元；马斯克 xAI 杠上 OpenAI 掀顶尖科学家挖角大战',
-      'ai-item5-tag': '医疗规范 · Standards',
-      'ai-item5-title': 'FDA 更新自适应 AI/ML 医疗设备监管指南，强化临床算法可解释性与实时安全监控',
-      
+      'nav-research': '研究领域',
+      'kinmen-recruit-btn': '金门单车蝴蝶之旅挑战者招募中 →',
+
+      // Left Sidebar: 5 Categorized AI Intelligence Pillars
+      'ai-badge': 'AI 情报站',
+      'ai-sync': '08:00 TST',
+      'ai-title': '每日 / 每周 AI 新闻精选',
+      'ai-desc': '涵盖每周全球重大 AI 影响力事件、每周 AI 安全、每日 AI 新技术、每日 AI News 与每周八卦。',
+      'ai-cat1-tag': '每周 AI 大事 · 全球影响',
+      'ai-freq-weekly': '每周精选 · 全球',
+      'ai-cat1-title': '次世代多模态基础模型树立全球临床手术机器人新里程碑',
+      'ai-cat2-tag': '每周 AI 安全 · 防御应用',
+      'ai-freq-sec': '每周追踪 · 安全',
+      'ai-cat2-title': 'Anthropic 与 MIT 发表新型 LLM 越狱与提示注入防御技术架构',
+      'ai-cat3-tag': '每日 AI 新技术 · 模型算法',
+      'ai-freq-daily': '每日更新 · 技术',
+      'ai-cat3-title': '开源 MoE 推理算法突破，数学与代码生成效能追平顶尖闭源模型',
+      'ai-cat4-tag': '每日 AI News · 综合要闻',
+      'ai-freq-news': '每日追踪 · 快讯',
+      'ai-cat4-title': 'FDA 更新自适应医疗影像 AI/ML 实时安全监控与监管指南',
+      'ai-cat5-tag': '每周 AI 八卦 · 产业内幕',
+      'ai-freq-gossip': '每周热议 · 八卦',
+      'ai-cat5-title': '硅谷顶尖 AI 实验室爆高薪挖角战，新创估值飙破数十亿美元',
+      'ai-read-short': '阅读',
+
       // About Me & Certifications
       'about-title': '关于我 (About Me)',
       'about-name-label': '姓名：',
       'about-program-label': '就读学程：',
       'about-student-label': '硕士学号：',
-      'cert-tag': '官方技术认证',
-      'cert-title': '已验证之专业技术资质',
-      
+      'cert-tag': '官方专业认证',
+      'cert-title': '专业技术资质',
+
       // Experience Timeline & Filters
-      'exp-title': '个人经历时间轴 (Experience Timeline)',
-      'filter-all': '全部职历',
+      'exp-title': '经历时间轴 (Experience Timeline)',
+      'filter-all': '全部经历',
       'filter-software': '临床医疗软件',
       'filter-business': '商务销售管理',
       'filter-hardware': '驱动与系统验证',
-      'filter-instructor': '医疗 AI 讲师与导师',
-      'filter-ai': 'AI 与学术研究',
-      
-      // Research Spotlight Section
-      'research-spotlight-tag': '重点医疗 AI 前沿研究',
-      'research-spotlight-title': '临床计算机视觉与手术智能系统',
-      'research-spotlight-desc': '于长庚大学 Brain Ma Lab 开展之核心医疗 AI 项目，结合 3D 深度学习影像检测与术中实时影像辅助。',
-      'res1-badge': '3D 腹部 CT 淋巴结检测',
-      'res1-title': '腹部 CT 淋巴结智能检测系统',
-      'res1-sub': '基于 3D nnDetection 深度学习之腹部计算机断层容积分析',
-      'res1-p1': '<strong>高精确度病灶定位：</strong>在腹部 CT 断层（如 <code>ABD_LYMPH_026 | z=13</code>）成功实现 3D 目标检测，精准比对 Ground Truth 标注基准框与模型预测边界框。',
-      'res1-p2': '<strong>肿瘤临床辅助分期：</strong>在微小且周围血管干扰严重的淋巴结上达到高置信度（score = 0.98，IoU = 0.79），有效辅助临床转移性淋巴病变筛查。',
-      'res2-badge': '术中实时手术导航 AI',
-      'res2-title': '腹腔镜直肠结肠切除术之实时血管预测系统',
-      'res2-sub': '微创内窥镜实时图像识别与教学卡通可视化辅助',
-      'res2-p1': '<strong>手术影像实时分割：</strong>将深度学习实时推理整合于微创腹腔镜视频流，在烟雾与手术反光干扰下精准追踪肠系膜下动静脉及分支出血高危区。',
-      'res2-p2': '<strong>术中防误伤解剖导航：</strong>结合生动之解剖引导卡通角色（"Teach me?"），清楚指引手术夹与血管相对位置，避免误伤大血管，提升微创手术安全。',
-      
-      // Instructor Experience Card
-      'inst-tag': '医疗 AI 讲师与导师',
-      'inst-period': '2026 – 至今',
-      'inst-org': '高雄医学大学 & 弘光科技大学护理系',
-      'inst-role': '智慧医疗讲师与项目辅导导师 · 台中 & 高雄',
-      'inst-p1': '<strong>KMU 高龄智慧医疗夏令营：</strong>指导大学生、硕士生与高龄照护业界人士在七天营队中制作高龄 AI 智慧生活创新主题原型（Prototype）与 AI 视频展示构想，带领两梯次组别分别荣获第二名与最佳简报奖。',
-      'inst-p2': '<strong>弘光科技大学护理系：</strong>介绍 AI 图像基础概念，指导学生通过实际操作深入了解 AI 图像识别需要注意的各类误差与限制，并学习将 AI 图像识别应用于日常健康照护中创新。',
-      
-      // Contact
-      'contact-title': '与我联系 · 探索未来合作契机',
+      'filter-ai': 'AI / 学术研究',
+      'filter-instructor': 'AI 医疗讲师',
 
-      // Kinmen Tour Page 2 Keys
-      'km-back-portfolio': '← 返回个人主页',
-      'km-page-badge': '第 2 页 · 金门单车壮游特企',
-      'km-recruit-tag': '🔥 挑战者热烈招募中 · 金门单车蝴蝶之旅',
+      'exp1-cat': '临床医疗软件',
+      'exp1-date': 'Dec 2013 – Jan 2016',
+      'exp1-org': '科林助听器 (Clinico)',
+      'exp1-role': '助理软件工程师 · 新北市',
+      'exp1-b1': '维护耳鼻喉科临床诊断工具与手术相关医疗软件系统。',
+      'exp1-b2': '负责医院端网页服务器运作维护与网络环境异常诊断。',
+
+      'exp2-cat': '商务销售管理',
+      'exp2-date': 'Jul 2016 – Aug 2017',
+      'exp2-org': '永庆房屋 (Yung-Ching Realty)',
+      'exp2-role': '业务襄理 · 台北市',
+      'exp2-b1': '创下首案接手后 5 小时内以 41.5 万美元成交纪录。',
+      'exp2-b2': '主导高资产客户谈判、合约法规检核与资产规划管理。',
+
+      'exp3-cat': '驱动与系统验证',
+      'exp3-date': 'Dec 2019 – Feb 2023',
+      'exp3-org': '广达电脑 (Quanta Computer)',
+      'exp3-role': '消费型笔电驱动工程师 · 桃园',
+      'exp3-b1': '统筹全球各系列消费性笔记本电脑之官方驱动程序发布流程。',
+      'exp3-b2': '与 Intel、AMD、NVIDIA 技术团队协作解决硬件与兼容性异常。',
+
+      'exp4-cat': '驱动与系统验证',
+      'exp4-date': '2023 – 2025',
+      'exp4-org': 'HP / Intel 安全验证实验室',
+      'exp4-role': '安全系统验证工程师 · 台北',
+      'exp4-b1': '于 HP 与 Intel 联合实验室执行商用笔电系统级安全验证。',
+      'exp4-b2': '负责 Secure Boot、TPM 加密机制与固件完整性漏洞检测。',
+
+      'exp5-cat': 'AI / 学术研究',
+      'exp5-date': 'Feb 2026 – Present',
+      'exp5-org': '长庚大学 · Brain Ma Lab',
+      'exp5-role': '人工智能硕士班研究生 · 桃园',
+      'exp5-b1': '进行 3D nnDetection 应用于腹部 CT 淋巴结自动检测研究。',
+      'exp5-b2': '开发直肠外科微创腹腔镜手术之实时内窥镜影像分割技术。',
+
+      'inst-cat': 'AI 医疗讲师',
+      'inst-period': '2026 – Present',
+      'inst-org': '高雄医学大学 & 弘光科技大学护理系',
+      'inst-role': '智慧医疗 AI 讲师与辅导导师 · 台中 & 高雄',
+      'inst-p1': '<strong>KMU 七日夏令营：</strong>指导大学、硕士生与高龄照护业界人士开发 AI 原型与展示视频，带领两梯次分获第二名与最佳简报奖。',
+      'inst-p2': '<strong>弘光科大护理系：</strong>教授 AI 图像基础，引导学生通过实操辨别模型误差与限制，将图像识别创新应用于生活照护。',
+
+      // Simplified Ongoing Research
+      'research-spotlight-title': '目前进行中研究 (Ongoing Research)',
+      'res1-title': 'nnDetection 应用于腹部 CT 淋巴结自动检测',
+      'res2-title': '直肠外科微创手术实时内窥镜影像分割预测',
+      'res-unpublished': '目前进行中研究 · 尚未发表',
+      'km-zoom': '放大查看',
+
+      // Contact & Kinmen Page 2
+      'contact-title': '联系交流 · 探索合作契机',
+      'km-back-portfolio': '返回个人主页',
+      'km-page-badge': '第 2 页 · 金门单车蝴蝶之旅',
+      'km-recruit-tag': '挑战者招募中 · 120km 蝴蝶结路线',
       'km-hero-title': '金门五天四夜单车蝴蝶之旅挑战',
-      'km-hero-desc': '骑行 120km 贯穿大金门与烈屿小金门，绘制巨大的 GPS 蝴蝶结轨迹！体验战地风光、闽南聚落古厝、跨海大桥与背包客自由行民宿。',
-      'km-bonus-badge': '挑战完赛专属加码',
-      'km-bonus-amount': '加码现金奖金 NT$ 5,000',
-      'km-bonus-terms': '完成传单下方 4 大挑战任务 Checkbox Lists 并附上 GPS 轨迹与照片认证，即可获得额外加码奖金！',
-      'km-check-missions': '查看任务与领取规则',
+      'km-hero-desc': '骑行 120km 贯穿大小金门绘制 GPS 蝴蝶结，探索战地古迹、跨海大桥与背包客古厝民宿。',
+      'km-bonus-amount': '完成任务加码奖金新台币 NT$5,000 元',
+      'km-bonus-terms': '成功完成传单上的所有 Checkbox Lists 挑战任务并附上轨迹与照片认证，即可额外获得奖金新台币 5,000 元！',
+      'km-check-missions': '查看挑战清单',
       'km-stat-route': '总骑行里程',
-      'km-stat-route-sub': '双环蝴蝶结轨迹',
-      'km-stat-days': '壮游天数',
-      'km-stat-days-sub': '大小金门双岛环游',
+      'km-stat-days': '天数规划',
       'km-stat-cost': '预估总花费',
-      'km-stat-cost-sub': '含机票、住宿与餐饮',
-      'km-stat-bonus': '挑战加码奖金',
-      'km-stat-bonus-sub': '完成清单立领',
-      'km-posters-title': '挑战特企官方宣传海报',
-      'km-posters-sub': '高清行程时程、GPS 轨迹艺术规划与全包式预算费用明细',
-      'km-poster1-tag': '行程路线与 GPS 艺术海报',
-      'km-poster2-tag': '五天四夜费用估算表海报',
-      'km-zoom': '点击放大',
-      'km-view-full': '查看高清大图',
-      'km-poster1-caption': '以琼林聚落为核心枢纽，骑行出 120km 双环蝴蝶结轨迹。',
-      'km-poster2-caption': '含往返机票、4晚住宿、地道美食三餐、装备与紧急应急金。',
-      'km-missions-header': '四大核心任务清单与 NT$5,000 奖金领取办法',
-      'km-missions-desc': '挑战者于五天旅程中达成传单上的四大核心任务 Checkbox Lists，并上传完整 GPS 轨迹档与打卡佐证照片，即可额外领取挑战奖金新台币 5,000 元整！',
-      'km-m1-title': '任务一：金门大桥跨海骑行',
-      'km-m1-desc': '骑行 5.4km 跨海大桥由大金门前往烈屿（小金门），需于桥头标志拍照打卡。',
-      'km-m2-title': '任务二：120km 蝴蝶结 GPS 轨迹',
-      'km-m2-desc': '以琼林为中心完成东西双环闭合轨迹，使用 Strava/Garmin 记录全程，无机动载具代步。',
-      'km-m3-title': '任务三：风狮爷打卡寻访',
-      'km-m3-desc': '寻访并拍摄至少 8 尊分布于金湖、金沙与金宁聚落的代表性守护风狮爷。',
+      'km-stat-bonus': '完成加码奖金',
+      'km-posters-title': '挑战活动官方海报',
+      'km-poster1-tag': '路线规划与 GPS 艺术海报',
+      'km-poster2-tag': '费用明细估算海报 (NT$14,200)',
+      'km-missions-header': '四大核心任务与 NT$5,000 奖金检查清单',
+      'km-missions-desc': '完成下方所有任务并附上完整 GPX 轨迹与拍照佐证，即可领取新台币 5,000 元挑战奖金！',
+      'km-m1-title': '任务一：骑行跨越金门大桥 (5.4km)',
+      'km-m1-desc': '骑车跨越金门大桥往返烈屿（小金门），需于桥头拍照记录。',
+      'km-m2-title': '任务二：120km 蝴蝶结 GPS 轨迹闭合',
+      'km-m2-desc': '以琼林为中心完成东西双环骑行并使用 Strava/Garmin 记录。',
+      'km-m3-title': '任务三：聚落风狮爷打卡寻访',
+      'km-m3-desc': '于金门各聚落寻找并拍摄至少 8 尊守护风狮爷合照。',
       'km-m4-title': '任务四：登顶太武山毋忘在莒',
-      'km-m4-desc': '登上海拔 253m 之金门最高峰，与指标性“毋忘在莒”勒石合影并俯瞰全岛景观。',
-      'km-claim-title': '📋 奖金审核与领取流程：',
-      'km-claim-step1': '1. 导出涵盖 5 天完整时间戳记的 120km GPX 或 FIT 运动轨迹档。',
-      'km-claim-step2': '2. 将 4 大任务的照片佐证发送至个人主页邮箱（fttmp66@gmail.com）。',
-      'km-claim-step3': '3. 经 Myron 审核无误后，奖金新台币 5,000 元将以汇款或现场亲授方式颁发！',
-      'km-itinerary-header': '五天精华时程',
-      'km-itinerary-sub': '每日推荐骑乘距离、景点与地道美食巡礼',
-      'km-d1-title': 'D1 · 西南海岸与后浦老街 (15km)',
-      'km-d1-detail': '抵达金门尚义机场，取车后前往得月楼、翟山坑道、建功屿夕阳与后浦老街永春广东粥。',
-      'km-d2-title': 'D2 · 烈屿小金门跨海长征 (40km)',
-      'km-d2-detail': '骑上 5.4km 金门大桥跨海抵达烈屿，环骑车辙道、猫公石海岸、沙溪堡与黄厝芋头冰。',
-      'km-d3-title': 'D3 · 西北战地与古宁头 (30km)',
-      'km-d3-detail': '探访古宁头战史馆、弹痕累累的北山古洋楼、慈湖落日夕阳与品尝地道金门石蚵面线。',
-      'km-d4-title': 'D4 · 太武山与东北聚落 (25km)',
-      'km-d4-detail': '徒步登顶太武山、参访狮山炮阵地榴弹炮操演、漫步山后民俗文化村与品尝高粱牛肉面。',
-      'km-d5-title': 'D5 · 琼林枢纽与满载赋归 (10km)',
-      'km-d5-detail': '闭合金门蝴蝶结中心点于琼林战斗村，打卡太湖 3D 斑马线，归还单车后搭机返程。'
+      'km-m4-desc': '登顶太武山 253m 制高点并与“毋忘在莒”勒石合影。',
+      'km-claim-summary': '完赛后请将连续 5 日 GPX 轨迹与 4 项任务照片寄至 <strong>fttmp66@gmail.com</strong> 审核领奖！',
+      'km-itinerary-header': '五日精选行程',
+      'km-d1-title': '西南海岸与后浦老街',
+      'km-d1-detail': '得月楼、翟山坑道、建功屿夕阳与广东粥。',
+      'km-d2-title': '烈屿小金门跨海长征',
+      'km-d2-detail': '跨越金门大桥、猫公石海岸与芋头冰。',
+      'km-d3-title': '西北战地与古宁头',
+      'km-d3-detail': '北山古洋楼弹孔、慈湖夕阳与石蚵面线。',
+      'km-d4-title': '太武山与东北聚落',
+      'km-d4-detail': '登太武山、狮山炮阵地与山后民俗村。',
+      'km-d5-title': '琼林枢纽与搭机返程',
+      'km-d5-detail': '琼林战斗村闭合蝴蝶轨迹并搭机赋归。'
     }
   };
 
-  // Trilingual Cycle Sequence: en -> zh-TW -> zh-CN -> en
+  // Trilingual Cycle: en -> zh-TW -> zh-CN -> en
   const langOrder = ['en', 'zh-TW', 'zh-CN'];
   let currentLang = localStorage.getItem('myron_portfolio_lang_v4') || 'en';
 
@@ -520,7 +529,6 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('myron_portfolio_lang_v4', lang);
     const dict = i18nDictionary[lang] || i18nDictionary['en'];
 
-    // Update all elements with data-i18n
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       if (dict[key]) {
@@ -528,7 +536,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Update toggle button text to show the next available language to toggle into
     const langBtnText = document.getElementById('lang-btn-text');
     if (langBtnText) {
       if (lang === 'en') {
@@ -540,11 +547,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Refresh icons inside dynamically updated text if any
     initIcons();
   };
 
-  // Bind Language Toggle Button
   const langToggleBtn = document.getElementById('lang-toggle-btn');
   if (langToggleBtn) {
     langToggleBtn.addEventListener('click', () => {
@@ -553,6 +558,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Initial language application
   applyLanguage(currentLang);
 });

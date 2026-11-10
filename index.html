@@ -26,235 +26,189 @@
     }
   </script>
 </head>
-<body class="bg-gradient-to-b from-[#cfd6dc] via-[#dce1e6] to-[#cad2d9] text-[#11151a] font-sans antialiased selection:bg-slate-300 selection:text-slate-900 min-h-screen">
-  <!-- Ambient background -->
-  <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
-    <div class="absolute -top-32 -left-32 w-96 h-96 bg-[#708090]/15 rounded-full blur-3xl"></div>
-    <div class="absolute top-1/3 -right-32 w-96 h-96 bg-[#162840]/10 rounded-full blur-3xl"></div>
-    <div class="absolute -bottom-32 left-1/3 w-96 h-96 bg-[#708090]/12 rounded-full blur-3xl"></div>
-  </div>
+<body class="text-[#11151a] font-sans antialiased selection:bg-slate-300 selection:text-slate-900 min-h-screen">
 
-  <!-- UNIFIED MASTER FRAME WRAPPER: 2-Column cohesive canvas (Left 1/3 AI News | Right 2/3 Portfolio) -->
-  <div class="relative z-10 max-w-[1680px] 2xl:max-w-[1780px] mx-auto px-3 sm:px-5 lg:px-6 py-6 sm:py-8">
-    <div class="bg-white/90 backdrop-blur-xl border border-[#708090]/30 rounded-[28px] sm:rounded-[36px] lg:rounded-[42px] shadow-2xl shadow-slate-400/30 p-4 sm:p-5 xl:p-7">
-      <div class="flex flex-col xl:flex-row gap-6 2xl:gap-8 items-start">
+  <!-- MASTER FRAME WRAPPER: 2-Column Editorial Canvas (Left 1/3 AI Intelligence | Right 2/3 Portfolio) -->
+  <div class="relative z-10 max-w-[1640px] mx-auto px-3 sm:px-5 lg:px-6 py-5 sm:py-7">
+    <div class="glass-panel border border-slate-300/80 rounded-xl shadow-xl shadow-slate-400/20 p-4 sm:p-5 lg:p-6">
+      <div class="flex flex-col xl:flex-row gap-6 lg:gap-7 items-start">
 
-      <!-- LEFT COLUMN (1/3 Width): What's New in AI (Sticky on Desktop) -->
-      <aside id="ai-news" class="w-full xl:w-[350px] 2xl:w-[390px] flex-shrink-0 xl:sticky xl:top-6 space-y-5">
-      
-      <!-- Sidebar Header Card (Morandi Style - No Red/Green) -->
-      <div class="bg-white border border-slate-200/90 rounded-3xl p-5 shadow-sm space-y-3">
-        <div class="flex items-center justify-between">
-          <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-100 text-[#162840] border border-slate-200 text-xs font-bold shadow-xs">
-            <span class="w-2 h-2 rounded-full bg-[#162840] animate-pulse"></span>
-            <span data-i18n="ai-badge">Daily AI Pulse</span>
-          </span>
-          <span class="text-[11px] font-mono font-bold text-slate-700 bg-slate-100 px-2.5 py-1 rounded-lg border border-slate-200 flex items-center gap-1.5" title="每日台灣時間上午 08:00 自動定時更新">
-            <i data-lucide="refresh-cw" class="w-3 h-3 text-[#708090]"></i> <span data-i18n="ai-sync">08:00 TST Sync</span>
-          </span>
-        </div>
-        <div>
-          <h2 class="text-xl font-extrabold text-slate-900 flex items-center gap-2" data-i18n="ai-title">
-            What's New in AI
-          </h2>
-          <p class="text-xs font-semibold text-slate-500 mt-0.5" data-i18n="ai-sub">Global Daily AI Headlines & Breakthroughs</p>
-          <p class="text-[11px] text-slate-600 mt-1 leading-relaxed" data-i18n="ai-desc">
-            Daily 8:00 AM TST automated curation of AI breakthroughs, security defenses, frontier developments & Silicon Valley insider gossip.
-          </p>
-        </div>
-      </div>
-
-      <!-- TOP 1 FEATURED HEADLINE CARD -->
-      <div class="bg-white border border-slate-200/90 hover:border-[#708090] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all group">
-        <!-- Visual Banner -->
-        <div class="relative overflow-hidden bg-slate-900/5 aspect-video w-full flex items-center justify-center">
-          <img src="./assets/ai-news-featured.jpg" alt="Multimodal Foundation Models & Surgical Robotics" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700">
-          <div class="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-xl text-[11px] font-bold text-[#162840] border border-slate-200 shadow-md flex items-center gap-1">
-            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-[#708090]"></i> TOP 1 HEADLINE
+      <!-- LEFT COLUMN (1/3 Width): Curated AI Intelligence (No Static Image, 5 Categorized Pillars) -->
+      <aside id="ai-news" class="w-full xl:w-[340px] 2xl:w-[380px] flex-shrink-0 xl:sticky xl:top-5 space-y-3.5 min-w-0">
+        
+        <!-- Editorial Column Header -->
+        <div class="bg-white border border-slate-300/80 rounded-xl p-4 shadow-xs space-y-2">
+          <div class="flex items-center justify-between gap-2">
+            <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-[#162840] text-white text-[11px] font-bold tracking-wide">
+              <span class="w-1.5 h-1.5 rounded-full bg-teal-300 animate-pulse"></span>
+              <span data-i18n="ai-badge">AI BRIEFING</span>
+            </span>
+            <span class="text-[11px] font-mono font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200 flex items-center gap-1">
+              <i data-lucide="clock" class="w-3 h-3 text-[#708090]"></i>
+              <span data-i18n="ai-sync">08:00 TST</span>
+            </span>
           </div>
-          <div class="absolute bottom-3 left-3 bg-slate-900/85 text-white backdrop-blur-md px-2.5 py-0.5 rounded-lg text-[10px] font-semibold flex items-center gap-1">
-            <i data-lucide="tag" class="w-3 h-3 text-slate-300"></i> Multimodal AI & Robotics
+          <div>
+            <h2 class="text-lg font-extrabold text-slate-900 tracking-tight" data-i18n="ai-title">
+              Daily &amp; Weekly AI News
+            </h2>
+            <p class="text-xs text-slate-600 mt-0.5 leading-snug line-clamp-2" data-i18n="ai-desc">
+              Daily AI tech &amp; pulse curated alongside weekly global milestones, AI security, and insider rumors.
+            </p>
           </div>
         </div>
 
-        <!-- Card Body -->
-        <div class="p-5 space-y-3">
-          <div class="flex items-center justify-between text-[11px] text-slate-500 font-medium">
-            <span class="inline-flex items-center gap-1 font-bold text-[#162840] bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200">
-              <i data-lucide="sparkles" class="w-3 h-3 text-[#708090]"></i> <span data-i18n="ai-top-badge">Daily Featured Breakthrough</span>
-            </span>
-            <span class="font-mono text-slate-400">Today 08:00</span>
-          </div>
+        <!-- 5 Categorized AI News Cards (Harmonious Muted Morandi-Tuned Rich Accents) -->
+        <div class="space-y-2.5">
 
-          <h3 class="text-sm font-extrabold text-slate-900 leading-snug group-hover:text-[#162840] transition-colors">
-            <a href="https://www.nature.com/subjects/machine-learning" target="_blank" rel="noopener noreferrer" class="hover:underline" data-i18n="ai-item1-title">
-              Next-Gen Multimodal Foundation Models Accelerate Real-Time Surgical AI & Precision Clinical Robotics
-            </a>
-          </h3>
+          <!-- 1. Weekly Global AI Milestones (Muted Steel Blue #355370) -->
+          <a href="https://www.nature.com/subjects/machine-learning" target="_blank" rel="noopener noreferrer"
+             class="news-card group block bg-white border border-slate-200 border-l-4 border-l-[#355370] hover:border-[#355370] rounded-xl p-3.5 shadow-xs">
+            <div class="flex items-center justify-between gap-2 mb-1.5">
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-[#edf3f8] text-[#28445e] border border-[#c9d9e8] flex items-center gap-1">
+                <i data-lucide="globe" class="w-3 h-3"></i>
+                <span data-i18n="ai-cat1-tag">Weekly AI Milestones</span>
+              </span>
+              <span class="text-[10px] font-mono text-slate-400" data-i18n="ai-freq-weekly">Weekly · Global</span>
+            </div>
+            <h3 class="text-xs font-bold text-slate-900 group-hover:text-[#28445e] transition-colors line-clamp-2 leading-snug" data-i18n="ai-cat1-title">
+              Multimodal Surgical Foundation Models Set New Global Clinical Robotics Benchmark
+            </h3>
+            <div class="mt-2 flex items-center justify-between text-[10px] text-slate-500">
+              <span class="font-medium">Nature Medicine</span>
+              <span class="font-semibold text-[#355370] inline-flex items-center gap-0.5" data-i18n="ai-read-short">Read <i data-lucide="arrow-up-right" class="w-3 h-3"></i></span>
+            </div>
+          </a>
 
-          <p class="text-xs text-slate-600 leading-relaxed" data-i18n="ai-item1-desc">
-            Global medical multimodal foundation models combine real-time computer vision and robotic systems for millisecond anatomical segmentation and margin prediction in clinical surgery navigation.
-          </p>
+          <!-- 2. Weekly AI Security (Muted Dusty Plum #6b4858) -->
+          <a href="https://www.technologyreview.com/topic/artificial-intelligence/" target="_blank" rel="noopener noreferrer"
+             class="news-card group block bg-white border border-slate-200 border-l-4 border-l-[#6b4858] hover:border-[#6b4858] rounded-xl p-3.5 shadow-xs">
+            <div class="flex items-center justify-between gap-2 mb-1.5">
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-[#f6eff2] text-[#593847] border border-[#e3cfd8] flex items-center gap-1">
+                <i data-lucide="shield-check" class="w-3 h-3"></i>
+                <span data-i18n="ai-cat2-tag">Weekly AI Security</span>
+              </span>
+              <span class="text-[10px] font-mono text-slate-400" data-i18n="ai-freq-sec">Weekly · Defense</span>
+            </div>
+            <h3 class="text-xs font-bold text-slate-900 group-hover:text-[#593847] transition-colors line-clamp-2 leading-snug" data-i18n="ai-cat2-title">
+              Anthropic &amp; MIT Unveil Next-Gen LLM Jailbreak &amp; Prompt Injection Defense Architecture
+            </h3>
+            <div class="mt-2 flex items-center justify-between text-[10px] text-slate-500">
+              <span class="font-medium">MIT Tech Review</span>
+              <span class="font-semibold text-[#6b4858] inline-flex items-center gap-0.5" data-i18n="ai-read-short">Read <i data-lucide="arrow-up-right" class="w-3 h-3"></i></span>
+            </div>
+          </a>
 
-          <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-            <span class="text-[11px] text-slate-500 font-medium">Nature Medicine</span>
-            <a href="https://www.nature.com/subjects/machine-learning" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-bold text-[#162840] hover:text-[#708090] text-[11px] transition-colors">
-              <span data-i18n="ai-read-btn">Read Article</span> <i data-lucide="external-link" class="w-3 h-3"></i>
-            </a>
-          </div>
+          <!-- 3. Daily AI New Tech (Muted Deep Teal #2f6668) -->
+          <a href="https://huggingface.co/blog" target="_blank" rel="noopener noreferrer"
+             class="news-card group block bg-white border border-slate-200 border-l-4 border-l-[#2f6668] hover:border-[#2f6668] rounded-xl p-3.5 shadow-xs">
+            <div class="flex items-center justify-between gap-2 mb-1.5">
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-[#ecf5f5] text-[#224f50] border border-[#c8e0e0] flex items-center gap-1">
+                <i data-lucide="cpu" class="w-3 h-3"></i>
+                <span data-i18n="ai-cat3-tag">Daily AI New Tech</span>
+              </span>
+              <span class="text-[10px] font-mono text-slate-400" data-i18n="ai-freq-daily">Daily · Models</span>
+            </div>
+            <h3 class="text-xs font-bold text-slate-900 group-hover:text-[#224f50] transition-colors line-clamp-2 leading-snug" data-i18n="ai-cat3-title">
+              Open MoE Reasoning Algorithms Reach Frontier Math &amp; Code Inference Parity
+            </h3>
+            <div class="mt-2 flex items-center justify-between text-[10px] text-slate-500">
+              <span class="font-medium">Hugging Face Blog</span>
+              <span class="font-semibold text-[#2f6668] inline-flex items-center gap-0.5" data-i18n="ai-read-short">Read <i data-lucide="arrow-up-right" class="w-3 h-3"></i></span>
+            </div>
+          </a>
+
+          <!-- 4. Daily AI News (Muted Slate Cobalt #3e5c8a) -->
+          <a href="https://www.fda.gov/medical-devices/software-medical-device-samd/artificial-intelligence-and-machine-learning-software-medical-device" target="_blank" rel="noopener noreferrer"
+             class="news-card group block bg-white border border-slate-200 border-l-4 border-l-[#3e5c8a] hover:border-[#3e5c8a] rounded-xl p-3.5 shadow-xs">
+            <div class="flex items-center justify-between gap-2 mb-1.5">
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-[#eef2f8] text-[#2e4870] border border-[#cdd8ea] flex items-center gap-1">
+                <i data-lucide="newspaper" class="w-3 h-3"></i>
+                <span data-i18n="ai-cat4-tag">Daily AI News</span>
+              </span>
+              <span class="text-[10px] font-mono text-slate-400" data-i18n="ai-freq-news">Daily · Policy</span>
+            </div>
+            <h3 class="text-xs font-bold text-slate-900 group-hover:text-[#2e4870] transition-colors line-clamp-2 leading-snug" data-i18n="ai-cat4-title">
+              FDA Updates Adaptive Clinical AI/ML Monitoring Guidance for Medical Imaging Systems
+            </h3>
+            <div class="mt-2 flex items-center justify-between text-[10px] text-slate-500">
+              <span class="font-medium">FDA Official</span>
+              <span class="font-semibold text-[#3e5c8a] inline-flex items-center gap-0.5" data-i18n="ai-read-short">Read <i data-lucide="arrow-up-right" class="w-3 h-3"></i></span>
+            </div>
+          </a>
+
+          <!-- 5. Weekly AI Gossip (Muted Warm Ochre-Taupe #856742) -->
+          <a href="https://techcrunch.com/category/artificial-intelligence/" target="_blank" rel="noopener noreferrer"
+             class="news-card group block bg-white border border-slate-200 border-l-4 border-l-[#856742] hover:border-[#856742] rounded-xl p-3.5 shadow-xs">
+            <div class="flex items-center justify-between gap-2 mb-1.5">
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-[#f7f3ec] text-[#694f30] border border-[#e3d7c5] flex items-center gap-1">
+                <i data-lucide="flame" class="w-3 h-3"></i>
+                <span data-i18n="ai-cat5-tag">Weekly AI Gossip</span>
+              </span>
+              <span class="text-[10px] font-mono text-slate-400" data-i18n="ai-freq-gossip">Weekly · Insider</span>
+            </div>
+            <h3 class="text-xs font-bold text-slate-900 group-hover:text-[#694f30] transition-colors line-clamp-2 leading-snug" data-i18n="ai-cat5-title">
+              Silicon Valley Talent War Intensifies Across Frontier Labs Amid Multi-Billion Valuations
+            </h3>
+            <div class="mt-2 flex items-center justify-between text-[10px] text-slate-500">
+              <span class="font-medium">TechCrunch AI</span>
+              <span class="font-semibold text-[#856742] inline-flex items-center gap-0.5" data-i18n="ai-read-short">Read <i data-lucide="arrow-up-right" class="w-3 h-3"></i></span>
+            </div>
+          </a>
+
         </div>
-      </div>
 
-      <!-- CONDENSED HEADLINES LINK LIST (No Red/Green, Morandi Slate/Navy) -->
-      <div class="bg-white border border-slate-200/90 rounded-3xl p-4 shadow-sm space-y-2.5">
-        <div class="flex items-center justify-between px-1 pb-1 border-b border-slate-100">
-          <span class="text-[11px] font-bold tracking-wider text-slate-500 uppercase flex items-center gap-1.5">
-            <i data-lucide="trending-up" class="w-3.5 h-3.5 text-[#708090]"></i> Global AI Highlights
-          </span>
-          <span class="text-[10px] text-slate-400 font-medium font-mono">08:00 TST Sync</span>
-        </div>
-
-        <!-- Item 2: AI 資安 (AI Security) -->
-        <a href="https://www.technologyreview.com/topic/artificial-intelligence/" target="_blank" rel="noopener noreferrer"
-           class="group block bg-slate-50/70 hover:bg-white border border-slate-200/80 hover:border-[#708090] rounded-2xl p-3 shadow-xs hover:shadow-sm transition-all">
-          <div class="flex items-center justify-between gap-1 mb-1">
-            <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-[#162840] border border-slate-200 flex items-center gap-1">
-              <i data-lucide="shield" class="w-2.5 h-2.5 text-[#708090]"></i> <span data-i18n="ai-item2-tag">AI Security</span>
-            </span>
-            <span class="text-[10px] text-slate-400 font-mono">Today</span>
-          </div>
-          <h4 class="text-xs font-bold text-slate-800 group-hover:text-[#162840] transition-colors line-clamp-2 leading-snug" data-i18n="ai-item2-title">
-            Anthropic 與 MIT 揭露次世代 LLM 越獄防禦架構，防範惡意提示注入與隱私外洩風險
-          </h4>
-          <div class="mt-1.5 flex items-center justify-between text-[10px] text-slate-500">
-            <span class="text-slate-600 font-medium">MIT Tech Review</span>
-            <span class="text-[#708090] inline-flex items-center gap-0.5 font-semibold group-hover:translate-x-0.5 transition-transform">
-              Link <i data-lucide="external-link" class="w-2.5 h-2.5"></i>
-            </span>
-          </div>
-        </a>
-
-        <!-- Item 3: AI 技術 (AI Architecture · MoE) -->
-        <a href="https://huggingface.co/blog" target="_blank" rel="noopener noreferrer"
-           class="group block bg-slate-50/70 hover:bg-white border border-slate-200/80 hover:border-[#708090] rounded-2xl p-3 shadow-xs hover:shadow-sm transition-all">
-          <div class="flex items-center justify-between gap-1 mb-1">
-            <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-[#162840] border border-slate-200 flex items-center gap-1">
-              <i data-lucide="cpu" class="w-2.5 h-2.5 text-[#708090]"></i> <span data-i18n="ai-item3-tag">AI Architecture · MoE</span>
-            </span>
-            <span class="text-[10px] text-slate-400 font-mono">Today</span>
-          </div>
-          <h4 class="text-xs font-bold text-slate-800 group-hover:text-[#162840] transition-colors line-clamp-2 leading-snug" data-i18n="ai-item3-title">
-            DeepSeek 與開源社群釋出新一代開源 MoE 推理模型，數學推理與代碼生成逼近頂級閉源
-          </h4>
-          <div class="mt-1.5 flex items-center justify-between text-[10px] text-slate-500">
-            <span class="text-slate-600 font-medium">Hugging Face Blog</span>
-            <span class="text-[#708090] inline-flex items-center gap-0.5 font-semibold group-hover:translate-x-0.5 transition-transform">
-              Link <i data-lucide="external-link" class="w-2.5 h-2.5"></i>
-            </span>
-          </div>
-        </a>
-
-        <!-- Item 4: AI 八卦 (Silicon Valley Gossip) -->
-        <a href="https://techcrunch.com/category/artificial-intelligence/" target="_blank" rel="noopener noreferrer"
-           class="group block bg-slate-50/70 hover:bg-white border border-slate-200/80 hover:border-[#708090] rounded-2xl p-3 shadow-xs hover:shadow-sm transition-all">
-          <div class="flex items-center justify-between gap-1 mb-1">
-            <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-[#162840] border border-slate-200 flex items-center gap-1">
-              <i data-lucide="sparkle" class="w-2.5 h-2.5 text-[#708090]"></i> <span data-i18n="ai-item4-tag">Silicon Valley Gossip</span>
-            </span>
-            <span class="text-[10px] text-slate-400 font-mono">Today</span>
-          </div>
-          <h4 class="text-xs font-bold text-slate-800 group-hover:text-[#162840] transition-colors line-clamp-2 leading-snug" data-i18n="ai-item4-title">
-            【矽谷名人八卦】Ilya 創辦 SSI 估值飆破數十億美元；馬斯克 xAI 槓上 OpenAI 掀頂尖科學家挖角大戰
-          </h4>
-          <div class="mt-1.5 flex items-center justify-between text-[10px] text-slate-500">
-            <span class="text-slate-600 font-medium">TechCrunch AI</span>
-            <span class="text-[#708090] inline-flex items-center gap-0.5 font-semibold group-hover:translate-x-0.5 transition-transform">
-              Link <i data-lucide="external-link" class="w-2.5 h-2.5"></i>
-            </span>
-          </div>
-        </a>
-
-        <!-- Item 5: AI 臨床標準 (Clinical Standards) -->
-        <a href="https://www.fda.gov/medical-devices/software-medical-device-samd/artificial-intelligence-and-machine-learning-software-medical-device" target="_blank" rel="noopener noreferrer"
-           class="group block bg-slate-50/70 hover:bg-white border border-slate-200/80 hover:border-[#708090] rounded-2xl p-3 shadow-xs hover:shadow-sm transition-all">
-          <div class="flex items-center justify-between gap-1 mb-1">
-            <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-[#162840] border border-slate-200 flex items-center gap-1">
-              <i data-lucide="file-check" class="w-2.5 h-2.5 text-[#708090]"></i> <span data-i18n="ai-item5-tag">Clinical Standards</span>
-            </span>
-            <span class="text-[10px] text-slate-400 font-mono">Today</span>
-          </div>
-          <h4 class="text-xs font-bold text-slate-800 group-hover:text-[#162840] transition-colors line-clamp-2 leading-snug" data-i18n="ai-item5-title">
-            FDA 更新自適應 AI/ML 醫療設備監管指南，強化臨床演算法可解釋性與即時安全監控
-          </h4>
-          <div class="mt-1.5 flex items-center justify-between text-[10px] text-slate-500">
-            <span class="text-slate-600 font-medium">FDA Official</span>
-            <span class="text-[#708090] inline-flex items-center gap-0.5 font-semibold group-hover:translate-x-0.5 transition-transform">
-              Link <i data-lucide="external-link" class="w-2.5 h-2.5"></i>
-            </span>
-          </div>
-        </a>
-
-      </div>
-
-    </aside>
+      </aside>
 
 
       <!-- RIGHT COLUMN (2/3 Width): Personal Portfolio Main Content -->
-      <div class="flex-1 min-w-0 space-y-4 xl:pl-3 2xl:pl-5 xl:border-l xl:border-[#708090]/25">
+      <div class="flex-1 min-w-0 space-y-5 xl:pl-5 xl:border-l xl:border-slate-300/80">
         
-        <!-- Header / Navbar placed cleanly at top of portfolio column -->
-        <div class="sticky top-0 z-40 max-w-6xl mx-auto w-full">
-          <header class="backdrop-blur-md bg-white/95 border border-slate-200/90 rounded-3xl shadow-sm px-3 sm:px-4 h-16 flex items-center justify-between gap-2 w-full">
-            <!-- Combined Name & About Action Button (Focuses on About Me) -->
-            <a href="#about" id="nav-about-btn" class="flex items-center gap-1.5 px-2 py-1 rounded-2xl bg-slate-100 hover:bg-slate-200 border border-[#708090]/25 text-slate-900 transition-all group flex-shrink-0 shadow-xs" title="前往 About Me 個人簡歷">
-              <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#162840] flex items-center justify-center font-bold text-xs text-white shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+        <!-- Sticky Navigation Header Bar (Sharp 12px Corners) -->
+        <div class="sticky top-0 z-40 w-full">
+          <header class="glass-panel border border-slate-300/80 rounded-xl shadow-sm px-3 sm:px-4 h-14 flex items-center justify-between gap-2 w-full">
+            <!-- Combined Name & About Action Button -->
+            <a href="#about" id="nav-about-btn" class="flex items-center gap-1.5 px-2 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-300/70 text-slate-900 transition-all group flex-shrink-0" title="About Me">
+              <div class="w-7 h-7 rounded-md bg-[#162840] flex items-center justify-center font-bold text-xs text-white flex-shrink-0">
                 MH
               </div>
-              <div class="flex items-center gap-1">
-                <span class="font-extrabold text-xs sm:text-sm tracking-tight text-slate-900 hidden sm:inline">
-                  Myron
-                </span>
-                <span class="px-2 py-0.5 rounded-lg text-xs font-bold bg-[#162840] text-white shadow-xs flex items-center gap-1">
-                  <i data-lucide="user" class="w-3 h-3"></i> <span data-i18n="nav-about">About</span>
-                </span>
-              </div>
+              <span class="font-extrabold text-xs sm:text-sm tracking-tight text-slate-900 hidden sm:inline">Myron</span>
+              <span class="px-2 py-0.5 rounded-md text-xs font-bold bg-[#162840] text-white flex items-center gap-1">
+                <span data-i18n="nav-about">About</span>
+              </span>
             </a>
 
             <!-- Navigation Links (Experience & Research) -->
             <nav class="hidden md:flex items-center gap-1 text-xs font-semibold text-slate-600 flex-shrink-0">
-              <a href="#experience" id="nav-experience-btn" class="px-2.5 py-1 rounded-xl hover:text-[#162840] hover:bg-slate-100 transition-all flex items-center gap-1 whitespace-nowrap">
+              <a href="#experience" id="nav-experience-btn" class="px-2.5 py-1.5 rounded-lg hover:text-[#162840] hover:bg-slate-100 transition-all flex items-center gap-1.5 whitespace-nowrap">
                 <i data-lucide="clock" class="w-3.5 h-3.5 text-[#708090]"></i> <span data-i18n="nav-experience">Experience</span>
               </a>
-              <a href="#research-spotlight" id="nav-research-btn" class="px-2.5 py-1 rounded-xl hover:text-[#162840] hover:bg-slate-100 transition-all flex items-center gap-1 whitespace-nowrap">
+              <a href="#research-spotlight" id="nav-research-btn" class="px-2.5 py-1.5 rounded-lg hover:text-[#162840] hover:bg-slate-100 transition-all flex items-center gap-1.5 whitespace-nowrap">
                 <i data-lucide="microscope" class="w-3.5 h-3.5 text-[#708090]"></i> <span data-i18n="nav-research">Research</span>
               </a>
             </nav>
 
-            <!-- Language Switcher & Action Buttons (Right-aligned, GitHub & LinkedIn text centered) -->
-            <div class="flex items-center justify-end gap-1 sm:gap-1.5 flex-shrink-0">
-              <!-- 1. Gmail -->
+            <!-- Action Buttons & Trilingual Switcher -->
+            <div class="flex items-center justify-end gap-1.5 flex-shrink-0">
               <a href="mailto:fttmp66@gmail.com"
-                 class="inline-flex items-center justify-center text-center gap-1 px-2.5 h-8 text-xs font-bold rounded-xl bg-white text-slate-700 hover:text-[#162840] border border-slate-200 transition-all shadow-sm" title="Email: fttmp66@gmail.com">
+                 class="inline-flex items-center justify-center text-center gap-1 px-2.5 h-8 text-xs font-bold rounded-lg bg-white text-slate-700 hover:text-[#162840] border border-slate-300 transition-all" title="Email: fttmp66@gmail.com">
                 <i data-lucide="mail" class="w-3.5 h-3.5 text-[#708090]"></i>
                 <span class="leading-none">Gmail</span>
               </a>
 
-              <!-- 2. GitHub (Centered in Black Box) -->
               <a href="https://github.com/fttmp66-0c0o0d0e0r0/myron-huang-portfolio" target="_blank" rel="noopener noreferrer" id="github-link"
-                 class="inline-flex items-center justify-center text-center px-3 h-8 text-xs font-bold rounded-xl bg-slate-900 text-white hover:bg-slate-800 transition-all shadow-sm" title="GitHub Repository">
+                 class="inline-flex items-center justify-center text-center px-3 h-8 text-xs font-bold rounded-lg bg-[#11151a] text-white hover:bg-slate-800 transition-all" title="GitHub Repository">
                 <span class="leading-none text-center">GitHub</span>
               </a>
 
-              <!-- 3. LinkedIn (Centered in Blue Box) -->
               <a href="https://www.linkedin.com/in/%E9%BB%83%E5%A9%B7%E7%90%B0-ting-yen-huang-57aa9772/" target="_blank" rel="noopener noreferrer" 
-                 class="inline-flex items-center justify-center text-center px-3 h-8 text-xs font-bold rounded-xl bg-[#0077b5] text-white hover:bg-[#006097] transition-all shadow-sm shadow-blue-200" title="LinkedIn Profile">
+                 class="inline-flex items-center justify-center text-center px-3 h-8 text-xs font-bold rounded-lg bg-[#0077b5] text-white hover:bg-[#006097] transition-all" title="LinkedIn Profile">
                 <span class="leading-none text-center">LinkedIn</span>
               </a>
 
-              <!-- 4. Language Switcher (Far Right) -->
               <button id="lang-toggle-btn"
-                      class="inline-flex items-center justify-center text-center gap-1 h-8 px-2.5 text-xs font-extrabold rounded-xl bg-slate-100 hover:bg-slate-200 text-[#162840] border border-slate-300 transition-all shadow-xs cursor-pointer"
-                      title="切換全中文 / 全英文版 (Toggle Chinese / English)">
+                      class="inline-flex items-center justify-center text-center gap-1 h-8 px-2.5 text-xs font-extrabold rounded-lg bg-slate-100 hover:bg-slate-200 text-[#162840] border border-slate-300 transition-all cursor-pointer"
+                      title="Toggle Language (EN / 繁中 / 简中)">
                 <i data-lucide="languages" class="w-3.5 h-3.5 text-[#708090]"></i>
                 <span id="lang-btn-text" class="leading-none">繁體中文</span>
               </button>
@@ -262,765 +216,452 @@
           </header>
         </div>
 
-        <!-- Main Personal Content -->
-        <main class="relative z-10 max-w-6xl mx-auto px-2 sm:px-4 lg:px-6 pt-1 pb-10 space-y-10 sm:space-y-12">
+        <!-- Main Portfolio Content -->
+        <main class="relative z-10 w-full pb-8 space-y-10">
 
-    <!-- USER IMAGE 2 BLUE BOX: Kinmen Campaign Recruitment Button linking to Page 2 -->
-    <div class="flex items-center justify-end pt-1">
-      <a href="kinmen.html" id="kinmen-campaign-badge" class="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-gradient-to-r from-[#162840] via-[#233c5e] to-[#162840] text-white text-xs sm:text-sm font-extrabold shadow-md hover:shadow-xl hover:scale-[1.02] border border-[#708090]/40 transition-all group">
-        <span class="w-2 h-2 rounded-full bg-amber-300 animate-ping"></span>
-        <span>🚴 <span data-i18n="kinmen-recruit-btn">金門單車蝴蝶之旅挑戰者招募中 NEW →</span></span>
-      </a>
-    </div>
-
-    <!-- ABOUT ME & CERTIFICATIONS SECTION -->
-    <section id="about" class="space-y-6 pt-0 scroll-mt-20">
-      <div class="border-b border-slate-200/90 pb-3 flex items-center justify-between">
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900" data-i18n="about-title">About Me</h2>
-      </div>
-
-      <div class="flex flex-col-reverse xl:flex-row gap-6 lg:gap-8 items-start">
-        
-        <!-- Left: Personal Info & Embedded Certifications -->
-        <div class="flex-1 min-w-0 space-y-6">
-          
-          <!-- Personal Identity Card -->
-          <div class="bg-white border border-slate-200/90 rounded-3xl p-5 sm:p-6 shadow-sm">
-            <div class="flex flex-col gap-3">
-              <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 px-4 py-3 rounded-2xl bg-slate-50 border border-slate-200 text-sm sm:text-base">
-                <span class="font-bold text-[#162840] flex items-center gap-2 sm:w-32 flex-shrink-0">
-                  <i data-lucide="user" class="w-5 h-5 text-[#708090]"></i> <span data-i18n="about-name-label">Name:</span>
-                </span>
-                <span class="font-bold text-slate-900">Ting-Yen (Myron) Huang (黃婷琰)</span>
-              </div>
-
-              <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 px-4 py-3 rounded-2xl bg-slate-50 border border-slate-200 text-sm sm:text-base">
-                <span class="font-bold text-[#162840] flex items-center gap-2 sm:w-32 flex-shrink-0">
-                  <i data-lucide="graduation-cap" class="w-5 h-5 text-[#708090]"></i> <span data-i18n="about-program-label">Program:</span>
-                </span>
-                <span class="font-semibold text-slate-800">Chang Gung University (AI Master)</span>
-              </div>
-
-              <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 px-4 py-3 rounded-2xl bg-slate-50 border border-slate-200 text-sm sm:text-base">
-                <span class="font-bold text-[#162840] flex items-center gap-2 sm:w-32 flex-shrink-0">
-                  <i data-lucide="badge-info" class="w-5 h-5 text-[#708090]"></i> <span data-i18n="about-student-label">Student ID:</span>
-                </span>
-                <span class="font-mono bg-white px-3 py-1 rounded-lg border border-slate-300 text-[#162840] font-bold" id="student-id-display">M1461035</span>
-              </div>
-            </div>
+          <!-- TOP RIGHT: Eye-Catching Kinmen Recruitment Badge linking to Page 2 (Teal/Cyan/White/Dark GIF-like Flash) -->
+          <div class="flex items-center justify-end">
+            <a href="kinmen.html" id="kinmen-campaign-badge"
+               class="kinmen-flash-badge inline-flex items-center gap-2.5 px-4 py-2 rounded-lg text-white text-xs sm:text-sm font-extrabold border-2 transition-all">
+              <span id="kinmen-new-pill" class="kinmen-new-pill px-1.5 py-0.5 rounded bg-teal-300 text-[#0b232e] text-[10px] font-black tracking-wider uppercase">
+                NEW
+              </span>
+              <span class="tracking-tight" data-i18n="kinmen-recruit-btn">Kinmen Bowknot Cycling Challenge: Challengers Wanted →</span>
+            </a>
           </div>
 
-          <!-- Verified Technical Certifications (No Red/Green - Morandi Slate/Navy/White) -->
-          <div class="space-y-4 pt-2">
-            <div class="border-b border-slate-200/90 pb-3">
-              <div class="flex items-center gap-1.5 text-[#708090] text-xs sm:text-sm font-bold tracking-wider uppercase">
-                <i data-lucide="award" class="w-4 h-4"></i> <span data-i18n="cert-tag">Official Certifications</span>
-              </div>
-              <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-0.5" data-i18n="cert-title">Verified Technical Certifications</h3>
+          <!-- SECTION 1: ABOUT ME & CERTIFICATIONS -->
+          <section id="about" class="space-y-5 p-4 -m-4 rounded-xl scroll-mt-24 transition-all">
+            <div class="border-b border-slate-300/80 pb-2.5">
+              <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight" data-i18n="about-title">About Me</h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <!-- 1. Red Hat RHCSA (Clean Slate/Navy) -->
-              <div class="bg-white border border-slate-200/90 rounded-3xl p-5 shadow-sm hover:shadow-md hover:border-[#708090] transition-all group flex flex-col justify-between">
-                <div>
-                  <div class="flex items-center justify-between mb-3">
-                    <div class="w-10 h-10 rounded-xl bg-slate-100 text-[#162840] flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <i data-lucide="terminal" class="w-5 h-5"></i>
-                    </div>
-                    <span class="px-2 py-0.5 rounded-full text-[10px] font-mono bg-slate-100 text-slate-700 border border-slate-200 font-bold">
-                      Jun 2013
-                    </span>
-                  </div>
-                  <div class="text-[10px] font-bold text-[#708090] uppercase tracking-wider mb-1">RED HAT OFFICIAL</div>
-                  <h4 class="font-extrabold text-slate-900 text-xs sm:text-sm mb-1 leading-snug">Red Hat Certified System Administrator (RHCSA)</h4>
-                  <p class="text-[11px] text-slate-600 mb-3 leading-relaxed">
-                    Enterprise Linux core administration, storage partitioning, permissions, and network configuration.
-                  </p>
-                </div>
-                <div class="pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px]">
-                  <span class="text-slate-400 font-medium">Credential ID</span>
-                  <span class="font-mono text-[#162840] font-bold">130-106-339</span>
-                </div>
-              </div>
-
-              <!-- 2. Microsoft HTML5 Specialist -->
-              <div class="bg-white border border-slate-200/90 rounded-3xl p-5 shadow-sm hover:shadow-md hover:border-[#708090] transition-all group flex flex-col justify-between">
-                <div>
-                  <div class="flex items-center justify-between mb-3">
-                    <div class="w-10 h-10 rounded-xl bg-slate-100 text-[#162840] flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <i data-lucide="layout" class="w-5 h-5"></i>
-                    </div>
-                    <span class="px-2 py-0.5 rounded-full text-[10px] font-mono bg-slate-100 text-slate-700 border border-slate-200 font-bold">
-                      May 2014
-                    </span>
-                  </div>
-                  <div class="text-[10px] font-bold text-[#708090] uppercase tracking-wider mb-1">MICROSOFT CERTIFIED</div>
-                  <h4 class="font-extrabold text-slate-900 text-xs sm:text-sm mb-1 leading-snug">Programming in HTML5 with JS & CSS3 Specialist</h4>
-                  <p class="text-[11px] text-slate-600 mb-3 leading-relaxed">
-                    Standards-based frontend application structure, event handling, and client-side web UX.
-                  </p>
-                </div>
-                <div class="pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px]">
-                  <span class="text-slate-400 font-medium">Credential ID</span>
-                  <span class="font-mono text-[#162840] font-bold">E83-0893</span>
-                </div>
-              </div>
-
-              <!-- 3. Microsoft Certified Professional (MCP) -->
-              <div class="bg-white border border-slate-200/90 rounded-3xl p-5 shadow-sm hover:shadow-md hover:border-[#708090] transition-all group flex flex-col justify-between">
-                <div>
-                  <div class="flex items-center justify-between mb-3">
-                    <div class="w-10 h-10 rounded-xl bg-slate-100 text-[#162840] flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <i data-lucide="badge-check" class="w-5 h-5"></i>
-                    </div>
-                    <span class="px-2 py-0.5 rounded-full text-[10px] font-mono bg-slate-100 text-slate-700 border border-slate-200 font-bold">
-                      May 2014
-                    </span>
-                  </div>
-                  <div class="text-[10px] font-bold text-[#708090] uppercase tracking-wider mb-1">MICROSOFT OFFICIAL</div>
-                  <h4 class="font-extrabold text-slate-900 text-xs sm:text-sm mb-1 leading-snug">Microsoft Certified Professional (MCP)</h4>
-                  <p class="text-[11px] text-slate-600 mb-3 leading-relaxed">
-                    Official technical engineering credential validating enterprise system implementation standards.
-                  </p>
-                </div>
-                <div class="pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px]">
-                  <span class="text-slate-400 font-medium">Credential ID</span>
-                  <span class="font-mono text-[#162840] font-bold">E823-0898</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Right: 3D Collectible Figurine Card -->
-        <div class="w-full sm:w-80 lg:w-84 xl:w-88 flex-shrink-0 self-start">
-          <div class="relative group">
-            <div class="relative bg-white border border-slate-200/90 rounded-3xl p-5 shadow-md space-y-4 text-center">
+            <div class="flex flex-col-reverse lg:flex-row gap-6 items-start">
               
-              <!-- Chibi Stand Display -->
-              <div class="relative bg-gradient-to-b from-slate-100 to-slate-200/70 rounded-2xl p-4 overflow-hidden border border-slate-200 shadow-inner flex flex-col items-center">
-                <img src="./assets/chibi-avatar.png" alt="Ting-Yen (Myron) Huang 3D Figurine" class="h-64 sm:h-72 object-contain drop-shadow-lg hover:scale-105 transition-transform duration-500">
-                <div class="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-full text-[11px] font-bold text-[#162840] border border-slate-200 shadow-sm flex items-center gap-1">
-                  <i data-lucide="sparkles" class="w-3 h-3 text-[#708090]"></i> Myron Huang
+              <!-- Left: Profile Details & Certifications -->
+              <div class="flex-1 min-w-0 space-y-6 w-full">
+                
+                <!-- Identity List (Crisp Clean Rows) -->
+                <div class="bg-white border border-slate-200 rounded-xl divide-y divide-slate-100 shadow-xs overflow-hidden">
+                  <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 px-4 py-3 text-sm">
+                    <span class="font-bold text-[#708090] sm:w-28 flex-shrink-0 flex items-center gap-1.5">
+                      <i data-lucide="user" class="w-4 h-4"></i> <span data-i18n="about-name-label">Name:</span>
+                    </span>
+                    <span class="font-bold text-slate-900">Ting-Yen (Myron) Huang (黃婷琰)</span>
+                  </div>
+
+                  <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 px-4 py-3 text-sm">
+                    <span class="font-bold text-[#708090] sm:w-28 flex-shrink-0 flex items-center gap-1.5">
+                      <i data-lucide="graduation-cap" class="w-4 h-4"></i> <span data-i18n="about-program-label">Program:</span>
+                    </span>
+                    <span class="font-semibold text-slate-800">Chang Gung University · M.S. in Artificial Intelligence</span>
+                  </div>
+
+                  <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 px-4 py-3 text-sm">
+                    <span class="font-bold text-[#708090] sm:w-28 flex-shrink-0 flex items-center gap-1.5">
+                      <i data-lucide="badge-info" class="w-4 h-4"></i> <span data-i18n="about-student-label">Student ID:</span>
+                    </span>
+                    <span class="font-mono bg-slate-100 px-2.5 py-0.5 rounded-md border border-slate-200 text-[#162840] font-bold w-fit" id="student-id-display">M1461035</span>
+                  </div>
+                </div>
+
+                <!-- Verified Technical Certifications (Concise 1-2 lines max) -->
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                    <h3 class="text-lg font-extrabold text-slate-900" data-i18n="cert-title">Technical Certifications</h3>
+                    <span class="text-[11px] font-bold text-[#708090] uppercase tracking-wider" data-i18n="cert-tag">Verified Credentials</span>
+                  </div>
+
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5">
+                    <!-- 1. RHCSA -->
+                    <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-xs flex flex-col justify-between">
+                      <div>
+                        <div class="flex items-center justify-between mb-2">
+                          <span class="text-[10px] font-bold text-[#708090] uppercase">Red Hat</span>
+                          <span class="text-[10px] font-mono text-slate-500">Jun 2013</span>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-xs leading-snug line-clamp-2">Red Hat Certified System Administrator (RHCSA)</h4>
+                        <p class="text-[11px] text-slate-500 mt-1 line-clamp-2">Enterprise Linux administration &amp; networking.</p>
+                      </div>
+                      <div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                        <span class="text-slate-400">ID</span>
+                        <span class="font-mono text-[#162840] font-bold">130-106-339</span>
+                      </div>
+                    </div>
+
+                    <!-- 2. HTML5 Specialist -->
+                    <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-xs flex flex-col justify-between">
+                      <div>
+                        <div class="flex items-center justify-between mb-2">
+                          <span class="text-[10px] font-bold text-[#708090] uppercase">Microsoft</span>
+                          <span class="text-[10px] font-mono text-slate-500">May 2014</span>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-xs leading-snug line-clamp-2">HTML5 with JS &amp; CSS3 Specialist</h4>
+                        <p class="text-[11px] text-slate-500 mt-1 line-clamp-2">Frontend application &amp; web UX engineering.</p>
+                      </div>
+                      <div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                        <span class="text-slate-400">ID</span>
+                        <span class="font-mono text-[#162840] font-bold">E83-0893</span>
+                      </div>
+                    </div>
+
+                    <!-- 3. MCP -->
+                    <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-xs flex flex-col justify-between">
+                      <div>
+                        <div class="flex items-center justify-between mb-2">
+                          <span class="text-[10px] font-bold text-[#708090] uppercase">Microsoft</span>
+                          <span class="text-[10px] font-mono text-slate-500">May 2014</span>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-xs leading-snug line-clamp-2">Microsoft Certified Professional (MCP)</h4>
+                        <p class="text-[11px] text-slate-500 mt-1 line-clamp-2">Enterprise system implementation standards.</p>
+                      </div>
+                      <div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                        <span class="text-slate-400">ID</span>
+                        <span class="font-mono text-[#162840] font-bold">E823-0898</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Right: Clean Chibi Figurine Frame -->
+              <div class="w-full sm:w-64 lg:w-72 flex-shrink-0 self-start">
+                <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-xs text-center space-y-3">
+                  <div class="bg-slate-100 rounded-lg p-3 border border-slate-200/80 flex justify-center">
+                    <img src="./assets/chibi-avatar.png" alt="Ting-Yen (Myron) Huang 3D Figurine" class="h-56 sm:h-60 object-contain hover:scale-105 transition-transform duration-500">
+                  </div>
+                  <div>
+                    <h3 class="font-extrabold text-slate-900 text-base">Ting-Yen (Myron) Huang</h3>
+                    <p class="text-xs font-bold text-[#708090] mt-0.5">CGU AI Graduate Researcher</p>
+                    <div class="text-[11px] text-slate-500 mt-1 font-medium">Taiwan · Ex-HP · Quanta</div>
+                  </div>
                 </div>
               </div>
 
-              <!-- Quick Tagline -->
+            </div>
+          </section>
+
+          <!-- SECTION 2: EXPERIENCE TIMELINE (AI / Research before AI Instructor) -->
+          <section id="experience" class="space-y-5 p-4 -m-4 rounded-xl scroll-mt-24 transition-all">
+            <div class="border-b border-slate-300/80 pb-3.5 space-y-3">
+              <!-- Row 1: Single Line Title -->
+              <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight whitespace-nowrap" data-i18n="exp-title">
+                Experience Timeline
+              </h2>
+
+              <!-- Row 2: Single Line Horizontal Filters (AI Research first, AI Instructor after) -->
+              <div class="flex items-center gap-2 overflow-x-auto whitespace-nowrap scrollbar-none py-0.5" id="filter-buttons">
+                <button class="filter-btn active px-3 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap" data-filter="all" data-i18n="filter-all">
+                  All Roles
+                </button>
+                <button class="filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap" data-filter="software" data-i18n="filter-software">
+                  Clinical Software
+                </button>
+                <button class="filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap" data-filter="business" data-i18n="filter-business">
+                  Commercial Sales
+                </button>
+                <button class="filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap" data-filter="hardware" data-i18n="filter-hardware">
+                  Drivers &amp; Validation
+                </button>
+                <button class="filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap" data-filter="ai" data-i18n="filter-ai">
+                  AI / Research
+                </button>
+                <button class="filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap" data-filter="instructor" data-i18n="filter-instructor">
+                  AI Instructor
+                </button>
+              </div>
+            </div>
+
+            <!-- Experience Cards Stream (Clean Architectural Style, Uniform Full-Height Images, Concise 1-2 line Bullets) -->
+            <div class="space-y-5" id="experience-cards-container">
+
+              <!-- 1. Clinico Hearing Aid (2013 – 2016) [FIXED IMAGE PATH: chibi-mayaminer.jpg] -->
+              <div class="experience-card bg-white border border-slate-200 hover:border-[#708090] rounded-xl overflow-hidden shadow-xs group" data-category="software">
+                <div class="flex flex-col lg:flex-row items-stretch">
+                  <div class="lg:w-5/12 relative overflow-hidden bg-slate-100 h-56 sm:h-64 lg:h-auto lg:min-h-[230px]">
+                    <img src="./assets/chibi-mayaminer.jpg" alt="Clinico Medical Systems Engineer Diorama" class="w-full h-full lg:absolute lg:inset-0 object-cover object-center group-hover:scale-105 transition-transform duration-700">
+                  </div>
+                  <div class="lg:w-7/12 p-5 sm:p-6 flex flex-col justify-between space-y-3 min-w-0">
+                    <div>
+                      <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="px-2 py-0.5 rounded-md text-[11px] font-bold bg-slate-100 text-[#162840] border border-slate-200" data-i18n="exp1-cat">Clinical Software</span>
+                        <span class="text-xs font-mono font-semibold text-slate-600" data-i18n="exp1-date">Dec 2013 – Jan 2016</span>
+                      </div>
+                      <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 leading-tight" data-i18n="exp1-org">Clinico Hearing Aid Co., Ltd.</h3>
+                      <p class="text-xs sm:text-sm font-semibold text-[#708090] mt-0.5" data-i18n="exp1-role">Assistant Software Engineer · New Taipei City</p>
+
+                      <ul class="mt-3 pt-3 border-t border-slate-100 space-y-1.5 text-xs sm:text-sm text-slate-700 list-disc pl-4">
+                        <li data-i18n="exp1-b1">Maintained ENT surgical software &amp; clinical diagnostic applications.</li>
+                        <li data-i18n="exp1-b2">Operated web server infrastructure and hospital network diagnostics.</li>
+                      </ul>
+                    </div>
+
+                    <div class="flex flex-wrap gap-1.5 pt-1">
+                      <span class="px-2.5 py-0.5 rounded-md bg-slate-100 text-[11px] font-semibold text-slate-700 border border-slate-200">C++ / ASP.NET</span>
+                      <span class="px-2.5 py-0.5 rounded-md bg-slate-100 text-[11px] font-semibold text-slate-700 border border-slate-200">Clinical Systems</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 2. Yung-Ching Realty (2016 – 2017) -->
+              <div class="experience-card bg-white border border-slate-200 hover:border-[#708090] rounded-xl overflow-hidden shadow-xs group" data-category="business">
+                <div class="flex flex-col lg:flex-row items-stretch">
+                  <div class="lg:w-5/12 relative overflow-hidden bg-slate-100 h-56 sm:h-64 lg:h-auto lg:min-h-[230px]">
+                    <img src="./assets/chibi-yungching.jpg" alt="Yung-Ching Realty Diorama" class="w-full h-full lg:absolute lg:inset-0 object-cover object-center group-hover:scale-105 transition-transform duration-700">
+                  </div>
+                  <div class="lg:w-7/12 p-5 sm:p-6 flex flex-col justify-between space-y-3 min-w-0">
+                    <div>
+                      <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="px-2 py-0.5 rounded-md text-[11px] font-bold bg-slate-100 text-[#162840] border border-slate-200" data-i18n="exp2-cat">Commercial Sales</span>
+                        <span class="text-xs font-mono font-semibold text-slate-600" data-i18n="exp2-date">Jul 2016 – Aug 2017</span>
+                      </div>
+                      <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 leading-tight" data-i18n="exp2-org">Yung-Ching Realty</h3>
+                      <p class="text-xs sm:text-sm font-semibold text-[#708090] mt-0.5" data-i18n="exp2-role">Manager of Sales · Taipei City</p>
+
+                      <ul class="mt-3 pt-3 border-t border-slate-100 space-y-1.5 text-xs sm:text-sm text-slate-700 list-disc pl-4">
+                        <li data-i18n="exp2-b1">Achieved $415,666 USD debut property sellout within 5 hours.</li>
+                        <li data-i18n="exp2-b2">Led high-net-worth client negotiations and contract legal compliance.</li>
+                      </ul>
+                    </div>
+
+                    <div class="flex flex-wrap gap-1.5 pt-1">
+                      <span class="px-2.5 py-0.5 rounded-md bg-slate-100 text-[11px] font-semibold text-slate-700 border border-slate-200">5-Hour Sellout</span>
+                      <span class="px-2.5 py-0.5 rounded-md bg-slate-100 text-[11px] font-semibold text-slate-700 border border-slate-200">Client Negotiation</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 3. Quanta Computer (2019 – 2023) -->
+              <div class="experience-card bg-white border border-slate-200 hover:border-[#708090] rounded-xl overflow-hidden shadow-xs group" data-category="hardware">
+                <div class="flex flex-col lg:flex-row items-stretch">
+                  <div class="lg:w-5/12 relative overflow-hidden bg-slate-100 h-56 sm:h-64 lg:h-auto lg:min-h-[230px]">
+                    <img src="./assets/chibi-quanta.jpg" alt="Quanta Computer Engineer Diorama" class="w-full h-full lg:absolute lg:inset-0 object-cover object-center group-hover:scale-105 transition-transform duration-700">
+                  </div>
+                  <div class="lg:w-7/12 p-5 sm:p-6 flex flex-col justify-between space-y-3 min-w-0">
+                    <div>
+                      <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="px-2 py-0.5 rounded-md text-[11px] font-bold bg-slate-100 text-[#162840] border border-slate-200" data-i18n="exp3-cat">Drivers &amp; Validation</span>
+                        <span class="text-xs font-mono font-semibold text-slate-600" data-i18n="exp3-date">Dec 2019 – Feb 2023</span>
+                      </div>
+                      <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 leading-tight" data-i18n="exp3-org">Quanta Computer Inc.</h3>
+                      <p class="text-xs sm:text-sm font-semibold text-[#708090] mt-0.5" data-i18n="exp3-role">Consumer Laptop Driver Engineer · Taoyuan</p>
+
+                      <ul class="mt-3 pt-3 border-t border-slate-100 space-y-1.5 text-xs sm:text-sm text-slate-700 list-disc pl-4">
+                        <li data-i18n="exp3-b1">Managed official device driver releases across global laptop product lines.</li>
+                        <li data-i18n="exp3-b2">Debugged hardware defects jointly with Intel, AMD, and NVIDIA teams.</li>
+                      </ul>
+                    </div>
+
+                    <div class="flex flex-wrap gap-1.5 pt-1">
+                      <span class="px-2.5 py-0.5 rounded-md bg-slate-100 text-[11px] font-semibold text-slate-700 border border-slate-200">Intel · AMD · NVIDIA</span>
+                      <span class="px-2.5 py-0.5 rounded-md bg-slate-100 text-[11px] font-semibold text-slate-700 border border-slate-200">Driver Release</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 4. HP / Intel Security Validation Lab (2023 – 2025) -->
+              <div class="experience-card bg-white border border-slate-200 hover:border-[#708090] rounded-xl overflow-hidden shadow-xs group" data-category="hardware">
+                <div class="flex flex-col lg:flex-row items-stretch">
+                  <div class="lg:w-5/12 relative overflow-hidden bg-slate-100 h-56 sm:h-64 lg:h-auto lg:min-h-[230px]">
+                    <img src="./assets/chibi-hp-intel.jpg" alt="HP & Intel Security Lab Diorama" class="w-full h-full lg:absolute lg:inset-0 object-cover object-center group-hover:scale-105 transition-transform duration-700">
+                  </div>
+                  <div class="lg:w-7/12 p-5 sm:p-6 flex flex-col justify-between space-y-3 min-w-0">
+                    <div>
+                      <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="px-2 py-0.5 rounded-md text-[11px] font-bold bg-slate-100 text-[#162840] border border-slate-200" data-i18n="exp4-cat">Drivers &amp; Validation</span>
+                        <span class="text-xs font-mono font-semibold text-slate-600" data-i18n="exp4-date">2023 – 2025</span>
+                      </div>
+                      <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 leading-tight" data-i18n="exp4-org">HP / Intel Security Validation Laboratory</h3>
+                      <p class="text-xs sm:text-sm font-semibold text-[#708090] mt-0.5" data-i18n="exp4-role">Security Validation Engineer · Taipei</p>
+
+                      <ul class="mt-3 pt-3 border-t border-slate-100 space-y-1.5 text-xs sm:text-sm text-slate-700 list-disc pl-4">
+                        <li data-i18n="exp4-b1">Conducted system-level security validation at the joint HP/Intel lab.</li>
+                        <li data-i18n="exp4-b2">Verified Secure Boot, TPM encryption, and enterprise firmware integrity.</li>
+                      </ul>
+                    </div>
+
+                    <div class="flex flex-wrap gap-1.5 pt-1">
+                      <span class="px-2.5 py-0.5 rounded-md bg-slate-100 text-[11px] font-semibold text-slate-700 border border-slate-200">Secure Boot / TPM</span>
+                      <span class="px-2.5 py-0.5 rounded-md bg-slate-100 text-[11px] font-semibold text-slate-700 border border-slate-200">HP &amp; Intel Lab</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 5. Chang Gung University AI / Research (Feb 2026 – Present) [Order: Research first!] -->
+              <div id="research" class="experience-card bg-white border border-slate-200 hover:border-[#708090] rounded-xl overflow-hidden shadow-xs group scroll-mt-24" data-category="ai">
+                <div class="flex flex-col lg:flex-row items-stretch">
+                  <div class="lg:w-5/12 relative overflow-hidden bg-slate-100 h-56 sm:h-64 lg:h-auto lg:min-h-[230px]">
+                    <img src="./assets/chibi-cgu-ai.jpg?v=2" alt="Brain Ma Lab Diorama" class="w-full h-full lg:absolute lg:inset-0 object-cover object-center group-hover:scale-105 transition-transform duration-700">
+                  </div>
+                  <div class="lg:w-7/12 p-5 sm:p-6 flex flex-col justify-between space-y-3 min-w-0">
+                    <div>
+                      <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="px-2 py-0.5 rounded-md text-[11px] font-bold bg-slate-100 text-[#162840] border border-slate-200" data-i18n="exp5-cat">AI / Research</span>
+                        <span class="text-xs font-mono font-semibold text-slate-600" data-i18n="exp5-date">Feb 2026 – Present</span>
+                      </div>
+                      <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 leading-tight" data-i18n="exp5-org">Chang Gung University · Brain Ma Lab</h3>
+                      <p class="text-xs sm:text-sm font-semibold text-[#708090] mt-0.5" data-i18n="exp5-role">M.S. Student in AI · Taoyuan</p>
+
+                      <ul class="mt-3 pt-3 border-t border-slate-100 space-y-1.5 text-xs sm:text-sm text-slate-700 list-disc pl-4">
+                        <li data-i18n="exp5-b1">Researching 3D nnDetection for abdominal CT lymph node detection.</li>
+                        <li data-i18n="exp5-b2">Developing real-time endoscopic surgical segmentation for colorectal surgery.</li>
+                      </ul>
+                    </div>
+
+                    <div class="flex flex-wrap gap-1.5 pt-1">
+                      <span class="px-2.5 py-0.5 rounded-md bg-slate-100 text-[11px] font-semibold text-slate-700 border border-slate-200">Medical Imaging AI</span>
+                      <span class="px-2.5 py-0.5 rounded-md bg-slate-100 text-[11px] font-semibold text-slate-700 border border-slate-200">Python / PyTorch</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 6. Medical AI Instructor (2026 – Present) [Order: AI Instructor after AI Research, Uniform full height] -->
+              <div class="experience-card bg-white border border-slate-200 hover:border-[#708090] rounded-xl overflow-hidden shadow-xs group" data-category="instructor ai">
+                <div class="flex flex-col lg:flex-row items-stretch">
+                  <div class="lg:w-5/12 relative overflow-hidden bg-slate-100 h-56 sm:h-64 lg:h-auto lg:min-h-[230px]">
+                    <img src="./assets/chibi-instructor.jpg" alt="AI Lecturer Diorama" class="w-full h-full lg:absolute lg:inset-0 object-cover object-center group-hover:scale-105 transition-transform duration-700">
+                  </div>
+                  <div class="lg:w-7/12 p-5 sm:p-6 flex flex-col justify-between space-y-3 min-w-0">
+                    <div>
+                      <div class="flex items-center justify-between gap-2 mb-1.5">
+                        <span class="px-2 py-0.5 rounded-md text-[11px] font-bold bg-slate-100 text-[#162840] border border-slate-200" data-i18n="inst-cat">AI Instructor</span>
+                        <span class="text-xs font-mono font-semibold text-slate-600" data-i18n="inst-period">2026 – Present</span>
+                      </div>
+                      <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 leading-tight" data-i18n="inst-org">KMU &amp; Hungkuang University</h3>
+                      <p class="text-xs sm:text-sm font-semibold text-[#708090] mt-0.5" data-i18n="inst-role">AI Healthcare Instructor &amp; Mentor · Taichung &amp; Kaohsiung</p>
+
+                      <ul class="mt-3 pt-3 border-t border-slate-100 space-y-1.5 text-xs sm:text-sm text-slate-700 list-disc pl-4">
+                        <li data-i18n="inst-p1"><strong>KMU 7-Day Camp:</strong> Mentored students &amp; care pros on elderly AI prototypes; won 2nd Place &amp; Best Presentation.</li>
+                        <li data-i18n="inst-p2"><strong>Hungkuang Nursing:</strong> Taught AI imaging fundamentals, practical recognition errors, and daily care innovation.</li>
+                      </ul>
+                    </div>
+
+                    <div class="flex flex-wrap gap-1.5 pt-1">
+                      <span class="px-2.5 py-0.5 rounded-md bg-slate-100 text-[11px] font-semibold text-slate-700 border border-slate-200">KMU Camp</span>
+                      <span class="px-2.5 py-0.5 rounded-md bg-slate-100 text-[11px] font-semibold text-slate-700 border border-slate-200">Hungkuang Nursing</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- SECTION 3: ONGOING RESEARCH (Item 12: Left-to-Right Layout, Title on Top, Image Below, Unpublished) -->
+          <section id="research-spotlight" class="space-y-5 p-4 -m-4 rounded-xl scroll-mt-24 transition-all">
+            <div class="border-b border-slate-300/80 pb-2.5">
+              <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight" data-i18n="research-spotlight-title">
+                Ongoing Research
+              </h2>
+            </div>
+
+            <!-- Left-to-Right Grid (2 Columns on Desktop) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              
+              <!-- Left Study: Title First, Image Below -->
+              <div class="research-card bg-white border border-slate-200 rounded-xl p-5 shadow-xs flex flex-col justify-between space-y-4">
+                <div>
+                  <h3 class="text-base sm:text-lg font-extrabold text-slate-900 leading-snug line-clamp-2" data-i18n="res1-title">
+                    nnDetection for Automated CT Lymph Node Detection
+                  </h3>
+                  <p class="text-xs font-medium text-[#708090] mt-1" data-i18n="res-unpublished">
+                    Ongoing Research · Unpublished
+                  </p>
+                </div>
+
+                <!-- Properly Scaled Image Below Title with Lightbox Zoom -->
+                <div class="relative overflow-hidden rounded-lg bg-slate-950 border border-slate-200 aspect-[4/3] w-full flex items-center justify-center p-2 cursor-pointer poster-lightbox-trigger group"
+                     data-img="./assets/research-ct-lymphnode.png" data-title="nnDetection for Automated CT Lymph Node Detection">
+                  <img src="./assets/research-ct-lymphnode.png" alt="CT Lymph Node Prediction" class="w-full h-full object-contain group-hover:scale-102 transition-transform duration-300">
+                  <span class="absolute bottom-2.5 right-2.5 bg-white/95 text-slate-900 px-2.5 py-1 rounded-md text-[11px] font-bold border border-slate-300 shadow-sm flex items-center gap-1">
+                    <i data-lucide="zoom-in" class="w-3.5 h-3.5 text-[#162840]"></i> <span data-i18n="km-zoom">Zoom</span>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Right Study: Title First, "Teach me?" Image Below -->
+              <div class="research-card bg-white border border-slate-200 rounded-xl p-5 shadow-xs flex flex-col justify-between space-y-4">
+                <div>
+                  <h3 class="text-base sm:text-lg font-extrabold text-slate-900 leading-snug line-clamp-2" data-i18n="res2-title">
+                    Real-Time Endoscopic Surgical Segmentation (Colorectal Surgery)
+                  </h3>
+                  <p class="text-xs font-medium text-[#708090] mt-1" data-i18n="res-unpublished">
+                    Ongoing Research · Unpublished
+                  </p>
+                </div>
+
+                <!-- Properly Scaled Image Below Title with Lightbox Zoom -->
+                <div class="relative overflow-hidden rounded-lg bg-slate-950 border border-slate-200 aspect-[4/3] w-full flex items-center justify-center p-2 cursor-pointer poster-lightbox-trigger group"
+                     data-img="./assets/research-laparoscopic-vessel.jpg" data-title="Real-Time Endoscopic Surgical Segmentation (Colorectal Surgery)">
+                  <img src="./assets/research-laparoscopic-vessel.jpg" alt="Real-Time Endoscopic Surgical Segmentation" class="w-full h-full object-contain group-hover:scale-102 transition-transform duration-300">
+                  <span class="absolute bottom-2.5 right-2.5 bg-white/95 text-slate-900 px-2.5 py-1 rounded-md text-[11px] font-bold border border-slate-300 shadow-sm flex items-center gap-1">
+                    <i data-lucide="zoom-in" class="w-3.5 h-3.5 text-[#162840]"></i> <span data-i18n="km-zoom">Zoom</span>
+                  </span>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- CONTACT SECTION (Crisp Architectural 12px Card) -->
+          <section id="contact">
+            <div class="bg-[#162840] text-white rounded-xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
-                <h3 class="font-extrabold text-slate-900 text-lg">Ting-Yen (Myron) Huang <span class="text-sm font-semibold text-slate-500 font-sans">黃婷琰</span></h3>
-                <p class="text-xs font-bold text-[#162840] mt-0.5">CGU AI Graduate Researcher</p>
-                <div class="flex items-center justify-center gap-2 mt-2 text-xs text-slate-500 font-medium">
-                  <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#708090]"></i> Taiwan</span>
-                  <span>·</span>
-                  <span class="text-slate-700 font-semibold">Ex-HP · Quanta</span>
-                </div>
+                <h2 class="text-xl sm:text-2xl font-extrabold tracking-tight" data-i18n="contact-title">
+                  Let's Connect &amp; Discuss New Possibilities
+                </h2>
+                <p class="text-xs text-slate-300 mt-1">Taoyuan &amp; Taipei, Taiwan</p>
               </div>
 
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- EXPERIENCE TIMELINE SECTION (Single Line Title + Single Line Horizontal Filters Underneath) -->
-    <section id="experience" class="space-y-6 scroll-mt-20">
-      <div class="border-b border-slate-200/90 pb-4 space-y-3">
-        <!-- Row 1: Single-line Horizontal Title (No Line Wrap) -->
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight whitespace-nowrap" data-i18n="exp-title">
-          Experience Timeline
-        </h2>
-
-        <!-- Row 2: Single-line Horizontal Filter Buttons (Left to Right, No Line Wrap) -->
-        <div class="flex items-center gap-2 overflow-x-auto whitespace-nowrap scrollbar-none py-1" id="filter-buttons">
-          <button class="filter-btn active px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap" data-filter="all" data-i18n="filter-all">
-            All Roles
-          </button>
-          <button class="filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap" data-filter="software" data-i18n="filter-software">
-            Clinical Software
-          </button>
-          <button class="filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap" data-filter="business" data-i18n="filter-business">
-            Commercial Sales
-          </button>
-          <button class="filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap" data-filter="hardware" data-i18n="filter-hardware">
-            Drivers & Validation
-          </button>
-          <button class="filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap" data-filter="instructor" data-i18n="filter-instructor">
-            AI Instructor
-          </button>
-          <button class="filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap" data-filter="ai" data-i18n="filter-ai">
-            AI / Research
-          </button>
-        </div>
-      </div>
-
-      <!-- Experience Cards Stream -->
-      <div class="space-y-8" id="experience-cards-container">
-
-        <!-- 1. Dec 2013 – Jan 2016: Clinico (Hearing Aids & Surgical Lasers) -->
-        <div class="experience-card bg-white border border-slate-200/90 hover:border-[#708090] rounded-3xl overflow-hidden transition-all shadow-sm hover:shadow-md group" data-category="software">
-          <div class="flex flex-col lg:flex-row items-stretch">
-            
-            <!-- Left: Dominant Visual Picture -->
-            <div class="lg:w-5/12 relative overflow-hidden bg-slate-100 flex items-center justify-center min-h-[260px] max-h-[340px]">
-              <img src="./assets/chibi-clinico.jpg" alt="Clinico Medical Audio Engineer Diorama" class="w-full h-full max-h-[340px] object-cover object-center group-hover:scale-105 transition-transform duration-700">
-              <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-2xl text-xs font-bold text-[#162840] border border-slate-200 shadow-sm flex items-center gap-1.5">
-                <i data-lucide="stethoscope" class="w-4 h-4 text-[#708090]"></i> Medical Systems
-              </div>
-              <div class="absolute bottom-4 left-4 bg-[#162840]/90 text-white backdrop-blur-md px-3 py-1 rounded-xl text-xs font-bold flex items-center gap-1.5">
-                <i data-lucide="clock" class="w-3.5 h-3.5 text-slate-300"></i> 2013 – 2016
+              <div class="flex flex-wrap gap-2.5 items-center">
+                <a href="mailto:fttmp66@gmail.com"
+                   class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-white text-slate-900 font-bold text-xs hover:bg-slate-100 transition-all">
+                  <i data-lucide="mail" class="w-4 h-4 text-[#708090]"></i> Gmail
+                </a>
+                <a href="https://www.linkedin.com/in/%E9%BB%83%E5%A9%B7%E7%90%B0-ting-yen-huang-57aa9772/" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-white text-[#0077b5] font-bold text-xs hover:bg-slate-100 transition-all">
+                  <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
+                </a>
+                <a href="https://github.com/fttmp66-0c0o0d0e0r0/myron-huang-portfolio" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#11151a] text-white border border-slate-700 font-bold text-xs hover:bg-slate-800 transition-all">
+                  <i data-lucide="github" class="w-4 h-4"></i> GitHub
+                </a>
               </div>
             </div>
+          </section>
 
-            <!-- Right: Minimalist & Clear Story -->
-            <div class="lg:w-7/12 p-6 sm:p-8 flex flex-col justify-between space-y-4">
-              <div>
-                <div class="flex items-center justify-between gap-2 mb-2">
-                  <span class="px-2.5 py-1 rounded-xl text-xs font-bold bg-slate-100 text-[#162840] border border-slate-200">Clinical Software</span>
-                  <span class="text-xs font-mono font-bold text-slate-700 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">Dec 2013 – Jan 2016</span>
-                </div>
-
-                <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 group-hover:text-[#162840] transition-colors">
-                  Clinico Hearing Aid Co., Ltd.
-                </h3>
-                <p class="text-sm font-bold text-[#708090] mt-1 flex items-center gap-1.5">
-                  <i data-lucide="activity" class="w-4 h-4 text-[#162840]"></i> Assistant Software Engineer · New Taipei City
-                </p>
-
-                <!-- What I did -->
-                <div class="mt-4 bg-slate-50/90 rounded-2xl p-4 border border-slate-200 space-y-2 text-sm text-slate-700">
-                  <div class="flex items-start gap-2">
-                    <i data-lucide="check" class="w-4 h-4 text-[#708090] flex-shrink-0 mt-0.5"></i>
-                    <span><strong>Clinical Systems Maintenance:</strong> Maintained surgical clinical software and diagnostic tools for hospital ENT departments.</span>
-                  </div>
-                  <div class="flex items-start gap-2">
-                    <i data-lucide="check" class="w-4 h-4 text-[#708090] flex-shrink-0 mt-0.5"></i>
-                    <span>Maintained web server infrastructure, network diagnostics, and customer runtime experience.</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Badges -->
-              <div class="flex flex-wrap gap-2 pt-2">
-                <span class="inline-flex items-center gap-1 px-3 py-1 rounded-xl bg-slate-100 text-xs font-bold text-[#162840] border border-slate-200">
-                  <i data-lucide="code" class="w-3.5 h-3.5 text-[#708090]"></i> C++ / ASP.NET
-                </span>
-                <span class="inline-flex items-center gap-1 px-3 py-1 rounded-xl bg-slate-100 text-xs font-semibold text-slate-700 border border-slate-200">
-                  <i data-lucide="activity" class="w-3.5 h-3.5 text-[#708090]"></i> Surgical Clinical Systems
-                </span>
-                <span class="inline-flex items-center gap-1 px-3 py-1 rounded-xl bg-slate-100 text-xs font-semibold text-slate-700 border border-slate-200">
-                  <i data-lucide="server" class="w-3.5 h-3.5 text-[#708090]"></i> Server Operations
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 2. Jul 2016 – Aug 2017: Yung-Ching Realty (House + Suit Figurine + Sold in 5 Hours) -->
-        <div class="experience-card bg-white border border-slate-200/90 hover:border-[#708090] rounded-3xl overflow-hidden transition-all shadow-sm hover:shadow-md group" data-category="business">
-          <div class="flex flex-col lg:flex-row items-stretch">
-            
-            <!-- Left: Dominant Visual Picture -->
-            <div class="lg:w-5/12 relative overflow-hidden bg-slate-100 flex items-center justify-center min-h-[260px] max-h-[340px]">
-              <img src="./assets/chibi-yungching.jpg" alt="Yung-Ching Realty 3D Figurine Diorama" class="w-full h-full max-h-[340px] object-cover object-center group-hover:scale-105 transition-transform duration-700">
-              <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-2xl text-xs font-bold text-[#162840] border border-slate-200 shadow-sm flex items-center gap-1.5">
-                <i data-lucide="building" class="w-4 h-4 text-[#708090]"></i> Sold Out in 5 Hours ($415K USD)
-              </div>
-              <div class="absolute bottom-4 left-4 bg-[#162840]/90 text-white backdrop-blur-md px-3 py-1 rounded-xl text-xs font-bold flex items-center gap-1.5">
-                <i data-lucide="clock" class="w-3.5 h-3.5 text-slate-300"></i> 2016 – 2017
-              </div>
-            </div>
-
-            <!-- Right: Minimalist & Clear Story -->
-            <div class="lg:w-7/12 p-6 sm:p-8 flex flex-col justify-between space-y-4">
-              <div>
-                <div class="flex items-center justify-between gap-2 mb-2">
-                  <span class="px-2.5 py-1 rounded-xl text-xs font-bold bg-slate-100 text-[#162840] border border-slate-200">Commercial Sales</span>
-                  <span class="text-xs font-mono font-bold text-slate-700 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">Jul 2016 – Aug 2017</span>
-                </div>
-
-                <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 group-hover:text-[#162840] transition-colors">
-                  Yung-Ching Realty
-                </h3>
-                <p class="text-sm font-bold text-[#708090] mt-1 flex items-center gap-1.5">
-                  <i data-lucide="briefcase" class="w-4 h-4 text-[#162840]"></i> Manager of Sales · Taipei City
-                </p>
-
-                <!-- What I did -->
-                <div class="mt-4 bg-slate-50/90 rounded-2xl p-4 border border-slate-200 space-y-2 text-sm text-slate-700">
-                  <div class="flex items-start gap-2">
-                    <i data-lucide="check" class="w-4 h-4 text-[#708090] flex-shrink-0 mt-0.5"></i>
-                    <span><strong>Record Achievement:</strong> Sold out debut real estate project in 5 hours for $415,666 USD.</span>
-                  </div>
-                  <div class="flex items-start gap-2">
-                    <i data-lucide="check" class="w-4 h-4 text-[#708090] flex-shrink-0 mt-0.5"></i>
-                    <span>Managed high-net-worth client accounts, contractual negotiations, and property legal research.</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Visual Tags -->
-              <div class="flex flex-wrap gap-2 pt-2">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-slate-100 text-xs font-bold text-[#162840] border border-slate-200">
-                  <i data-lucide="trending-up" class="w-3.5 h-3.5 text-[#708090]"></i> 5-Hour Sellout
-                </span>
-                <span class="inline-flex items-center gap-1 px-3 py-1 rounded-xl bg-slate-100 text-xs font-semibold text-slate-700 border border-slate-200">
-                  <i data-lucide="users" class="w-3.5 h-3.5 text-[#708090]"></i> Client Trust
-                </span>
-                <span class="inline-flex items-center gap-1 px-3 py-1 rounded-xl bg-slate-100 text-xs font-semibold text-slate-700 border border-slate-200">
-                  <i data-lucide="scale" class="w-3.5 h-3.5 text-[#708090]"></i> Negotiation
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 3. Dec 2019 – Feb 2023: Quanta Computer (Quanta 3D Logo + Laptop Engineer) -->
-        <div class="experience-card bg-white border border-slate-200/90 hover:border-[#708090] rounded-3xl overflow-hidden transition-all shadow-sm hover:shadow-md group" data-category="hardware">
-          <div class="flex flex-col lg:flex-row items-stretch">
-            
-            <!-- Left: Dominant Visual Picture -->
-            <div class="lg:w-5/12 relative overflow-hidden bg-slate-100 flex items-center justify-center min-h-[260px] max-h-[340px]">
-              <img src="./assets/chibi-quanta.jpg" alt="Quanta Computer Laptop Driver Engineer Diorama" class="w-full h-full max-h-[340px] object-cover object-center group-hover:scale-105 transition-transform duration-700">
-              <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-2xl text-xs font-bold text-[#162840] border border-slate-200 shadow-sm flex items-center gap-2">
-                <img src="./assets/logos/quanta-logo.png" alt="Quanta Logo" class="h-4 object-contain">
-                <span>Quanta Consumer Laptop</span>
-              </div>
-              <div class="absolute bottom-4 left-4 bg-[#162840]/90 text-white backdrop-blur-md px-3 py-1 rounded-xl text-xs font-bold flex items-center gap-1.5">
-                <i data-lucide="clock" class="w-3.5 h-3.5 text-slate-300"></i> 2019 – 2023
-              </div>
-            </div>
-
-            <!-- Right: Minimalist & Clear Story -->
-            <div class="lg:w-7/12 p-6 sm:p-8 flex flex-col justify-between space-y-4">
-              <div>
-                <div class="flex items-center justify-between gap-2 mb-2">
-                  <span class="px-2.5 py-1 rounded-xl text-xs font-bold bg-slate-100 text-[#162840] border border-slate-200">Drivers & Validation</span>
-                  <span class="text-xs font-mono font-bold text-slate-700 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">Dec 2019 – Feb 2023</span>
-                </div>
-
-                <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 group-hover:text-[#162840] transition-colors">
-                  Quanta Computer Inc.
-                </h3>
-                <p class="text-sm font-bold text-[#708090] mt-1 flex items-center gap-1.5">
-                  <i data-lucide="laptop" class="w-4 h-4 text-[#162840]"></i> Consumer Laptop Driver Engineer · Taoyuan
-                </p>
-
-                <!-- What I did -->
-                <div class="mt-4 bg-slate-50/90 rounded-2xl p-4 border border-slate-200 space-y-2 text-sm text-slate-700">
-                  <div class="flex items-start gap-2">
-                    <i data-lucide="check" class="w-4 h-4 text-[#708090] flex-shrink-0 mt-0.5"></i>
-                    <span><strong>Driver Publishing Routine:</strong> Managed official device driver releases across all consumer laptop product lines.</span>
-                  </div>
-                  <div class="flex items-start gap-2">
-                    <i data-lucide="check" class="w-4 h-4 text-[#708090] flex-shrink-0 mt-0.5"></i>
-                    <span>Analyzed manufacturing defects and co-worked closely with commodity vendors (Intel, AMD, NVIDIA) for peak stability.</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Vendor Badges -->
-              <div class="flex flex-wrap items-center gap-2 pt-2">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-slate-100 text-slate-800 border border-slate-200 text-xs font-bold shadow-xs">
-                  <img src="./assets/logos/quanta-logo.png" alt="Quanta" class="h-3.5 object-contain"> Quanta
-                </span>
-                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-slate-100 text-slate-800 text-xs font-bold border border-slate-200">
-                  <i data-lucide="cpu" class="w-3.5 h-3.5 text-[#708090]"></i> Intel
-                </span>
-                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-slate-100 text-slate-800 text-xs font-bold border border-slate-200">
-                  <i data-lucide="cpu" class="w-3.5 h-3.5 text-[#708090]"></i> AMD
-                </span>
-                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-slate-100 text-slate-800 text-xs font-bold border border-slate-200">
-                  <i data-lucide="sparkles" class="w-3.5 h-3.5 text-[#708090]"></i> NVIDIA
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 4. 2023 – 2025: HP / Intel Security Validation Laboratory -->
-        <div class="experience-card bg-white border border-slate-200/90 hover:border-[#708090] rounded-3xl overflow-hidden transition-all shadow-sm hover:shadow-md group" data-category="hardware">
-          <div class="flex flex-col lg:flex-row items-stretch">
-            
-            <!-- Left: Dominant Visual Picture -->
-            <div class="lg:w-5/12 relative overflow-hidden bg-slate-100 flex items-center justify-center min-h-[260px] max-h-[340px]">
-              <img src="./assets/chibi-hp-intel.jpg" alt="HP & Intel Security Validation Lab Diorama" class="w-full h-full max-h-[340px] object-cover object-center group-hover:scale-105 transition-transform duration-700">
-              <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-2xl text-xs font-bold text-[#162840] border border-slate-200 shadow-sm flex items-center gap-2">
-                <img src="./assets/logos/hp-logo.png" alt="HP Logo" class="h-4 object-contain">
-                <span class="text-slate-400">✕</span>
-                <img src="./assets/logos/intel-logo.png" alt="Intel Logo" class="h-3.5 object-contain">
-                <span>Security Validation Lab</span>
-              </div>
-              <div class="absolute bottom-4 left-4 bg-[#162840]/90 text-white backdrop-blur-md px-3 py-1 rounded-xl text-xs font-bold flex items-center gap-1.5">
-                <i data-lucide="clock" class="w-3.5 h-3.5 text-slate-300"></i> 2023 – 2025
-              </div>
-            </div>
-
-            <!-- Right: Minimalist & Clear Story -->
-            <div class="lg:w-7/12 p-6 sm:p-8 flex flex-col justify-between space-y-4">
-              <div>
-                <div class="flex items-center justify-between gap-2 mb-2">
-                  <span class="px-2.5 py-1 rounded-xl text-xs font-bold bg-slate-100 text-[#162840] border border-slate-200">Cybersecurity Lab</span>
-                  <span class="text-xs font-mono font-bold text-slate-700 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">2023 – 2025</span>
-                </div>
-
-                <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 group-hover:text-[#162840] transition-colors">
-                  HP / Intel Security Validation Laboratory
-                </h3>
-                <p class="text-sm font-bold text-[#708090] mt-1 flex items-center gap-1.5">
-                  <i data-lucide="shield-check" class="w-4 h-4 text-[#162840]"></i> Security Validation Engineer · Taipei
-                </p>
-
-                <!-- What I did -->
-                <div class="mt-4 bg-slate-50/90 rounded-2xl p-4 border border-slate-200 space-y-2 text-sm text-slate-700">
-                  <div class="flex items-start gap-2">
-                    <i data-lucide="check" class="w-4 h-4 text-[#708090] flex-shrink-0 mt-0.5"></i>
-                    <span><strong>Drivers & Validation Security:</strong> Conducted system-level validation at the joint HP/Intel Security Validation Lab.</span>
-                  </div>
-                  <div class="flex items-start gap-2">
-                    <i data-lucide="check" class="w-4 h-4 text-[#708090] flex-shrink-0 mt-0.5"></i>
-                    <span>Executed vulnerability tests across Secure Boot, TPM encryption, and firmware integrity for HP enterprise laptops.</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Badges -->
-              <div class="flex flex-wrap items-center gap-2 pt-2">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-slate-100 text-slate-800 border border-slate-200 text-xs font-bold shadow-xs">
-                  <img src="./assets/logos/hp-logo.png" alt="HP" class="h-3.5 object-contain"> HP Security Lab
-                </span>
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-slate-100 text-[#162840] text-xs font-bold border border-slate-200">
-                  <img src="./assets/logos/intel-logo.png" alt="Intel" class="h-3 object-contain"> Intel Partner
-                </span>
-                <span class="inline-flex items-center gap-1 px-3 py-1 rounded-xl bg-slate-100 text-xs font-semibold text-slate-700 border border-slate-200">
-                  <i data-lucide="shield" class="w-3.5 h-3.5 text-[#708090]"></i> Secure Boot / TPM
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 5. Feb 2026 – Present: Chang Gung University (AI Master's + Medical Imaging Brain Scan) -->
-        <div id="research" class="experience-card bg-white border border-slate-200/90 hover:border-[#708090] rounded-3xl overflow-hidden transition-all shadow-sm hover:shadow-md group scroll-mt-24" data-category="ai">
-          <div class="flex flex-col lg:flex-row items-stretch">
-            
-            <!-- Left: Dominant Visual Picture -->
-            <div class="lg:w-5/12 relative overflow-hidden bg-slate-100 flex items-center justify-center min-h-[260px] max-h-[340px]">
-              <img src="./assets/chibi-cgu-ai.jpg?v=2" alt="Brain Ma Lab AI Medical Imaging Laboratory Diorama" class="w-full h-full max-h-[340px] object-cover object-center group-hover:scale-105 transition-transform duration-700">
-              <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-2xl text-xs font-bold text-[#162840] border border-slate-200 shadow-sm flex items-center gap-1.5">
-                <i data-lucide="brain-circuit" class="w-4 h-4 text-[#708090]"></i> Brain Ma Lab
-              </div>
-              <div class="absolute bottom-4 left-4 bg-[#162840]/90 text-white backdrop-blur-md px-3 py-1 rounded-xl text-xs font-bold flex items-center gap-1.5">
-                <i data-lucide="clock" class="w-3.5 h-3.5 text-slate-300"></i> 2026 – Present
-              </div>
-            </div>
-
-            <!-- Right: Minimalist & Clear Story -->
-            <div class="lg:w-7/12 p-6 sm:p-8 flex flex-col justify-between space-y-4">
-              <div>
-                <div class="flex items-center justify-between gap-2 mb-2">
-                  <span class="px-2.5 py-1 rounded-xl text-xs font-bold bg-slate-100 text-[#162840] border border-slate-200">Graduate Research & Project</span>
-                  <span class="text-xs font-mono font-bold text-slate-700 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">Feb 2026 – Present</span>
-                </div>
-
-                <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 group-hover:text-[#162840] transition-colors">
-                  Chang Gung University
-                </h3>
-                <p class="text-sm font-bold text-[#708090] mt-1 flex items-center gap-1.5">
-                  <i data-lucide="graduation-cap" class="w-4 h-4 text-[#162840]"></i> Graduate Student @ AI Master Program · Taoyuan
-                </p>
-
-                <!-- What I do -->
-                <div class="mt-4 bg-slate-50/90 rounded-2xl p-4 border border-slate-200 space-y-2 text-sm text-slate-700">
-                  <div class="flex items-start gap-2">
-                    <i data-lucide="check" class="w-4 h-4 text-[#708090] flex-shrink-0 mt-0.5"></i>
-                    <span><strong>Research Project:</strong> Developing Endoscopic Image Segmentation for Real-Time Surgical Systems with Domain-Specific Fine-Tuning.</span>
-                  </div>
-                  <div class="flex items-start gap-2">
-                    <i data-lucide="check" class="w-4 h-4 text-[#708090] flex-shrink-0 mt-0.5"></i>
-                    <span>Researching and developing deep learning models for medical imaging detection and clinical diagnostic intelligence.</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Badges -->
-              <div class="flex flex-wrap gap-2 pt-2">
-                <span class="inline-flex items-center gap-1 px-3 py-1 rounded-xl bg-slate-100 text-xs font-bold text-[#162840] border border-slate-200">
-                  <i data-lucide="scan" class="w-3.5 h-3.5 text-[#708090]"></i> Medical Imaging Segmentation
-                </span>
-                <span class="inline-flex items-center gap-1 px-3 py-1 rounded-xl bg-slate-100 text-xs font-semibold text-slate-700 border border-slate-200">
-                  <i data-lucide="code-2" class="w-3.5 h-3.5 text-[#708090]"></i> Python / PyTorch
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 6. 2026 – Present: Medical AI Instructor & Project Mentor (UPDATED: Clean Image, 2026-Present, English Priority, Blue Box Removed) -->
-        <div class="experience-card bg-white border border-slate-200/90 hover:border-[#708090] rounded-3xl overflow-hidden transition-all shadow-sm hover:shadow-md group" data-category="instructor ai">
-          <div class="flex flex-col lg:flex-row items-stretch">
-            
-            <!-- Left: Clean Chibi Instructor Lecturer on Stage (No Text, No Poster, No Plaque) -->
-            <div class="lg:w-5/12 relative overflow-hidden bg-slate-100 flex items-center justify-center min-h-[260px] max-h-[340px]">
-              <img src="./assets/chibi-instructor.jpg" alt="Myron AI Medical Imaging Instructor Lecturer Chibi" class="w-full h-full max-h-[340px] object-cover object-center group-hover:scale-105 transition-transform duration-700">
-              <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-2xl text-xs font-bold text-[#162840] border border-slate-200 shadow-sm flex items-center gap-1.5">
-                <i data-lucide="presentation" class="w-4 h-4 text-[#708090]"></i> <span data-i18n="inst-tag">Medical AI Lecturer & Mentor</span>
-              </div>
-              <!-- Red Box Time Indicator Updated to 2026 – Present -->
-              <div class="absolute bottom-4 left-4 bg-[#162840]/90 text-white backdrop-blur-md px-3 py-1 rounded-xl text-xs font-bold flex items-center gap-1.5">
-                <i data-lucide="calendar" class="w-3.5 h-3.5 text-slate-300"></i> <span data-i18n="inst-period">2026 – Present</span>
-              </div>
-            </div>
-
-            <!-- Right: Details & Description (English Priority) -->
-            <div class="lg:w-7/12 p-6 sm:p-8 flex flex-col justify-between space-y-4">
-              <div>
-                <div class="flex items-center justify-between gap-2 mb-2">
-                  <span class="px-2.5 py-1 rounded-xl text-xs font-bold bg-slate-100 text-[#162840] border border-slate-200">AI Education</span>
-                  <!-- Red Box Time Indicator Updated to 2026 – Present -->
-                  <span class="text-xs font-mono font-bold text-slate-700 bg-slate-100 px-3 py-1 rounded-full border border-slate-200" data-i18n="inst-period">2026 – Present</span>
-                </div>
-
-                <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 group-hover:text-[#162840] transition-colors" data-i18n="inst-org">
-                  KMU & Hungkuang University
-                </h3>
-                <p class="text-sm font-bold text-[#708090] mt-1 flex items-center gap-1.5" data-i18n="inst-role">
-                  <i data-lucide="award" class="w-4 h-4 text-[#162840]"></i> AI Healthcare Instructor & Project Mentor · Taichung & Kaohsiung
-                </p>
-
-                <!-- What I did (Updated English Text) -->
-                <div class="mt-4 bg-slate-50/90 rounded-2xl p-4 border border-slate-200 space-y-2.5 text-sm text-slate-700">
-                  <div class="flex items-start gap-2">
-                    <i data-lucide="check" class="w-4 h-4 text-[#708090] flex-shrink-0 mt-0.5"></i>
-                    <span data-i18n="inst-p1"><strong>KMU Smart Healthcare Summer Camp:</strong> Guided undergraduate/graduate students and elderly care professionals across 7-day intensive camps to develop innovative elderly AI smart living prototypes and conceptual AI video demonstrations. Mentored two cohorts that achieved 2nd Place and the Best Presentation Award.</span>
-                  </div>
-                  <div class="flex items-start gap-2">
-                    <i data-lucide="check" class="w-4 h-4 text-[#708090] flex-shrink-0 mt-0.5"></i>
-                    <span data-i18n="inst-p2"><strong>Hungkuang University Nursing Department:</strong> Introduced foundational medical AI imaging principles, instructing students through hands-on practice to identify real-world recognition errors and artifacts to watch out for, and exploring innovative AI image recognition in daily healthcare.</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Badges (Blue Box "Poster Competition" Deleted as Requested) -->
-              <div class="flex flex-wrap gap-2 pt-2">
-                <span class="inline-flex items-center gap-1 px-3 py-1 rounded-xl bg-slate-100 text-xs font-bold text-[#162840] border border-slate-200">
-                  <i data-lucide="users" class="w-3.5 h-3.5 text-[#708090]"></i> KMU Camp
-                </span>
-                <span class="inline-flex items-center gap-1 px-3 py-1 rounded-xl bg-slate-100 text-xs font-bold text-[#162840] border border-slate-200">
-                  <i data-lucide="book-open" class="w-3.5 h-3.5 text-[#708090]"></i> Hungkuang Nursing
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- 6. SPOTLIGHT MEDICAL AI RESEARCH SECTION (Proper Image Scaling & Lightbox Zoom) -->
-    <section id="research-spotlight" class="space-y-6 scroll-mt-20">
-      <div class="border-b border-slate-200/90 pb-3">
-        <div class="flex items-center gap-1.5 text-[#708090] text-xs sm:text-sm font-bold tracking-wider uppercase">
-          <i data-lucide="microscope" class="w-4 h-4"></i> <span data-i18n="research-spotlight-tag">Spotlight Medical AI Research</span>
-        </div>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1" data-i18n="research-spotlight-title">
-          Clinical Computer Vision & Surgical Intelligence
-        </h2>
-        <p class="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed" data-i18n="research-spotlight-desc">
-          Key translational research projects conducted at Chang Gung University Brain Ma Lab, bridging advanced 3D deep learning and real-time intraoperative surgical assistance.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 gap-8">
-        <!-- Study 1: CT Lymph Node Detection (Proper Image Scaling & Click-to-Zoom) -->
-        <div class="research-card bg-white border border-slate-200/90 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all group">
-          <div class="flex flex-col lg:flex-row items-stretch">
-            
-            <!-- Left: Appropriately Scaled Scan Image Container with Lightbox Trigger -->
-            <div class="lg:w-5/12 bg-slate-950/95 relative flex items-center justify-center p-3 rounded-2xl overflow-hidden min-h-[260px] max-h-[300px] cursor-pointer poster-lightbox-trigger group-hover:border-[#708090]"
-                 data-img="./assets/research-ct-lymphnode.png" data-title="Abdominal CT Lymph Node Detection (ABD_LYMPH_026 | z=13 | nnDetection)">
-              <img src="./assets/research-ct-lymphnode.png" alt="Abdominal CT Lymph Node Automated Detection nnDetection" class="w-full h-full max-h-[270px] object-contain rounded-lg group-hover:scale-102 transition-transform duration-500">
-              <div class="absolute top-3 left-3 bg-slate-900/90 text-white backdrop-blur-md px-3 py-1 rounded-xl text-xs font-bold border border-slate-700 shadow-md flex items-center gap-1.5">
-                <i data-lucide="scan" class="w-3.5 h-3.5 text-slate-300"></i> <span data-i18n="res1-badge">3D CT Lymph Node Detection</span>
-              </div>
-              <!-- Lightbox zoom trigger -->
-              <span class="absolute bottom-3 right-3 bg-white/95 text-slate-900 px-2.5 py-1 rounded-lg text-xs font-bold border border-slate-300 shadow-md flex items-center gap-1 hover:scale-105 transition-all">
-                <i data-lucide="zoom-in" class="w-3.5 h-3.5 text-[#162840]"></i> <span data-i18n="km-zoom">Click to Zoom</span>
-              </span>
-            </div>
-
-            <!-- Right: Technical Highlights (No Red/Green in text/borders) -->
-            <div class="lg:w-7/12 p-6 sm:p-8 flex flex-col justify-between space-y-4">
-              <div>
-                <div class="flex items-center gap-2 mb-2">
-                  <span class="px-2.5 py-1 rounded-xl text-xs font-bold bg-slate-100 text-[#162840] border border-slate-200">nnDetection · 3D CNN</span>
-                  <span class="px-2.5 py-1 rounded-xl text-xs font-mono font-bold bg-slate-100 text-[#162840] border border-slate-200">score: 0.98 | IoU: 0.79</span>
-                </div>
-
-                <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 group-hover:text-[#162840] transition-colors" data-i18n="res1-title">
-                  Abdominal CT Lymph Node Automated Detection System
-                </h3>
-                <p class="text-xs font-bold text-[#708090] mt-0.5" data-i18n="res1-sub">
-                  3D nnDetection Deep Learning on Volumetric Abdominal Scans
-                </p>
-
-                <div class="mt-4 bg-slate-50/90 rounded-2xl p-4 border border-slate-200 space-y-2.5 text-xs sm:text-sm text-slate-700">
-                  <div class="flex items-start gap-2">
-                    <i data-lucide="check-circle" class="w-4 h-4 text-[#708090] flex-shrink-0 mt-0.5"></i>
-                    <span data-i18n="res1-p1"><strong>High-Precision Localization:</strong> Implemented 3D deep learning detection on volumetric CT scans (e.g. <code>ABD_LYMPH_026 | z=13</code>), achieving tight ground-truth reference vs predicted bounding box alignment.</span>
-                  </div>
-                  <div class="flex items-start gap-2">
-                    <i data-lucide="check-circle" class="w-4 h-4 text-[#708090] flex-shrink-0 mt-0.5"></i>
-                    <span data-i18n="res1-p2"><strong>Oncological Confidence:</strong> Reached high prediction confidence (score = 0.98, IoU = 0.79), distinguishing subtle lymph nodes from adjacent vessels to assist metastatic staging.</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Metrics Badges (No Red/Green) -->
-              <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-100">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-slate-100 text-xs font-bold text-slate-800 border border-slate-200">
-                  <i data-lucide="box" class="w-3.5 h-3.5 text-[#162840]"></i> GT Reference · AI Prediction
-                </span>
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-slate-100 text-xs font-bold text-[#162840] border border-slate-200">
-                  <i data-lucide="layers" class="w-3.5 h-3.5 text-[#708090]"></i> 3D Volumetric Slices
-                </span>
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-slate-100 text-xs font-semibold text-slate-700 border border-slate-200">
-                  <i data-lucide="activity" class="w-3.5 h-3.5 text-[#162840]"></i> Lymphadenopathy Screening
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Study 2: Laparoscopic Colorectal Resection Vessel Prediction (Proper Image Scaling & Lightbox Zoom) -->
-        <div class="research-card bg-white border border-slate-200/90 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all group">
-          <div class="flex flex-col lg:flex-row items-stretch">
-            
-            <!-- Left: Appropriately Scaled Surgical Endoscopic Feed Image with Lightbox Trigger -->
-            <div class="lg:w-5/12 bg-slate-950/95 relative flex items-center justify-center p-3 rounded-2xl overflow-hidden min-h-[260px] max-h-[300px] cursor-pointer poster-lightbox-trigger group-hover:border-[#708090]"
-                 data-img="./assets/research-laparoscopic-vessel.jpg" data-title="Real-Time Vessel Prediction in Laparoscopic Colorectal Resection">
-              <img src="./assets/research-laparoscopic-vessel.jpg" alt="Real-Time Vessel Prediction in Laparoscopic Colorectal Resection" class="w-full h-full max-h-[270px] object-contain rounded-lg group-hover:scale-102 transition-transform duration-500">
-              <div class="absolute top-3 left-3 bg-slate-900/90 text-white backdrop-blur-md px-3 py-1 rounded-xl text-xs font-bold border border-slate-700 shadow-md flex items-center gap-1.5">
-                <i data-lucide="activity" class="w-3.5 h-3.5 text-slate-300"></i> <span data-i18n="res2-badge">Intraoperative Surgical AI</span>
-              </div>
-              <!-- Lightbox zoom trigger -->
-              <span class="absolute bottom-3 right-3 bg-white/95 text-slate-900 px-2.5 py-1 rounded-lg text-xs font-bold border border-slate-300 shadow-md flex items-center gap-1 hover:scale-105 transition-all">
-                <i data-lucide="zoom-in" class="w-3.5 h-3.5 text-[#162840]"></i> <span data-i18n="km-zoom">Click to Zoom</span>
-              </span>
-            </div>
-
-            <!-- Right: Technical Highlights (No Red/Green) -->
-            <div class="lg:w-7/12 p-6 sm:p-8 flex flex-col justify-between space-y-4">
-              <div>
-                <div class="flex items-center gap-2 mb-2">
-                  <span class="px-2.5 py-1 rounded-xl text-xs font-bold bg-slate-100 text-[#162840] border border-slate-200">Minimally Invasive Surgery</span>
-                  <span class="px-2.5 py-1 rounded-xl text-xs font-mono font-bold bg-slate-100 text-[#162840] border border-slate-200">Real-Time Guidance</span>
-                </div>
-
-                <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 group-hover:text-[#162840] transition-colors" data-i18n="res2-title">
-                  Real-Time Vessel Prediction in Laparoscopic Colorectal Resection
-                </h3>
-                <p class="text-xs font-bold text-[#708090] mt-0.5" data-i18n="res2-sub">
-                  Minimally Invasive Computer Vision & Educational Cartoon Guidance
-                </p>
-
-                <div class="mt-4 bg-slate-50/90 rounded-2xl p-4 border border-slate-200 space-y-2.5 text-xs sm:text-sm text-slate-700">
-                  <div class="flex items-start gap-2">
-                    <i data-lucide="check-circle" class="w-4 h-4 text-[#708090] flex-shrink-0 mt-0.5"></i>
-                    <span data-i18n="res2-p1"><strong>Real-Time Video Segmentation:</strong> Deployed deep learning segmentation on endoscopic video streams to track critical mesenteric vascular branches during laparoscopic resection.</span>
-                  </div>
-                  <div class="flex items-start gap-2">
-                    <i data-lucide="check-circle" class="w-4 h-4 text-[#708090] flex-shrink-0 mt-0.5"></i>
-                    <span data-i18n="res2-p2"><strong>Intraoperative Safety & Anatomy Teaching:</strong> Created interactive cartoon anatomy navigation ("Teach me?") to prevent accidental vessel laceration and improve surgical clarity.</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Metrics Badges (No Red/Green) -->
-              <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-100">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-slate-100 text-xs font-bold text-slate-800 border border-slate-200">
-                  <i data-lucide="video" class="w-3.5 h-3.5 text-[#162840]"></i> Endoscopic Stream AI
-                </span>
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-slate-100 text-xs font-bold text-[#162840] border border-slate-200">
-                  <i data-lucide="shield-check" class="w-3.5 h-3.5 text-[#708090]"></i> Vascular Laceration Defense
-                </span>
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-slate-100 text-xs font-semibold text-slate-700 border border-slate-200">
-                  <i data-lucide="heart" class="w-3.5 h-3.5 text-[#162840]"></i> Surgical Safety & Education
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- CONTACT & CONNECT SECTION (Morandi Deep Navy Palette - No Red/Green) -->
-    <section id="contact" class="space-y-6">
-      <div class="relative bg-gradient-to-r from-[#162840] via-[#233c5e] to-[#2c476d] text-white rounded-3xl p-8 sm:p-12 overflow-hidden shadow-xl shadow-slate-400/40">
-        <div class="max-w-2xl space-y-4">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/20 text-white text-xs font-bold">
-            <i data-lucide="message-square" class="w-3.5 h-3.5"></i> Connect & Collaborate
-          </div>
-          <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight">
-            <span data-i18n="contact-title">Let's Connect & Discuss New Possibilities</span>
-          </h2>
-
-          <div class="pt-4 flex flex-wrap gap-4 items-center">
-            <a href="mailto:fttmp66@gmail.com"
-               class="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-white text-slate-800 hover:text-[#162840] font-bold text-sm shadow-md hover:bg-slate-100 transition-all transform hover:-translate-y-0.5" title="Email: fttmp66@gmail.com">
-              <i data-lucide="mail" class="w-5 h-5 text-[#708090]"></i> Gmail
-            </a>
-
-            <a href="https://www.linkedin.com/in/%E9%BB%83%E5%A9%B7%E7%90%B0-ting-yen-huang-57aa9772/" target="_blank" rel="noopener noreferrer"
-               class="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-white text-[#0077b5] font-bold text-sm shadow-md hover:bg-slate-100 transition-all transform hover:-translate-y-0.5">
-              <i data-lucide="linkedin" class="w-5 h-5 text-[#0077b5]"></i> LinkedIn
-            </a>
-
-            <a href="https://github.com/fttmp66-0c0o0d0e0r0/myron-huang-portfolio" target="_blank" rel="noopener noreferrer" id="contact-github-link"
-               class="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-slate-900 text-white font-bold text-sm shadow-md hover:bg-slate-800 transition-all transform hover:-translate-y-0.5">
-              <i data-lucide="github" class="w-5 h-5"></i> GitHub Repository
-            </a>
-
-            <div class="flex items-center gap-2 px-4 py-3 rounded-2xl bg-white/15 backdrop-blur-md border border-white/20 text-white text-sm font-semibold">
-              <i data-lucide="map-pin" class="w-4 h-4 text-slate-300"></i>
-              <span>Taoyuan & Taipei, Taiwan</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
+        </main>
 
         <!-- Footer -->
-        <footer class="border-t border-slate-200/90 bg-white py-8 text-center text-xs text-slate-500 relative z-10">
-          <div class="max-w-6xl mx-auto px-4 space-y-2">
-            <p class="font-bold text-slate-700">© 2026 Ting-Yen (Myron) Huang. All Rights Reserved.</p>
-            <p class="text-slate-400">Collaboratively built with Antigravity Generative AI.</p>
-          </div>
+        <footer class="border-t border-slate-200 pt-5 text-center text-xs text-slate-500">
+          <p class="font-semibold text-slate-700">© 2026 Ting-Yen (Myron) Huang · M1461035</p>
         </footer>
 
-      </div> <!-- Close right column -->
+      </div> <!-- Close Right Column -->
 
-    </div> <!-- Close flex-row -->
-  </div> <!-- Close bg-white container -->
-</div> <!-- Close max-w wrapper -->
+    </div> <!-- Close Flex Canvas -->
+  </div> <!-- Close Glass Panel -->
+</div> <!-- Close Outer Wrapper -->
 
-  <!-- Lightbox Modal for Posters & Research Scans -->
-  <div id="poster-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden items-center justify-center p-4 sm:p-6 transition-opacity duration-300">
-    <div class="relative max-w-4xl max-h-[92vh] bg-white rounded-3xl p-3 sm:p-5 shadow-2xl flex flex-col items-center border border-slate-300">
-      <div class="w-full flex items-center justify-between pb-3 px-2 border-b border-slate-100">
-        <h3 id="modal-title" class="font-extrabold text-slate-900 text-sm sm:text-base flex items-center gap-2">
-          <i data-lucide="image" class="w-4 h-4 text-[#708090]"></i> 預覽放大檢視
+  <!-- Lightbox Modal for Full Image Zoom -->
+  <div id="poster-modal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-sm hidden items-center justify-center p-4 sm:p-6 transition-opacity duration-200">
+    <div class="relative max-w-4xl max-h-[92vh] bg-white rounded-xl p-3 sm:p-4 shadow-2xl flex flex-col items-center border border-slate-300">
+      <div class="w-full flex items-center justify-between pb-2.5 px-2 border-b border-slate-200">
+        <h3 id="modal-title" class="font-extrabold text-slate-900 text-sm flex items-center gap-2">
+          <i data-lucide="image" class="w-4 h-4 text-[#708090]"></i> Preview
         </h3>
-        <button id="modal-close" class="p-1.5 rounded-full hover:bg-slate-100 text-slate-500 hover:text-slate-800 transition-colors">
+        <button id="modal-close" class="p-1.5 rounded-lg hover:bg-slate-100 text-slate-500 hover:text-slate-900 transition-colors cursor-pointer">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
       <div class="overflow-auto max-h-[80vh] p-2 w-full flex justify-center">
-        <img id="modal-img" src="" alt="Preview" class="max-w-full h-auto rounded-xl mx-auto shadow-md">
+        <img id="modal-img" src="" alt="Preview" class="max-w-full h-auto rounded-lg mx-auto">
       </div>
     </div>
   </div>
