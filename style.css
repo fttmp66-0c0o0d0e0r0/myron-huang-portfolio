@@ -25,9 +25,9 @@
   --morandi-black-rgb: 17, 21, 26;
 }
 
-/* Base Body Ambient Gradient */
+/* Base Body Ambient Gradient - Morandi Gray (喬治·莫蘭迪灰) */
 body {
-  background: linear-gradient(180deg, #edf1f5 0%, #f7f9fa 50%, #e9edf2 100%);
+  background: linear-gradient(180deg, #cfd6dc 0%, #dce1e6 45%, #cad2d9 100%);
   color: var(--morandi-black);
 }
 

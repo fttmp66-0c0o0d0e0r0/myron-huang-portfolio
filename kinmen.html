@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kinmen 5D4N Bowknot Cycling Challenge | Ting-Yen (Myron) Huang</title>
+  <meta name="description" content="Kinmen 5-Day 4-Night Bowknot Cycling Challenge: 120km GPS art route across Greater & Lesser Kinmen with NT$5,000 completion bonus reward.">
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gradient-to-b from-[#cfd6dc] via-[#dce1e6] to-[#cad2d9] text-[#11151a] font-sans antialiased selection:bg-slate-300 selection:text-slate-900 min-h-screen">
+  <!-- Ambient background -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+    <div class="absolute -top-32 -left-32 w-96 h-96 bg-[#708090]/15 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/3 -right-32 w-96 h-96 bg-[#162840]/10 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-32 left-1/3 w-96 h-96 bg-[#708090]/12 rounded-full blur-3xl"></div>
+  </div>
+
+  <!-- MASTER FRAME WRAPPER -->
+  <div class="relative z-10 max-w-[1400px] mx-auto px-3 sm:px-5 lg:px-8 py-6 sm:py-8">
+    <div class="bg-white/90 backdrop-blur-xl border border-[#708090]/30 rounded-[28px] sm:rounded-[36px] lg:rounded-[42px] shadow-2xl shadow-slate-400/30 p-4 sm:p-6 lg:p-8 space-y-8">
+      
+      <!-- Top Navigation Bar -->
+      <header class="backdrop-blur-md bg-white/95 border border-slate-200/90 rounded-3xl shadow-sm px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+        <!-- Back to Portfolio Link -->
+        <a href="index.html" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs sm:text-sm font-extrabold border border-slate-300 transition-all group" title="返回主頁 (Back to Portfolio)">
+          <i data-lucide="arrow-left" class="w-4 h-4 text-[#162840] group-hover:-translate-x-1 transition-transform"></i>
+          <span data-i18n="km-back-portfolio">← Back to Portfolio</span>
+        </a>
+
+        <!-- Page Indicator -->
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#162840]"></span>
+          <span class="font-extrabold text-xs sm:text-sm text-slate-900 hidden sm:inline" data-i18n="km-page-badge">Page 2 · Kinmen Cycling Adventure</span>
+        </div>
+
+        <!-- Language Switcher -->
+        <button id="lang-toggle-btn"
+                class="inline-flex items-center justify-center text-center gap-1.5 h-8 px-3 text-xs font-extrabold rounded-xl bg-slate-100 hover:bg-slate-200 text-[#162840] border border-slate-300 transition-all shadow-xs cursor-pointer"
+                title="切換全中文 / 全英文版 (Toggle Chinese / English)">
+          <i data-lucide="languages" class="w-3.5 h-3.5 text-[#708090]"></i>
+          <span id="lang-btn-text" class="leading-none">繁體中文</span>
+        </button>
+      </header>
+
+      <!-- HERO RECRUITMENT BANNER (NT$5,000 Challenge Bonus Announcement) -->
+      <section class="relative overflow-hidden bg-gradient-to-r from-[#162840] via-[#233c5e] to-[#2c476d] text-white rounded-3xl p-6 sm:p-10 shadow-xl border border-slate-700">
+        <div class="relative z-10 max-w-4xl space-y-4">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/20 backdrop-blur-md text-white text-xs font-bold border border-white/30">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-300"></i>
+            <span data-i18n="km-recruit-tag">🔥 CHALLENGERS WANTED · 金門單車蝴蝶之旅挑戰者招募中</span>
+          </div>
+
+          <h1 class="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
+            <span data-i18n="km-hero-title">Kinmen 5D4N Bowknot Cycling Challenge</span>
+          </h1>
+
+          <p class="text-sm sm:text-base text-slate-200 leading-relaxed font-medium" data-i18n="km-hero-desc">
+            Ride 120km across Greater and Lesser Kinmen drawing a massive GPS Bowknot. Experience historic battlefields, Minnan heritage, ocean bridges, and authentic walk-in B&Bs!
+          </p>
+
+          <!-- Reward Callout Box -->
+          <div class="pt-2">
+            <div class="bg-white/10 backdrop-blur-md border border-white/25 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div class="flex items-start sm:items-center gap-3">
+                <div class="w-12 h-12 rounded-2xl bg-amber-400 text-slate-900 flex items-center justify-center font-black text-xl flex-shrink-0 shadow-lg">
+                  NT$
+                </div>
+                <div>
+                  <div class="text-xs uppercase font-extrabold text-amber-300 tracking-wider" data-i18n="km-bonus-badge">Completion Cash Bonus</div>
+                  <div class="text-lg sm:text-xl font-black text-white" data-i18n="km-bonus-amount">NT$ 5,000 Bonus Reward</div>
+                  <div class="text-xs text-slate-300 mt-0.5" data-i18n="km-bonus-terms">
+                    Complete all 4 checklist mission criteria below with GPS tracks & photo verification to claim the extra reward!
+                  </div>
+                </div>
+              </div>
+              <a href="#missions" class="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs sm:text-sm shadow-md transition-all flex-shrink-0">
+                <span data-i18n="km-check-missions">View Missions & Rules</span> <i data-lucide="arrow-down" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STATS OVERVIEW CARDS -->
+      <section class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-white border border-slate-200/90 rounded-2xl p-4 shadow-sm text-center">
+          <div class="text-xs text-slate-500 font-bold uppercase" data-i18n="km-stat-route">Total Route</div>
+          <div class="text-2xl sm:text-3xl font-black text-slate-900 mt-1">120 km</div>
+          <div class="text-[11px] text-[#708090] mt-0.5" data-i18n="km-stat-route-sub">Dual Figure-8 Loops</div>
+        </div>
+        <div class="bg-white border border-slate-200/90 rounded-2xl p-4 shadow-sm text-center">
+          <div class="text-xs text-slate-500 font-bold uppercase" data-i18n="km-stat-days">Duration</div>
+          <div class="text-2xl sm:text-3xl font-black text-slate-900 mt-1">5D 4N</div>
+          <div class="text-[11px] text-[#708090] mt-0.5" data-i18n="km-stat-days-sub">Greater & Lesser Kinmen</div>
+        </div>
+        <div class="bg-white border border-slate-200/90 rounded-2xl p-4 shadow-sm text-center">
+          <div class="text-xs text-slate-500 font-bold uppercase" data-i18n="km-stat-cost">Estimated Budget</div>
+          <div class="text-2xl sm:text-3xl font-black text-slate-900 mt-1">NT$14,200</div>
+          <div class="text-[11px] text-[#708090] mt-0.5" data-i18n="km-stat-cost-sub">All Flights & Lodging</div>
+        </div>
+        <div class="bg-white border border-slate-200/90 rounded-2xl p-4 shadow-sm text-center">
+          <div class="text-xs text-slate-500 font-bold uppercase" data-i18n="km-stat-bonus">Challenge Bonus</div>
+          <div class="text-2xl sm:text-3xl font-black text-[#162840] mt-1">+ NT$5,000</div>
+          <div class="text-[11px] text-[#708090] mt-0.5" data-i18n="km-stat-bonus-sub">Checklist Reward</div>
+        </div>
+      </section>
+
+      <!-- POSTERS EXHIBITION SECTION (Click to Zoom Lightbox) -->
+      <section class="space-y-4">
+        <div class="border-b border-slate-200/90 pb-3 flex items-center justify-between">
+          <div>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900" data-i18n="km-posters-title">Official Challenge Posters</h2>
+            <p class="text-xs text-slate-500 mt-0.5" data-i18n="km-posters-sub">High-resolution visual itinerary, GPS art layout, and all-inclusive budget breakdown</p>
+          </div>
+          <span class="text-xs font-mono font-bold text-slate-600 bg-slate-100 px-3 py-1 rounded-full border border-slate-200" data-i18n="km-zoom">
+            Click to Zoom
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          
+          <!-- Poster 1: Itinerary & GPS Art Map -->
+          <div class="bg-white border border-slate-200/90 rounded-3xl p-5 shadow-sm space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-extrabold text-slate-900 flex items-center gap-1.5" data-i18n="km-poster1-tag">
+                <i data-lucide="map" class="w-4 h-4 text-[#708090]"></i> Route & GPS Art Poster
+              </span>
+              <span class="text-[11px] text-slate-500 font-medium">120km Bowknot Route</span>
+            </div>
+
+            <div class="relative overflow-hidden rounded-2xl bg-slate-900/5 border border-slate-200 cursor-pointer poster-lightbox-trigger group flex items-center justify-center p-2"
+                 data-img="./assets/kinmen-itinerary-map.jpg" data-title="Kinmen 5D4N Bike Tour: GPS Route & Itinerary Poster">
+              <img src="./assets/kinmen-itinerary-map.jpg" alt="Kinmen GPS Route Poster"
+                   class="w-full h-auto max-h-[460px] object-contain rounded-xl group-hover:scale-102 transition-transform duration-500">
+              <div class="absolute inset-0 bg-slate-900/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[1px]">
+                <span class="px-4 py-2 rounded-xl bg-white/95 text-slate-900 text-xs font-extrabold shadow-lg flex items-center gap-2">
+                  <i data-lucide="maximize-2" class="w-4 h-4 text-[#162840]"></i> <span data-i18n="km-view-full">View Full Poster</span>
+                </span>
+              </div>
+            </div>
+
+            <p class="text-xs text-slate-600 leading-relaxed" data-i18n="km-poster1-caption">
+              Centered on Qionglin village to cycle a giant figure-eight bowknot across Kinmen. Includes Kinmen Bridge crossing and coastal defense fortifications.
+            </p>
+          </div>
+
+          <!-- Poster 2: Budget Breakdown -->
+          <div class="bg-white border border-slate-200/90 rounded-3xl p-5 shadow-sm space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-extrabold text-slate-900 flex items-center gap-1.5" data-i18n="km-poster2-tag">
+                <i data-lucide="badge-dollar-sign" class="w-4 h-4 text-[#708090]"></i> Budget Breakdown Poster
+              </span>
+              <span class="text-[11px] font-mono font-bold text-slate-800 bg-slate-100 px-2.5 py-0.5 rounded-md border border-slate-200">
+                NT$14,200 All-Inclusive
+              </span>
+            </div>
+
+            <div class="relative overflow-hidden rounded-2xl bg-slate-900/5 border border-slate-200 cursor-pointer poster-lightbox-trigger group flex items-center justify-center p-2"
+                 data-img="./assets/kinmen-cost-breakdown.jpg" data-title="Kinmen 5D4N Bike Tour: Budget Breakdown Poster">
+              <img src="./assets/kinmen-cost-breakdown.jpg" alt="Kinmen Budget Breakdown Poster"
+                   class="w-full h-auto max-h-[460px] object-contain rounded-xl group-hover:scale-102 transition-transform duration-500">
+              <div class="absolute inset-0 bg-slate-900/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[1px]">
+                <span class="px-4 py-2 rounded-xl bg-white/95 text-slate-900 text-xs font-extrabold shadow-lg flex items-center gap-2">
+                  <i data-lucide="maximize-2" class="w-4 h-4 text-[#162840]"></i> <span data-i18n="km-view-full">View Full Poster</span>
+                </span>
+              </div>
+            </div>
+
+            <p class="text-xs text-slate-600 leading-relaxed" data-i18n="km-poster2-caption">
+              Detailed cost analysis covering round-trip flights, 4 nights lodging, authentic meals, bike rentals, admissions, and emergency reserve funds.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 4 CORE MISSIONS CHECKLIST & BONUS REDEMPTION (Item requested by User) -->
+      <section id="missions" class="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
+        <div class="border-b border-slate-200 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <div class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#708090]">
+              <i data-lucide="check-square" class="w-4 h-4 text-[#162840]"></i> Challenge Verification Checklist
+            </div>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-0.5" data-i18n="km-missions-header">
+              4 Core Missions & NT$5,000 Bonus Claim Rules
+            </h2>
+          </div>
+          <span class="text-xs font-mono font-bold text-slate-800 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">
+            Interactive Checkbox
+          </span>
+        </div>
+
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed" data-i18n="km-missions-desc">
+          Participants who complete the 5-day bike journey, fulfill all 4 checklist mission requirements with GPS recording and landmark checkpoint photos, will receive an additional <strong>NT$5,000 completion cash reward</strong>!
+        </p>
+
+        <!-- Checklist Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Mission 1 -->
+          <label class="flex items-start gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-200 hover:border-[#708090] cursor-pointer transition-all">
+            <input type="checkbox" class="w-5 h-5 mt-0.5 rounded border-slate-300 text-[#162840] focus:ring-[#708090]">
+            <div>
+              <div class="font-extrabold text-slate-900 text-sm" data-i18n="km-m1-title">Mission 1: Cross Kinmen Bridge (金門大橋跨海騎行)</div>
+              <div class="text-xs text-slate-600 mt-0.5" data-i18n="km-m1-desc">5.4km ocean bridge crossing from Greater Kinmen to Lieyu (Lesser Kinmen). Photo required at bridge entry & exit.</div>
+            </div>
+          </label>
+
+          <!-- Mission 2 -->
+          <label class="flex items-start gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-200 hover:border-[#708090] cursor-pointer transition-all">
+            <input type="checkbox" class="w-5 h-5 mt-0.5 rounded border-slate-300 text-[#162840] focus:ring-[#708090]">
+            <div>
+              <div class="font-extrabold text-slate-900 text-sm" data-i18n="km-m2-title">Mission 2: 120km Bowknot Art (120km 蝴蝶結 GPS 軌跡)</div>
+              <div class="text-xs text-slate-600 mt-0.5" data-i18n="km-m2-desc">Complete dual loops centered at Qionglin. Record complete GPS track on Strava/Garmin without vehicular shortcuts.</div>
+            </div>
+          </label>
+
+          <!-- Mission 3 -->
+          <label class="flex items-start gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-200 hover:border-[#708090] cursor-pointer transition-all">
+            <input type="checkbox" class="w-5 h-5 mt-0.5 rounded border-slate-300 text-[#162840] focus:ring-[#708090]">
+            <div>
+              <div class="font-extrabold text-slate-900 text-sm" data-i18n="km-m3-title">Mission 3: Wind Lion God Hunt (風獅爺打卡尋訪)</div>
+              <div class="text-xs text-slate-600 mt-0.5" data-i18n="km-m3-desc">Spot and photograph at least 8 distinctive guardian Wind Lion God statues across Jinhu, Jinsha, and Jinning townships.</div>
+            </div>
+          </label>
+
+          <!-- Mission 4 -->
+          <label class="flex items-start gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-200 hover:border-[#708090] cursor-pointer transition-all">
+            <input type="checkbox" class="w-5 h-5 mt-0.5 rounded border-slate-300 text-[#162840] focus:ring-[#708090]">
+            <div>
+              <div class="font-extrabold text-slate-900 text-sm" data-i18n="km-m4-title">Mission 4: Mt. Taiwu Summit (登頂太武山毋忘在莒)</div>
+              <div class="text-xs text-slate-600 mt-0.5" data-i18n="km-m4-desc">Hike/bike to Kinmen's highest peak (253m) and photograph the iconic "Wu Wang Zai Ju" rock inscription with panoramic view.</div>
+            </div>
+          </label>
+        </div>
+
+        <!-- How to Claim -->
+        <div class="bg-slate-100/80 rounded-2xl p-4 border border-slate-200 text-xs text-slate-700 space-y-1">
+          <div class="font-bold text-slate-900" data-i18n="km-claim-title">📋 Bonus Claim & Verification:</div>
+          <p data-i18n="km-claim-step1">1. Export your 120km GPX/FIT track file showing continuous timestamps across all 5 days.</p>
+          <p data-i18n="km-claim-step2">2. Upload photo proofs for all 4 missions to the portfolio contact channel (<a href="mailto:fttmp66@gmail.com" class="text-[#162840] font-bold underline">fttmp66@gmail.com</a>).</p>
+          <p data-i18n="km-claim-step3">3. Once verified by Myron, the NT$5,000 cash reward will be wired directly or presented in person.</p>
+        </div>
+      </section>
+
+      <!-- 5-DAY DETAILED ITINERARY -->
+      <section class="space-y-4">
+        <div class="border-b border-slate-200/90 pb-3">
+          <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900" data-i18n="km-itinerary-header">5-Day Route Itinerary</h2>
+          <p class="text-xs text-slate-500 mt-0.5" data-i18n="km-itinerary-sub">Recommended day-by-day distances, attractions, and local culinary stops</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-3">
+          <div class="bg-white border border-slate-200/90 rounded-2xl p-4 shadow-sm space-y-2">
+            <span class="px-2 py-0.5 rounded-lg text-[10px] font-mono font-bold bg-slate-100 text-[#162840] border border-slate-200">Day 1 · 15km</span>
+            <h3 class="font-bold text-slate-900 text-sm" data-i18n="km-d1-title">SW Coast & Houpu</h3>
+            <p class="text-xs text-slate-600 leading-relaxed" data-i18n="km-d1-detail">Arrive at KNH airport, pick up rental bike, ride to Deyue Tower, Zhaishan Tunnel, and Houpu old streets for Cantonese congee.</p>
+          </div>
+
+          <div class="bg-white border border-slate-200/90 rounded-2xl p-4 shadow-sm space-y-2">
+            <span class="px-2 py-0.5 rounded-lg text-[10px] font-mono font-bold bg-slate-100 text-[#162840] border border-slate-200">Day 2 · 40km</span>
+            <h3 class="font-bold text-slate-900 text-sm" data-i18n="km-d2-title">Lieyu / Lesser Kinmen</h3>
+            <p class="text-xs text-slate-600 leading-relaxed" data-i18n="km-d2-detail">Ride across 5.4km Kinmen Bridge, circle Lieyu coastal loop, visit Cat's Eye Stone, Shatou defense trenches, and eat taro shaved ice.</p>
+          </div>
+
+          <div class="bg-white border border-slate-200/90 rounded-2xl p-4 shadow-sm space-y-2">
+            <span class="px-2 py-0.5 rounded-lg text-[10px] font-mono font-bold bg-slate-100 text-[#162840] border border-slate-200">Day 3 · 30km</span>
+            <h3 class="font-bold text-slate-900 text-sm" data-i18n="km-d3-title">NW Coast & Guningtou</h3>
+            <p class="text-xs text-slate-600 leading-relaxed" data-i18n="km-d3-detail">Explore Guningtou Battle Museum, bullet-riddled Beishan Old Mansion, Cihu sunset estuary, and taste authentic oyster noodles.</p>
+          </div>
+
+          <div class="bg-white border border-slate-200/90 rounded-2xl p-4 shadow-sm space-y-2">
+            <span class="px-2 py-0.5 rounded-lg text-[10px] font-mono font-bold bg-slate-100 text-[#162840] border border-slate-200">Day 4 · 25km</span>
+            <h3 class="font-bold text-slate-900 text-sm" data-i18n="km-d4-title">Mt. Taiwu & NE Coast</h3>
+            <p class="text-xs text-slate-600 leading-relaxed" data-i18n="km-d4-detail">Ascend Mt. Taiwu summit, witness Shishan Artillery howitzer drill, visit Shanhou Folk Culture Village, and eat Mashan meat buns.</p>
+          </div>
+
+          <div class="bg-white border border-slate-200/90 rounded-2xl p-4 shadow-sm space-y-2">
+            <span class="px-2 py-0.5 rounded-lg text-[10px] font-mono font-bold bg-slate-100 text-[#162840] border border-slate-200">Day 5 · 10km</span>
+            <h3 class="font-bold text-slate-900 text-sm" data-i18n="km-d5-title">Jinhu & Flight Home</h3>
+            <p class="text-xs text-slate-600 leading-relaxed" data-i18n="km-d5-detail">Complete the bowknot center at Qionglin Tunnel, take pictures at Taihu 3D crosswalk, return bikes, and take afternoon flight home.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom Return Banner -->
+      <div class="pt-4 text-center">
+        <a href="index.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-[#162840] hover:bg-[#233c5e] text-white font-bold text-sm shadow-md transition-all">
+          <i data-lucide="arrow-left" class="w-4 h-4"></i> <span data-i18n="km-back-portfolio">← Back to Myron's Portfolio (返回個人主頁)</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Lightbox Modal for Posters -->
+  <div id="poster-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden items-center justify-center p-4 sm:p-6 transition-opacity duration-300">
+    <div class="relative max-w-4xl max-h-[92vh] bg-white rounded-3xl p-3 sm:p-5 shadow-2xl flex flex-col items-center border border-slate-300">
+      <div class="w-full flex items-center justify-between pb-3 px-2 border-b border-slate-100">
+        <h3 id="modal-title" class="font-extrabold text-slate-900 text-sm sm:text-base flex items-center gap-2">
+          <i data-lucide="image" class="w-4 h-4 text-[#708090]"></i> Poster Preview
+        </h3>
+        <button id="modal-close" class="p-1.5 rounded-full hover:bg-slate-100 text-slate-500 hover:text-slate-800 transition-colors">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="overflow-auto max-h-[80vh] p-2 w-full flex justify-center">
+        <img id="modal-img" src="" alt="Poster" class="max-w-full h-auto rounded-xl mx-auto shadow-md">
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
