@@ -20,18 +20,6 @@
           fontFamily: {
             sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
             mono: ['"JetBrains Mono"', 'monospace'],
-          },
-          colors: {
-            swiss: {
-              bg: '#FAFAFA',
-              alt: '#F4F5F7',
-              ink: '#111827',
-              muted: '#4B5563',
-              subtle: '#6B7280',
-              navy: '#1E3A8A',
-              steel: '#2563EB',
-              line: '#E5E7EB',
-            }
           }
         }
       }
@@ -42,16 +30,18 @@
       box-sizing: border-box;
     }
     body {
-      background-color: #FAFAFA;
+      background-color: #FCFCFC;
       color: #111827;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
     .glass-nav {
-      background-color: rgba(255, 255, 255, 0.94);
+      background-color: rgba(252, 252, 252, 0.92);
       -webkit-backdrop-filter: blur(12px);
       backdrop-filter: blur(12px);
     }
+
+    /* Card Styles for Restored AI Briefing Sidebar & Profile Section */
     .swiss-card {
       background-color: #FFFFFF;
       border: 1px solid #E5E7EB;
@@ -69,34 +59,82 @@
       transform: translateY(-1px);
       box-shadow: 0 6px 16px -4px rgba(17, 24, 39, 0.08);
     }
+
+    /* Filter Pills */
     .filter-pill {
       cursor: pointer;
       user-select: none;
-      background-color: #FFFFFF;
-      color: #4B5563;
-      border: 1px solid #E5E7EB;
-      transition: all 0.18s ease;
+      background-color: #F1F5F9;
+      color: #475569;
+      transition: all 0.2s ease;
     }
     .filter-pill:hover {
-      border-color: #2563EB;
+      background-color: #E2E8F0;
       color: #1E3A8A;
     }
     .filter-pill.active {
       background-color: #1E3A8A;
       color: #FFFFFF;
-      border-color: #1E3A8A;
     }
-    .kinmen-pill-glow {
-      background-color: #1E3A8A;
-      color: #FFFFFF;
-      border: 1px solid #1E3A8A;
-      transition: background-color 0.2s ease, transform 0.2s ease;
+
+    /* Flashy ("瞎趴") Metallic Gold + Glowing Teal-Navy GIF-like Flashing Kinmen Badge */
+    @keyframes kinmenBeaconPulse {
+      0%, 100% {
+        background-color: #0b232e;
+        box-shadow: 0 0 0 0 rgba(45, 212, 191, 0.55), 0 4px 14px rgba(11, 35, 46, 0.3);
+        transform: translateY(0);
+      }
+      50% {
+        background-color: #133b4a;
+        box-shadow: 0 0 18px 2px rgba(45, 212, 191, 0.7), 0 6px 20px rgba(15, 76, 92, 0.45);
+        transform: translateY(-1px);
+      }
     }
-    .kinmen-pill-glow:hover {
-      background-color: #2563EB;
-      border-color: #2563EB;
-      transform: translateY(-1px);
+    @keyframes kinmenShimmer {
+      0% { left: -60%; }
+      60%, 100% { left: 140%; }
     }
+    @keyframes goldShine {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+    .kinmen-flash-badge {
+      position: relative;
+      overflow: hidden;
+      background-color: #0b232e;
+      border: 2px solid #2dd4bf;
+      animation: kinmenBeaconPulse 1.1s steps(2, end) infinite;
+    }
+    .kinmen-flash-badge::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -60%;
+      width: 45%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+      transform: skewX(-20deg);
+      animation: kinmenShimmer 2.1s infinite;
+      pointer-events: none;
+    }
+    .metallic-gold-text {
+      background: linear-gradient(110deg, #d4af37 0%, #fff4b8 28%, #c5962c 52%, #fef0a6 76%, #d4af37 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: #f6d365;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.45));
+      animation: goldShine 2.4s linear infinite;
+    }
+    .kinmen-new-pill {
+      transition: all 0.15s ease;
+    }
+    .kinmen-new-pill.flash-alt {
+      background-color: #FFFFFF !important;
+      color: #0b232e !important;
+    }
+
     .scrollbar-none::-webkit-scrollbar {
       display: none;
     }
@@ -113,15 +151,15 @@
     }
   </style>
 </head>
-<body class="font-sans antialiased selection:bg-[#2563EB]/15 selection:text-[#1E3A8A]">
+<body class="font-sans antialiased selection:bg-[#1E3A8A]/10 selection:text-[#1E3A8A]">
 
-  <!-- 1. STICKY TOP NAVBAR (Full Container Width, Crisp White) -->
-  <header class="sticky top-0 z-50 glass-nav border-b border-[#E5E7EB]">
-    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+  <!-- 1. STICKY TOP NAVBAR -->
+  <header class="sticky top-0 z-50 glass-nav border-b border-slate-200/70">
+    <div class="max-w-[1380px] mx-auto px-6 h-16 flex items-center justify-between gap-4">
       
       <!-- Left: Name Brand -->
       <a href="#hero" class="flex items-center gap-2.5 flex-shrink-0 group">
-        <span class="w-7 h-7 rounded-md bg-[#1E3A8A] text-white font-mono text-xs font-bold flex items-center justify-center group-hover:bg-[#2563EB] transition-colors">
+        <span class="w-7 h-7 rounded-full bg-[#1E3A8A] text-white font-mono text-xs font-bold flex items-center justify-center group-hover:bg-[#2563EB] transition-colors">
           MH
         </span>
         <span class="font-bold text-sm tracking-tight text-[#111827] hidden sm:inline">
@@ -129,51 +167,52 @@
         </span>
       </a>
 
-      <!-- Center: Section Anchors -->
-      <nav class="hidden md:flex items-center gap-6 text-xs font-semibold text-[#4B5563]">
-        <a href="#ai-briefing" class="hover:text-[#2563EB] transition-colors whitespace-nowrap" data-i18n="nav-briefing">AI Briefing</a>
-        <a href="#about" class="hover:text-[#2563EB] transition-colors whitespace-nowrap" data-i18n="nav-about">About</a>
-        <a href="#experience" class="hover:text-[#2563EB] transition-colors whitespace-nowrap" data-i18n="nav-experience">Experience</a>
-        <a href="#research" class="hover:text-[#2563EB] transition-colors whitespace-nowrap" data-i18n="nav-research">Research</a>
-        <a href="#contact" class="hover:text-[#2563EB] transition-colors whitespace-nowrap" data-i18n="nav-contact">Contact</a>
+      <!-- Center: Strictly About / Experience / Research -->
+      <nav class="hidden md:flex items-center gap-8 text-xs font-semibold text-slate-500">
+        <a href="#about" class="nav-anchor hover:text-[#1E3A8A] transition-colors whitespace-nowrap" data-i18n="nav-about">About</a>
+        <a href="#experience" class="nav-anchor hover:text-[#1E3A8A] transition-colors whitespace-nowrap" data-i18n="nav-experience">Experience</a>
+        <a href="#research" class="nav-anchor hover:text-[#1E3A8A] transition-colors whitespace-nowrap" data-i18n="nav-research">Research</a>
       </nav>
 
-      <!-- Right: Social Icons, Language Toggle & Kinmen Challenge Pill -->
-      <div class="flex items-center gap-2 flex-shrink-0">
+      <!-- Right: Social Icons, 4-Way Language Toggle (EN/繁中/简中/FR) & Flashy Kinmen Pill -->
+      <div class="flex items-center gap-2.5 flex-shrink-0">
         <a href="mailto:fttmp66@gmail.com" aria-label="Email" title="Email: fttmp66@gmail.com"
-           class="w-8 h-8 rounded-md border border-[#E5E7EB] bg-white hover:border-[#2563EB] text-[#4B5563] hover:text-[#2563EB] flex items-center justify-center transition-colors">
+           class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-[#1E3A8A] flex items-center justify-center transition-colors">
           <i data-lucide="mail" class="w-3.5 h-3.5"></i>
         </a>
         <a href="https://github.com/fttmp66-0c0o0d0e0r0/myron-huang-portfolio" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub Repository"
-           class="w-8 h-8 rounded-md border border-[#E5E7EB] bg-white hover:border-[#2563EB] text-[#4B5563] hover:text-[#111827] flex items-center justify-center transition-colors">
+           class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-[#111827] flex items-center justify-center transition-colors">
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
         </a>
         <a href="https://www.linkedin.com/in/%E9%BB%83%E5%A9%B7%E7%90%B0-ting-yen-huang-57aa9772/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn Profile"
-           class="w-8 h-8 rounded-md border border-[#E5E7EB] bg-white hover:border-[#2563EB] text-[#4B5563] hover:text-[#2563EB] flex items-center justify-center transition-colors">
+           class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-[#2563EB] flex items-center justify-center transition-colors">
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
         </a>
 
         <button id="lang-toggle-btn" type="button"
-                class="h-8 px-2.5 rounded-md border border-[#E5E7EB] bg-white hover:border-[#2563EB] text-[11px] font-mono font-semibold text-[#111827] transition-colors cursor-pointer whitespace-nowrap"
-                title="Switch Language (EN / 繁中 / 简中)">
+                class="h-8 px-3 rounded-full bg-slate-100 hover:bg-slate-200 text-[11px] font-mono font-semibold text-slate-700 transition-colors cursor-pointer whitespace-nowrap"
+                title="Switch Language (EN / 繁中 / 简中 / FR)">
           <span id="lang-btn-text">繁中</span>
         </button>
 
+        <!-- Flashy ("瞎趴") Metallic Gold + Teal-Navy Glowing Kinmen Badge -->
         <a href="kinmen.html" id="kinmen-campaign-badge"
-           class="kinmen-pill-glow inline-flex items-center gap-1.5 h-8 px-3 rounded-full text-xs font-bold whitespace-nowrap">
-          <span class="w-1.5 h-1.5 rounded-full bg-sky-300 animate-pulse"></span>
-          <span data-i18n="nav-kinmen">Kinmen Challenge &rarr;</span>
+           class="kinmen-flash-badge inline-flex items-center gap-2 h-8 px-3.5 rounded-full text-xs font-extrabold whitespace-nowrap">
+          <span id="kinmen-new-pill" class="kinmen-new-pill px-1.5 py-0.5 rounded-full bg-teal-300 text-[#0b232e] text-[9px] font-black tracking-wider uppercase">
+            NEW
+          </span>
+          <span class="metallic-gold-text tracking-tight" data-i18n="nav-kinmen">Kinmen Bike Challenge &rarr;</span>
         </a>
       </div>
     </div>
   </header>
 
-  <!-- MAIN 2-PART LAYOUT: Fixed Left AI News Sidebar + Crisp Vertical Divider + Right Minimalist Scroller -->
-  <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col lg:flex-row items-start">
+  <!-- MAIN CANVAS: Sticky Left AI Briefing Cards (Green Box Style) + Spacious Right Content Flow -->
+  <div class="max-w-[1380px] mx-auto px-6">
+    <div class="flex flex-col lg:flex-row items-start gap-8 lg:gap-12">
 
-      <!-- LEFT COLUMN (Sticky AI News Section - Preserved 5 Categorized News Pillars) -->
-      <aside id="ai-briefing" class="w-full lg:w-[320px] xl:w-[350px] flex-shrink-0 lg:sticky lg:top-16 py-8 lg:pr-7 space-y-3.5 scroll-mt-20 min-w-0">
+      <!-- LEFT COLUMN (Restored Image 2 Green Box Version: Structured Categorized AI News Cards) -->
+      <aside id="ai-briefing" class="w-full lg:w-[310px] xl:w-[340px] flex-shrink-0 lg:sticky lg:top-20 py-8 space-y-3.5 scroll-mt-20 min-w-0">
         
         <!-- Editorial AI Briefing Header Card -->
         <div class="swiss-card rounded-lg p-4 space-y-2">
@@ -306,50 +345,39 @@
           </a>
 
         </div>
-
       </aside>
 
-      <!-- CRISP VERTICAL DIVIDER + RIGHT COLUMN: MINIMALIST SINGLE-PAGE PORTFOLIO SCROLLER -->
-      <main class="flex-1 min-w-0 border-t lg:border-t-0 lg:border-l border-[#D1D5DB]">
+      <!-- RIGHT COLUMN: HERO + PROFILE (Image 4 Orange Box Style) + AIRY DE-BOXED TIMELINE / RESEARCH / FOOTER -->
+      <main class="flex-1 min-w-0 max-w-4xl mx-auto">
 
-        <!-- HERO SECTION (Scroll to Explore inside Right Column) -->
-        <section id="hero" class="bg-[#FAFAFA] border-b border-[#E5E7EB] px-6 sm:px-10 lg:px-12 py-16 sm:py-24">
-          <div class="max-w-3xl space-y-6">
-            <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded border border-[#E5E7EB] bg-white font-mono text-[11px] font-semibold tracking-wider text-[#1E3A8A] uppercase">
+        <!-- HERO SECTION (Red-Boxed Bio Paragraph & Hero Kinmen Button Removed) -->
+        <section id="hero" class="pt-16 pb-28 sm:pt-24 sm:pb-36">
+          <div class="space-y-6">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 font-mono text-[11px] font-semibold tracking-wider text-[#1E3A8A] uppercase">
               <span class="w-1.5 h-1.5 rounded-full bg-[#2563EB]"></span>
               <span data-i18n="hero-eyebrow">CGU M.S. in AI · Ex-HP · Quanta</span>
-            </div>
+            </span>
 
-            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-[#111827] leading-[1.08]">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#111827] leading-[1.1]">
               Ting-Yen (Myron) Huang
-              <span class="block text-2xl sm:text-3xl font-bold text-[#6B7280] mt-2">黃婷琰</span>
+              <span class="block text-2xl sm:text-3xl font-bold text-slate-400 mt-2">黃婷琰</span>
             </h1>
 
-            <p class="text-base sm:text-lg font-semibold text-[#1E3A8A] font-mono tracking-tight" data-i18n="hero-slogan">
+            <p class="text-base sm:text-lg font-medium text-[#1E3A8A] font-mono tracking-tight" data-i18n="hero-slogan">
               Input: Your Idea &rarr; Output: Real AI
             </p>
 
-            <p class="text-sm sm:text-base text-[#4B5563] leading-relaxed max-w-2xl" data-i18n="hero-desc">
-              Medical Imaging AI Graduate Researcher bridging low-level laptop driver engineering, hardware security validation, and clinical computer vision systems in Taoyuan &amp; Taipei, Taiwan.
-            </p>
-
-            <div class="pt-4 flex flex-wrap items-center gap-6">
-              <a href="#about" id="scroll-explore-btn"
-                 class="inline-flex items-center gap-2 px-3.5 py-2 rounded-md border border-[#E5E7EB] bg-white hover:border-[#2563EB] text-xs font-mono font-semibold text-[#111827] hover:text-[#2563EB] transition-colors">
+            <div class="pt-4">
+              <a href="#about" class="nav-anchor inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-xs font-mono font-semibold text-[#111827] hover:text-[#1E3A8A] transition-colors">
                 <span data-i18n="hero-scroll">Scroll to explore</span>
                 <span aria-hidden="true">&darr;</span>
-              </a>
-              <a href="kinmen.html"
-                 class="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[#2563EB] hover:text-[#1E3A8A] transition-colors">
-                <span data-i18n="hero-kinmen">Kinmen Bowknot Cycling Challenge (NT$5,000 Bonus)</span>
-                <span aria-hidden="true">&rarr;</span>
               </a>
             </div>
           </div>
         </section>
 
-        <!-- 01 / ABOUT & CERTIFICATIONS (#F4F5F7 Alternating Section) -->
-        <section id="about" class="bg-[#F4F5F7] border-b border-[#E5E7EB] px-6 sm:px-10 lg:px-12 py-14 sm:py-16 scroll-mt-16">
+        <!-- 01 / ABOUT & CERTIFICATIONS (Restored Image 4 Orange Box Version) -->
+        <section id="about" class="py-24 sm:py-32 scroll-mt-16">
           <div class="space-y-8">
             <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-[#E5E7EB] pb-4">
               <div>
@@ -362,7 +390,7 @@
             </div>
 
             <div class="grid grid-cols-1 xl:grid-cols-12 gap-7 items-start">
-              <!-- Left: Personal Info + 3 Certifications -->
+              <!-- Left Column (8/12): Identity Card + 3 Certifications Cards -->
               <div class="xl:col-span-8 space-y-6 min-w-0">
                 <div class="swiss-card rounded-lg divide-y divide-[#E5E7EB]">
                   <div class="px-5 py-3.5 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6 text-sm">
@@ -371,7 +399,7 @@
                   </div>
                   <div class="px-5 py-3.5 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6 text-sm">
                     <span class="font-mono text-xs font-semibold text-[#6B7280] sm:w-28 flex-shrink-0 uppercase" data-i18n="about-program-label">Program</span>
-                    <span class="font-semibold text-[#111827]">Chang Gung University · M.S. in Artificial Intelligence</span>
+                    <span class="font-semibold text-[#111827]" data-i18n="about-program-val">Chang Gung University · M.S. in Artificial Intelligence</span>
                   </div>
                   <div class="px-5 py-3.5 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6 text-sm">
                     <span class="font-mono text-xs font-semibold text-[#6B7280] sm:w-28 flex-shrink-0 uppercase" data-i18n="about-student-label">Student ID</span>
@@ -398,7 +426,7 @@
                         <h4 class="font-bold text-xs text-[#111827] leading-snug">
                           Red Hat Certified System Administrator (RHCSA)
                         </h4>
-                        <p class="text-[11px] text-[#4B5563] mt-1.5 leading-relaxed">
+                        <p class="text-[11px] text-[#4B5563] mt-1.5 leading-relaxed" data-i18n="cert1-desc">
                           Enterprise Linux administration &amp; networking.
                         </p>
                       </div>
@@ -417,7 +445,7 @@
                         <h4 class="font-bold text-xs text-[#111827] leading-snug">
                           Programming in HTML5 with JS &amp; CSS3 Specialist
                         </h4>
-                        <p class="text-[11px] text-[#4B5563] mt-1.5 leading-relaxed">
+                        <p class="text-[11px] text-[#4B5563] mt-1.5 leading-relaxed" data-i18n="cert2-desc">
                           Frontend application &amp; web UX engineering.
                         </p>
                       </div>
@@ -436,7 +464,7 @@
                         <h4 class="font-bold text-xs text-[#111827] leading-snug">
                           Microsoft Certified Professional (MCP)
                         </h4>
-                        <p class="text-[11px] text-[#4B5563] mt-1.5 leading-relaxed">
+                        <p class="text-[11px] text-[#4B5563] mt-1.5 leading-relaxed" data-i18n="cert3-desc">
                           Enterprise system implementation standards.
                         </p>
                       </div>
@@ -449,7 +477,7 @@
                 </div>
               </div>
 
-              <!-- Right: Chibi Avatar Card -->
+              <!-- Right Column (4/12): Chibi Avatar Card -->
               <div class="xl:col-span-4">
                 <div class="swiss-card rounded-lg p-5 text-center space-y-4">
                   <div class="bg-[#F4F5F7] rounded-md border border-[#E5E7EB] p-4 flex items-center justify-center">
@@ -457,7 +485,7 @@
                   </div>
                   <div>
                     <h3 class="font-extrabold text-sm text-[#111827]">Ting-Yen (Myron) Huang</h3>
-                    <p class="text-xs font-semibold text-[#1E3A8A] mt-0.5">CGU AI Graduate Researcher</p>
+                    <p class="text-xs font-semibold text-[#1E3A8A] mt-0.5" data-i18n="avatar-role">CGU AI Graduate Researcher</p>
                     <p class="font-mono text-[11px] text-[#6B7280] mt-1">Taiwan · Ex-HP · Quanta</p>
                   </div>
                 </div>
@@ -466,314 +494,267 @@
           </div>
         </section>
 
-        <!-- 02 / EXPERIENCE TIMELINE (#FAFAFA Alternating Section) -->
-        <section id="experience" class="bg-[#FAFAFA] border-b border-[#E5E7EB] px-6 sm:px-10 lg:px-12 py-14 sm:py-16 scroll-mt-16">
-          <div class="space-y-8">
-            <div class="space-y-4 border-b border-[#E5E7EB] pb-5">
-              <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
-                <div>
-                  <span class="font-mono text-xs font-bold tracking-widest text-[#2563EB] uppercase">02 / Career &amp; Academic Path</span>
-                  <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#111827] mt-1" data-i18n="exp-title">
-                    Experience Timeline
-                  </h2>
-                </div>
-                <span class="font-mono text-xs text-[#6B7280]">2013 &mdash; Present</span>
+        <!-- 02 / EXPERIENCE TIMELINE (Airy Borderless Story Stream, Magazine-Style Compact Chibi Images) -->
+        <section id="experience" class="py-24 sm:py-32 scroll-mt-16">
+          <div class="space-y-12">
+            
+            <div class="space-y-5">
+              <div>
+                <span class="font-mono text-xs font-bold tracking-widest text-[#2563EB] uppercase">02 / Career &amp; Academic Path</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#111827] mt-1.5" data-i18n="exp-title">
+                  Experience Timeline
+                </h2>
               </div>
 
-              <!-- Filter Bar -->
-              <div class="flex items-center gap-2 overflow-x-auto whitespace-nowrap scrollbar-none pt-1" id="filter-buttons">
-                <button type="button" class="filter-pill active px-3 py-1.5 rounded-md text-xs font-semibold" data-filter="all" data-i18n="filter-all">All Roles</button>
-                <button type="button" class="filter-pill px-3 py-1.5 rounded-md text-xs font-semibold" data-filter="software" data-i18n="filter-software">Clinical Software</button>
-                <button type="button" class="filter-pill px-3 py-1.5 rounded-md text-xs font-semibold" data-filter="business" data-i18n="filter-business">Commercial Sales</button>
-                <button type="button" class="filter-pill px-3 py-1.5 rounded-md text-xs font-semibold" data-filter="hardware" data-i18n="filter-hardware">Drivers &amp; Validation</button>
-                <button type="button" class="filter-pill px-3 py-1.5 rounded-md text-xs font-semibold" data-filter="ai" data-i18n="filter-ai">AI Research</button>
-                <button type="button" class="filter-pill px-3 py-1.5 rounded-md text-xs font-semibold" data-filter="instructor" data-i18n="filter-instructor">AI Instructor</button>
+              <!-- Soft Borderless Pill Filters -->
+              <div class="flex items-center gap-2 overflow-x-auto whitespace-nowrap scrollbar-none" id="filter-buttons">
+                <button type="button" class="filter-pill active px-3.5 py-1.5 rounded-full text-xs font-semibold" data-filter="all" data-i18n="filter-all">All Roles</button>
+                <button type="button" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-semibold" data-filter="software" data-i18n="filter-software">Clinical Software</button>
+                <button type="button" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-semibold" data-filter="business" data-i18n="filter-business">Commercial Sales</button>
+                <button type="button" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-semibold" data-filter="hardware" data-i18n="filter-hardware">Drivers &amp; Validation</button>
+                <button type="button" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-semibold" data-filter="ai" data-i18n="filter-ai">AI Research</button>
+                <button type="button" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-semibold" data-filter="instructor" data-i18n="filter-instructor">AI Instructor</button>
               </div>
             </div>
 
-            <!-- Vertical Timeline Stream -->
-            <div class="space-y-7" id="experience-cards-container">
+            <!-- Airy Borderless Story Stream -->
+            <div class="space-y-20" id="experience-cards-container">
 
-              <!-- 1. Clinico -->
-              <article class="experience-card grid grid-cols-1 md:grid-cols-12 gap-5" data-category="software">
-                <div class="md:col-span-3 flex md:flex-col justify-between md:justify-start gap-2 md:pt-1">
-                  <div class="flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded-full bg-[#1E3A8A] ring-4 ring-[#1E3A8A]/10 flex-shrink-0"></span>
-                    <span class="font-mono text-xs font-bold text-[#111827]" data-i18n="exp1-date">Dec 2013 – Jan 2016</span>
+              <!-- 1. MayaMiner Company LTD. (Dec 2013 – Jan 2016) -->
+              <article class="experience-card flex flex-col md:flex-row md:items-start justify-between gap-6 sm:gap-10" data-category="software">
+                <div class="flex-1 min-w-0 space-y-2.5">
+                  <div class="flex flex-wrap items-center gap-2.5 font-mono text-xs text-slate-400">
+                    <span class="text-[#1E3A8A] font-semibold" data-i18n="exp1-date">[Dec 2013 – Jan 2016]</span>
+                    <span>·</span>
+                    <span data-i18n="exp1-cat">Clinical Software</span>
                   </div>
-                  <span class="inline-block w-fit font-mono text-[11px] font-semibold text-[#2563EB] bg-[#2563EB]/8 px-2 py-0.5 rounded border border-[#2563EB]/20 md:ml-4.5" data-i18n="exp1-cat">
-                    Clinical Software
-                  </span>
-                </div>
-                <div class="md:col-span-9 swiss-card rounded-lg overflow-hidden grid grid-cols-1 sm:grid-cols-12">
-                  <div class="sm:col-span-7 p-5 flex flex-col justify-between space-y-3 min-w-0">
-                    <div>
-                      <h3 class="text-lg font-extrabold text-[#111827]" data-i18n="exp1-org">Clinico Hearing Aid Co., Ltd.</h3>
-                      <p class="text-xs font-semibold text-[#4B5563] mt-0.5" data-i18n="exp1-role">Assistant Software Engineer · New Taipei City</p>
-                      <ul class="mt-3 pt-3 border-t border-[#E5E7EB] space-y-1.5 text-xs sm:text-sm text-[#4B5563] list-disc pl-4">
-                        <li data-i18n="exp1-b1">Maintained ENT surgical software &amp; clinical diagnostic applications.</li>
-                        <li data-i18n="exp1-b2">Operated web server infrastructure and hospital network diagnostics.</li>
-                      </ul>
-                    </div>
-                    <div class="flex flex-wrap gap-1.5 pt-1">
-                      <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-[#F4F5F7] text-[#111827] border border-[#E5E7EB]">C++ / ASP.NET</span>
-                      <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-[#F4F5F7] text-[#111827] border border-[#E5E7EB]">Clinical Systems</span>
-                    </div>
+                  <div>
+                    <h3 class="text-lg sm:text-xl font-extrabold text-[#111827]" data-i18n="exp1-org">MayaMiner Company LTD.</h3>
+                    <p class="text-xs sm:text-sm font-medium text-slate-500 mt-0.5" data-i18n="exp1-role">Assistant Software Engineer · New Taipei City</p>
                   </div>
-                  <div class="sm:col-span-5 relative bg-[#F4F5F7] border-t sm:border-t-0 sm:border-l border-[#E5E7EB] min-h-[200px]">
-                    <img src="./assets/chibi-mayaminer.jpg" alt="Clinico Medical Systems Engineer Diorama" class="w-full h-full sm:absolute sm:inset-0 object-cover object-center">
+                  <ul class="space-y-1.5 text-xs sm:text-sm text-slate-600 leading-relaxed pt-1 list-disc pl-4">
+                    <li data-i18n="exp1-b1">Co-developed hospital information interface software and anesthesia monitoring systems.</li>
+                    <li data-i18n="exp1-b2">Operated web server infrastructure and hospital network diagnostics.</li>
+                  </ul>
+                  <div class="flex flex-wrap gap-2 pt-2">
+                    <span class="bg-slate-100 text-slate-600 rounded-full px-3 py-1 text-xs font-medium">C++ / ASP.NET</span>
+                    <span class="bg-slate-100 text-slate-600 rounded-full px-3 py-1 text-xs font-medium">Clinical Systems</span>
                   </div>
                 </div>
+                <img src="./assets/chibi-mayaminer.jpg" alt="MayaMiner Medical Systems Engineer Diorama"
+                     class="w-[190px] sm:w-[210px] h-[150px] rounded-2xl object-cover flex-shrink-0">
               </article>
 
-              <!-- 2. Yung-Ching Realty -->
-              <article class="experience-card grid grid-cols-1 md:grid-cols-12 gap-5" data-category="business">
-                <div class="md:col-span-3 flex md:flex-col justify-between md:justify-start gap-2 md:pt-1">
-                  <div class="flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded-full bg-[#1E3A8A] ring-4 ring-[#1E3A8A]/10 flex-shrink-0"></span>
-                    <span class="font-mono text-xs font-bold text-[#111827]" data-i18n="exp2-date">Jul 2016 – Aug 2017</span>
+              <!-- 2. Yung-Ching Realty (Jul 2016 – Aug 2017) -->
+              <article class="experience-card flex flex-col md:flex-row md:items-start justify-between gap-6 sm:gap-10" data-category="business">
+                <div class="flex-1 min-w-0 space-y-2.5">
+                  <div class="flex flex-wrap items-center gap-2.5 font-mono text-xs text-slate-400">
+                    <span class="text-[#1E3A8A] font-semibold" data-i18n="exp2-date">[Jul 2016 – Aug 2017]</span>
+                    <span>·</span>
+                    <span data-i18n="exp2-cat">Commercial Sales</span>
                   </div>
-                  <span class="inline-block w-fit font-mono text-[11px] font-semibold text-[#2563EB] bg-[#2563EB]/8 px-2 py-0.5 rounded border border-[#2563EB]/20 md:ml-4.5" data-i18n="exp2-cat">
-                    Commercial Sales
-                  </span>
-                </div>
-                <div class="md:col-span-9 swiss-card rounded-lg overflow-hidden grid grid-cols-1 sm:grid-cols-12">
-                  <div class="sm:col-span-7 p-5 flex flex-col justify-between space-y-3 min-w-0">
-                    <div>
-                      <h3 class="text-lg font-extrabold text-[#111827]" data-i18n="exp2-org">Yung-Ching Realty</h3>
-                      <p class="text-xs font-semibold text-[#4B5563] mt-0.5" data-i18n="exp2-role">Manager of Sales · Taipei City</p>
-                      <ul class="mt-3 pt-3 border-t border-[#E5E7EB] space-y-1.5 text-xs sm:text-sm text-[#4B5563] list-disc pl-4">
-                        <li data-i18n="exp2-b1">Achieved $415,666 USD debut property sellout within 5 hours.</li>
-                        <li data-i18n="exp2-b2">Led high-net-worth client negotiations and contract legal compliance.</li>
-                      </ul>
-                    </div>
-                    <div class="flex flex-wrap gap-1.5 pt-1">
-                      <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-[#F4F5F7] text-[#111827] border border-[#E5E7EB]">5-Hour Sellout</span>
-                      <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-[#F4F5F7] text-[#111827] border border-[#E5E7EB]">Client Negotiation</span>
-                    </div>
+                  <div>
+                    <h3 class="text-lg sm:text-xl font-extrabold text-[#111827]" data-i18n="exp2-org">Yung-Ching Realty</h3>
+                    <p class="text-xs sm:text-sm font-medium text-slate-500 mt-0.5" data-i18n="exp2-role">Manager of Sales · Taipei City</p>
                   </div>
-                  <div class="sm:col-span-5 relative bg-[#F4F5F7] border-t sm:border-t-0 sm:border-l border-[#E5E7EB] min-h-[200px]">
-                    <img src="./assets/chibi-yungching.jpg" alt="Yung-Ching Realty Diorama" class="w-full h-full sm:absolute sm:inset-0 object-cover object-center">
+                  <ul class="space-y-1.5 text-xs sm:text-sm text-slate-600 leading-relaxed pt-1 list-disc pl-4">
+                    <li data-i18n="exp2-b1">Achieved $415,666 USD debut property sellout within 5 hours.</li>
+                    <li data-i18n="exp2-b2">Led high-net-worth client negotiations and contract legal compliance.</li>
+                  </ul>
+                  <div class="flex flex-wrap gap-2 pt-2">
+                    <span class="bg-slate-100 text-slate-600 rounded-full px-3 py-1 text-xs font-medium">5-Hour Sellout</span>
+                    <span class="bg-slate-100 text-slate-600 rounded-full px-3 py-1 text-xs font-medium">Client Negotiation</span>
                   </div>
                 </div>
+                <img src="./assets/chibi-yungching.jpg" alt="Yung-Ching Realty Diorama"
+                     class="w-[190px] sm:w-[210px] h-[150px] rounded-2xl object-cover flex-shrink-0">
               </article>
 
-              <!-- 3. Quanta Computer -->
-              <article class="experience-card grid grid-cols-1 md:grid-cols-12 gap-5" data-category="hardware">
-                <div class="md:col-span-3 flex md:flex-col justify-between md:justify-start gap-2 md:pt-1">
-                  <div class="flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded-full bg-[#1E3A8A] ring-4 ring-[#1E3A8A]/10 flex-shrink-0"></span>
-                    <span class="font-mono text-xs font-bold text-[#111827]" data-i18n="exp3-date">Dec 2019 – Feb 2023</span>
+              <!-- 3. Quanta Computer (Dec 2019 – Feb 2023) -->
+              <article class="experience-card flex flex-col md:flex-row md:items-start justify-between gap-6 sm:gap-10" data-category="hardware">
+                <div class="flex-1 min-w-0 space-y-2.5">
+                  <div class="flex flex-wrap items-center gap-2.5 font-mono text-xs text-slate-400">
+                    <span class="text-[#1E3A8A] font-semibold" data-i18n="exp3-date">[Dec 2019 – Feb 2023]</span>
+                    <span>·</span>
+                    <span data-i18n="exp3-cat">Drivers &amp; Validation</span>
                   </div>
-                  <span class="inline-block w-fit font-mono text-[11px] font-semibold text-[#2563EB] bg-[#2563EB]/8 px-2 py-0.5 rounded border border-[#2563EB]/20 md:ml-4.5" data-i18n="exp3-cat">
-                    Drivers &amp; Validation
-                  </span>
-                </div>
-                <div class="md:col-span-9 swiss-card rounded-lg overflow-hidden grid grid-cols-1 sm:grid-cols-12">
-                  <div class="sm:col-span-7 p-5 flex flex-col justify-between space-y-3 min-w-0">
-                    <div>
-                      <h3 class="text-lg font-extrabold text-[#111827]" data-i18n="exp3-org">Quanta Computer Inc.</h3>
-                      <p class="text-xs font-semibold text-[#4B5563] mt-0.5" data-i18n="exp3-role">Consumer Laptop Driver Engineer · Taoyuan</p>
-                      <ul class="mt-3 pt-3 border-t border-[#E5E7EB] space-y-1.5 text-xs sm:text-sm text-[#4B5563] list-disc pl-4">
-                        <li data-i18n="exp3-b1">Managed official device driver releases across global laptop product lines.</li>
-                        <li data-i18n="exp3-b2">Debugged hardware defects jointly with Intel, AMD, and NVIDIA teams.</li>
-                      </ul>
-                    </div>
-                    <div class="flex flex-wrap gap-1.5 pt-1">
-                      <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-[#F4F5F7] text-[#111827] border border-[#E5E7EB]">Intel · AMD · NVIDIA</span>
-                      <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-[#F4F5F7] text-[#111827] border border-[#E5E7EB]">Driver Release</span>
-                    </div>
+                  <div>
+                    <h3 class="text-lg sm:text-xl font-extrabold text-[#111827]" data-i18n="exp3-org">Quanta Computer Inc.</h3>
+                    <p class="text-xs sm:text-sm font-medium text-slate-500 mt-0.5" data-i18n="exp3-role">Consumer Laptop Driver Engineer · Taoyuan</p>
                   </div>
-                  <div class="sm:col-span-5 relative bg-[#F4F5F7] border-t sm:border-t-0 sm:border-l border-[#E5E7EB] min-h-[200px]">
-                    <img src="./assets/chibi-quanta.jpg" alt="Quanta Computer Engineer Diorama" class="w-full h-full sm:absolute sm:inset-0 object-cover object-center">
+                  <ul class="space-y-1.5 text-xs sm:text-sm text-slate-600 leading-relaxed pt-1 list-disc pl-4">
+                    <li data-i18n="exp3-b1">Managed official device driver releases across global laptop product lines.</li>
+                    <li data-i18n="exp3-b2">Debugged hardware defects jointly with Intel, AMD, and NVIDIA teams.</li>
+                  </ul>
+                  <div class="flex flex-wrap gap-2 pt-2">
+                    <span class="bg-slate-100 text-slate-600 rounded-full px-3 py-1 text-xs font-medium">Intel · AMD · NVIDIA</span>
+                    <span class="bg-slate-100 text-slate-600 rounded-full px-3 py-1 text-xs font-medium">Driver Release</span>
                   </div>
                 </div>
+                <img src="./assets/chibi-quanta.jpg" alt="Quanta Computer Engineer Diorama"
+                     class="w-[190px] sm:w-[210px] h-[150px] rounded-2xl object-cover flex-shrink-0">
               </article>
 
-              <!-- 4. HP / Intel Lab -->
-              <article class="experience-card grid grid-cols-1 md:grid-cols-12 gap-5" data-category="hardware">
-                <div class="md:col-span-3 flex md:flex-col justify-between md:justify-start gap-2 md:pt-1">
-                  <div class="flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded-full bg-[#1E3A8A] ring-4 ring-[#1E3A8A]/10 flex-shrink-0"></span>
-                    <span class="font-mono text-xs font-bold text-[#111827]" data-i18n="exp4-date">2023 – 2025</span>
+              <!-- 4. HP / Intel Security Validation Lab (2023 – 2025) -->
+              <article class="experience-card flex flex-col md:flex-row md:items-start justify-between gap-6 sm:gap-10" data-category="hardware">
+                <div class="flex-1 min-w-0 space-y-2.5">
+                  <div class="flex flex-wrap items-center gap-2.5 font-mono text-xs text-slate-400">
+                    <span class="text-[#1E3A8A] font-semibold" data-i18n="exp4-date">[2023 – 2025]</span>
+                    <span>·</span>
+                    <span data-i18n="exp4-cat">Drivers &amp; Validation</span>
                   </div>
-                  <span class="inline-block w-fit font-mono text-[11px] font-semibold text-[#2563EB] bg-[#2563EB]/8 px-2 py-0.5 rounded border border-[#2563EB]/20 md:ml-4.5" data-i18n="exp4-cat">
-                    Drivers &amp; Validation
-                  </span>
-                </div>
-                <div class="md:col-span-9 swiss-card rounded-lg overflow-hidden grid grid-cols-1 sm:grid-cols-12">
-                  <div class="sm:col-span-7 p-5 flex flex-col justify-between space-y-3 min-w-0">
-                    <div>
-                      <h3 class="text-lg font-extrabold text-[#111827]" data-i18n="exp4-org">HP / Intel Security Validation Laboratory</h3>
-                      <p class="text-xs font-semibold text-[#4B5563] mt-0.5" data-i18n="exp4-role">Security Validation Engineer · Taipei</p>
-                      <ul class="mt-3 pt-3 border-t border-[#E5E7EB] space-y-1.5 text-xs sm:text-sm text-[#4B5563] list-disc pl-4">
-                        <li data-i18n="exp4-b1">Conducted system-level security validation at the joint HP/Intel lab.</li>
-                        <li data-i18n="exp4-b2">Verified Secure Boot, TPM encryption, and enterprise firmware integrity.</li>
-                      </ul>
-                    </div>
-                    <div class="flex flex-wrap gap-1.5 pt-1">
-                      <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-[#F4F5F7] text-[#111827] border border-[#E5E7EB]">Secure Boot / TPM</span>
-                      <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-[#F4F5F7] text-[#111827] border border-[#E5E7EB]">HP &amp; Intel Lab</span>
-                    </div>
+                  <div>
+                    <h3 class="text-lg sm:text-xl font-extrabold text-[#111827]" data-i18n="exp4-org">HP / Intel Security Validation Laboratory</h3>
+                    <p class="text-xs sm:text-sm font-medium text-slate-500 mt-0.5" data-i18n="exp4-role">Security Validation Engineer · Taipei</p>
                   </div>
-                  <div class="sm:col-span-5 relative bg-[#F4F5F7] border-t sm:border-t-0 sm:border-l border-[#E5E7EB] min-h-[200px]">
-                    <img src="./assets/chibi-hp-intel.jpg" alt="HP & Intel Security Lab Diorama" class="w-full h-full sm:absolute sm:inset-0 object-cover object-center">
+                  <ul class="space-y-1.5 text-xs sm:text-sm text-slate-600 leading-relaxed pt-1 list-disc pl-4">
+                    <li data-i18n="exp4-b1">Conducted system-level security validation at the joint HP/Intel lab.</li>
+                    <li data-i18n="exp4-b2">Verified Secure Boot, TPM encryption, and enterprise firmware integrity.</li>
+                  </ul>
+                  <div class="flex flex-wrap gap-2 pt-2">
+                    <span class="bg-slate-100 text-slate-600 rounded-full px-3 py-1 text-xs font-medium">Secure Boot / TPM</span>
+                    <span class="bg-slate-100 text-slate-600 rounded-full px-3 py-1 text-xs font-medium">HP &amp; Intel Lab</span>
                   </div>
                 </div>
+                <img src="./assets/chibi-hp-intel.jpg" alt="HP & Intel Security Lab Diorama"
+                     class="w-[190px] sm:w-[210px] h-[150px] rounded-2xl object-cover flex-shrink-0">
               </article>
 
-              <!-- 5. CGU Brain Ma Lab (AI Research) -->
-              <article class="experience-card grid grid-cols-1 md:grid-cols-12 gap-5" data-category="ai">
-                <div class="md:col-span-3 flex md:flex-col justify-between md:justify-start gap-2 md:pt-1">
-                  <div class="flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded-full bg-[#2563EB] ring-4 ring-[#2563EB]/15 flex-shrink-0"></span>
-                    <span class="font-mono text-xs font-bold text-[#111827]" data-i18n="exp5-date">Feb 2026 – Present</span>
+              <!-- 5. CGU Brain Ma Lab (Feb 2026 – Present) [AI Research] -->
+              <article class="experience-card flex flex-col md:flex-row md:items-start justify-between gap-6 sm:gap-10" data-category="ai">
+                <div class="flex-1 min-w-0 space-y-2.5">
+                  <div class="flex flex-wrap items-center gap-2.5 font-mono text-xs text-slate-400">
+                    <span class="text-[#2563EB] font-semibold" data-i18n="exp5-date">[Feb 2026 – Present]</span>
+                    <span>·</span>
+                    <span data-i18n="exp5-cat">AI Research</span>
                   </div>
-                  <span class="inline-block w-fit font-mono text-[11px] font-semibold text-[#1E3A8A] bg-[#1E3A8A]/10 px-2 py-0.5 rounded border border-[#1E3A8A]/20 md:ml-4.5" data-i18n="exp5-cat">
-                    AI Research
-                  </span>
-                </div>
-                <div class="md:col-span-9 swiss-card rounded-lg overflow-hidden grid grid-cols-1 sm:grid-cols-12">
-                  <div class="sm:col-span-7 p-5 flex flex-col justify-between space-y-3 min-w-0">
-                    <div>
-                      <h3 class="text-lg font-extrabold text-[#111827]" data-i18n="exp5-org">Chang Gung University · Brain Ma Lab</h3>
-                      <p class="text-xs font-semibold text-[#4B5563] mt-0.5" data-i18n="exp5-role">M.S. Student in AI · Taoyuan</p>
-                      <ul class="mt-3 pt-3 border-t border-[#E5E7EB] space-y-1.5 text-xs sm:text-sm text-[#4B5563] list-disc pl-4">
-                        <li data-i18n="exp5-b1">Researching 3D nnDetection for abdominal CT lymph node detection.</li>
-                        <li data-i18n="exp5-b2">Developing real-time endoscopic surgical segmentation for colorectal surgery.</li>
-                      </ul>
-                    </div>
-                    <div class="flex flex-wrap gap-1.5 pt-1">
-                      <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-[#F4F5F7] text-[#111827] border border-[#E5E7EB]">Medical Imaging AI</span>
-                      <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-[#F4F5F7] text-[#111827] border border-[#E5E7EB]">Python / PyTorch</span>
-                    </div>
+                  <div>
+                    <h3 class="text-lg sm:text-xl font-extrabold text-[#111827]" data-i18n="exp5-org">Chang Gung University · Brain Ma Lab</h3>
+                    <p class="text-xs sm:text-sm font-medium text-slate-500 mt-0.5" data-i18n="exp5-role">M.S. Student in AI · Taoyuan</p>
                   </div>
-                  <div class="sm:col-span-5 relative bg-[#F4F5F7] border-t sm:border-t-0 sm:border-l border-[#E5E7EB] min-h-[200px]">
-                    <img src="./assets/chibi-cgu-ai.jpg?v=2" alt="Brain Ma Lab Diorama" class="w-full h-full sm:absolute sm:inset-0 object-cover object-center">
+                  <ul class="space-y-1.5 text-xs sm:text-sm text-slate-600 leading-relaxed pt-1 list-disc pl-4">
+                    <li data-i18n="exp5-b1">Researching 3D nnDetection for abdominal CT lymph node detection.</li>
+                    <li data-i18n="exp5-b2">Developing real-time endoscopic surgical segmentation for colorectal surgery.</li>
+                  </ul>
+                  <div class="flex flex-wrap gap-2 pt-2">
+                    <span class="bg-slate-100 text-slate-600 rounded-full px-3 py-1 text-xs font-medium">Medical Imaging AI</span>
+                    <span class="bg-slate-100 text-slate-600 rounded-full px-3 py-1 text-xs font-medium">Python / PyTorch</span>
                   </div>
                 </div>
+                <img src="./assets/chibi-cgu-ai.jpg?v=2" alt="Brain Ma Lab Diorama"
+                     class="w-[190px] sm:w-[210px] h-[150px] rounded-2xl object-cover flex-shrink-0">
               </article>
 
-              <!-- 6. KMU & Hungkuang (AI Instructor ONLY) -->
-              <article class="experience-card grid grid-cols-1 md:grid-cols-12 gap-5" data-category="instructor">
-                <div class="md:col-span-3 flex md:flex-col justify-between md:justify-start gap-2 md:pt-1">
-                  <div class="flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded-full bg-[#2563EB] ring-4 ring-[#2563EB]/15 flex-shrink-0"></span>
-                    <span class="font-mono text-xs font-bold text-[#111827]" data-i18n="inst-period">2026 – Present</span>
+              <!-- 6. KMU & Hungkuang (Jul 2026 - Present) [AI Instructor ONLY] -->
+              <article class="experience-card flex flex-col md:flex-row md:items-start justify-between gap-6 sm:gap-10" data-category="instructor">
+                <div class="flex-1 min-w-0 space-y-2.5">
+                  <div class="flex flex-wrap items-center gap-2.5 font-mono text-xs text-slate-400">
+                    <span class="text-[#2563EB] font-semibold" data-i18n="inst-period">[Jul 2026 - Present]</span>
+                    <span>·</span>
+                    <span data-i18n="inst-cat">AI Instructor</span>
                   </div>
-                  <span class="inline-block w-fit font-mono text-[11px] font-semibold text-[#1E3A8A] bg-[#1E3A8A]/10 px-2 py-0.5 rounded border border-[#1E3A8A]/20 md:ml-4.5" data-i18n="inst-cat">
-                    AI Instructor
-                  </span>
-                </div>
-                <div class="md:col-span-9 swiss-card rounded-lg overflow-hidden grid grid-cols-1 sm:grid-cols-12">
-                  <div class="sm:col-span-7 p-5 flex flex-col justify-between space-y-3 min-w-0">
-                    <div>
-                      <h3 class="text-lg font-extrabold text-[#111827]" data-i18n="inst-org">KMU &amp; Hungkuang University</h3>
-                      <p class="text-xs font-semibold text-[#4B5563] mt-0.5" data-i18n="inst-role">AI Healthcare Instructor &amp; Mentor · Taichung &amp; Kaohsiung</p>
-                      <ul class="mt-3 pt-3 border-t border-[#E5E7EB] space-y-1.5 text-xs sm:text-sm text-[#4B5563] list-disc pl-4">
-                        <li data-i18n="inst-p1"><strong>KMU 7-Day Camp:</strong> Mentored students &amp; care pros on elderly AI prototypes; won 2nd Place &amp; Best Presentation.</li>
-                        <li data-i18n="inst-p2"><strong>Hungkuang Nursing:</strong> Taught AI imaging fundamentals, practical recognition errors, and daily care innovation.</li>
-                      </ul>
-                    </div>
-                    <div class="flex flex-wrap gap-1.5 pt-1">
-                      <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-[#F4F5F7] text-[#111827] border border-[#E5E7EB]">KMU Camp</span>
-                      <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-[#F4F5F7] text-[#111827] border border-[#E5E7EB]">Hungkuang Nursing</span>
-                    </div>
+                  <div>
+                    <h3 class="text-lg sm:text-xl font-extrabold text-[#111827]" data-i18n="inst-org">KMU &amp; Hungkuang University</h3>
+                    <p class="text-xs sm:text-sm font-medium text-slate-500 mt-0.5" data-i18n="inst-role">AI Healthcare Instructor &amp; Mentor · Taichung &amp; Kaohsiung</p>
                   </div>
-                  <div class="sm:col-span-5 relative bg-[#F4F5F7] border-t sm:border-t-0 sm:border-l border-[#E5E7EB] min-h-[200px]">
-                    <img src="./assets/chibi-instructor.jpg" alt="AI Lecturer Diorama" class="w-full h-full sm:absolute sm:inset-0 object-cover object-center">
+                  <ul class="space-y-1.5 text-xs sm:text-sm text-slate-600 leading-relaxed pt-1 list-disc pl-4">
+                    <li data-i18n="inst-p1"><strong>KMU 7-Day Camp:</strong> Mentored students &amp; care pros on elderly AI prototypes; won 2nd Place &amp; Best Presentation.</li>
+                    <li data-i18n="inst-p2"><strong>Hungkuang Nursing:</strong> Taught AI imaging fundamentals, practical recognition errors, and daily care innovation.</li>
+                  </ul>
+                  <div class="flex flex-wrap gap-2 pt-2">
+                    <span class="bg-slate-100 text-slate-600 rounded-full px-3 py-1 text-xs font-medium">KMU Camp</span>
+                    <span class="bg-slate-100 text-slate-600 rounded-full px-3 py-1 text-xs font-medium">Hungkuang Nursing</span>
                   </div>
                 </div>
+                <img src="./assets/chibi-instructor.jpg" alt="AI Lecturer Diorama"
+                     class="w-[190px] sm:w-[210px] h-[150px] rounded-2xl object-cover flex-shrink-0">
               </article>
 
             </div>
           </div>
         </section>
 
-        <!-- 03 / ONGOING RESEARCH (#F4F5F7 Alternating Section) -->
-        <section id="research" class="bg-[#F4F5F7] border-b border-[#E5E7EB] px-6 sm:px-10 lg:px-12 py-14 sm:py-16 scroll-mt-16">
-          <div class="space-y-8">
-            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-[#E5E7EB] pb-4">
-              <div>
-                <span class="font-mono text-xs font-bold tracking-widest text-[#2563EB] uppercase">03 / Medical Vision</span>
-                <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#111827] mt-1" data-i18n="research-spotlight-title">
-                  Ongoing Research
-                </h2>
-              </div>
-              <span class="font-mono text-xs text-[#6B7280]" data-i18n="res-unpublished">Ongoing Research · Unpublished</span>
+        <!-- 03 / ONGOING RESEARCH (Unframed Images, Title & Info Below Images) -->
+        <section id="research" class="py-24 sm:py-32 scroll-mt-16">
+          <div class="space-y-10">
+            <div>
+              <span class="font-mono text-xs font-bold tracking-widest text-[#2563EB] uppercase">03 / Medical Vision</span>
+              <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#111827] mt-1.5" data-i18n="research-spotlight-title">
+                Ongoing Research
+              </h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
               <!-- Study 1 -->
-              <div class="swiss-card rounded-lg p-5 flex flex-col justify-between space-y-4">
-                <div>
-                  <h3 class="text-base sm:text-lg font-extrabold text-[#111827] leading-snug" data-i18n="res1-title">
-                    nnDetection for Automated CT Lymph Node Detection
-                  </h3>
-                  <p class="font-mono text-xs text-[#6B7280] mt-1" data-i18n="res-unpublished">
-                    Ongoing Research · Unpublished
-                  </p>
-                </div>
-                <div class="relative overflow-hidden rounded-md bg-[#111827] border border-[#E5E7EB] aspect-[4/3] w-full flex items-center justify-center p-2 cursor-pointer poster-lightbox-trigger group"
+              <div class="space-y-4">
+                <div class="relative overflow-hidden rounded-2xl bg-[#111827] aspect-[4/3] w-full flex items-center justify-center p-2 cursor-pointer poster-lightbox-trigger group"
                      data-img="./assets/research-ct-lymphnode.png" data-title="nnDetection for Automated CT Lymph Node Detection">
                   <img src="./assets/research-ct-lymphnode.png" alt="CT Lymph Node Prediction" class="w-full h-full object-contain group-hover:scale-[1.02] transition-transform duration-300">
-                  <span class="absolute bottom-2.5 right-2.5 bg-white text-[#111827] px-2.5 py-1 rounded text-[11px] font-mono font-semibold border border-[#E5E7EB] flex items-center gap-1">
+                  <span class="absolute bottom-3 right-3 bg-white/95 text-[#111827] px-3 py-1 rounded-full text-[11px] font-mono font-semibold flex items-center gap-1">
                     <i data-lucide="zoom-in" class="w-3.5 h-3.5 text-[#1E3A8A]"></i> <span data-i18n="km-zoom">Zoom</span>
                   </span>
+                </div>
+                <div class="space-y-1">
+                  <h3 class="text-base sm:text-lg font-bold text-[#111827] leading-snug" data-i18n="res1-title">
+                    nnDetection for Automated CT Lymph Node Detection
+                  </h3>
+                  <p class="font-mono text-xs text-slate-400" data-i18n="res-unpublished">
+                    Ongoing Research · Unpublished
+                  </p>
                 </div>
               </div>
 
               <!-- Study 2 -->
-              <div class="swiss-card rounded-lg p-5 flex flex-col justify-between space-y-4">
-                <div>
-                  <h3 class="text-base sm:text-lg font-extrabold text-[#111827] leading-snug" data-i18n="res2-title">
-                    Real-time endoscopic surgery of vessel prediction
-                  </h3>
-                  <p class="font-mono text-xs text-[#6B7280] mt-1" data-i18n="res-unpublished">
-                    Ongoing Research · Unpublished
-                  </p>
-                </div>
-                <div class="relative overflow-hidden rounded-md bg-[#111827] border border-[#E5E7EB] aspect-[4/3] w-full flex items-center justify-center p-2 cursor-pointer poster-lightbox-trigger group"
+              <div class="space-y-4">
+                <div class="relative overflow-hidden rounded-2xl bg-[#111827] aspect-[4/3] w-full flex items-center justify-center p-2 cursor-pointer poster-lightbox-trigger group"
                      data-img="./assets/research-laparoscopic-vessel.jpg" data-title="Real-time endoscopic surgery of vessel prediction">
                   <img src="./assets/research-laparoscopic-vessel.jpg" alt="Real-time endoscopic surgery of vessel prediction" class="w-full h-full object-contain group-hover:scale-[1.02] transition-transform duration-300">
-                  <span class="absolute bottom-2.5 right-2.5 bg-white text-[#111827] px-2.5 py-1 rounded text-[11px] font-mono font-semibold border border-[#E5E7EB] flex items-center gap-1">
+                  <span class="absolute bottom-3 right-3 bg-white/95 text-[#111827] px-3 py-1 rounded-full text-[11px] font-mono font-semibold flex items-center gap-1">
                     <i data-lucide="zoom-in" class="w-3.5 h-3.5 text-[#1E3A8A]"></i> <span data-i18n="km-zoom">Zoom</span>
                   </span>
+                </div>
+                <div class="space-y-1">
+                  <h3 class="text-base sm:text-lg font-bold text-[#111827] leading-snug" data-i18n="res2-title">
+                    Real-time endoscopic surgery of vessel prediction
+                  </h3>
+                  <p class="font-mono text-xs text-slate-400" data-i18n="res-unpublished">
+                    Ongoing Research · Unpublished
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- 04 / CONTACT & FOOTER (#FAFAFA Section) -->
-        <footer id="contact" class="bg-[#FAFAFA] px-6 sm:px-10 lg:px-12 py-14 sm:py-16 scroll-mt-16">
-          <div class="text-center space-y-6">
+        <!-- CONTACT & FOOTER -->
+        <footer id="contact" class="pt-24 pb-64 sm:pt-28 sm:pb-80 scroll-mt-16">
+          <div class="space-y-6">
             <div class="space-y-2">
               <span class="font-mono text-xs font-bold tracking-widest text-[#2563EB] uppercase">04 / Connect</span>
               <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#111827]" data-i18n="contact-title">
                 Input: Your Idea &rarr; Output: Real AI
               </h2>
-              <p class="text-xs sm:text-sm text-[#4B5563] max-w-lg mx-auto" data-i18n="contact-sub">
+              <p class="text-xs sm:text-sm text-slate-500 max-w-lg" data-i18n="contact-sub">
                 Zero hallucinations, pure engineering — follow my commits or ping my inbox to build smart systems together.
               </p>
             </div>
 
-            <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+            <div class="flex flex-wrap items-center gap-3 pt-2">
               <a href="mailto:fttmp66@gmail.com"
-                 class="inline-flex items-center gap-2 px-4 py-2.5 rounded-md bg-white border border-[#E5E7EB] hover:border-[#2563EB] text-xs font-bold text-[#111827] hover:text-[#1E3A8A] transition-colors">
-                <i data-lucide="mail" class="w-4 h-4 text-[#2563EB]"></i> fttmp66@gmail.com
+                 class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-xs font-bold text-[#111827] hover:text-[#1E3A8A] transition-colors">
+                <i data-lucide="mail" class="w-3.5 h-3.5 text-[#2563EB]"></i> fttmp66@gmail.com
               </a>
               <a href="https://www.linkedin.com/in/%E9%BB%83%E5%A9%B7%E7%90%B0-ting-yen-huang-57aa9772/" target="_blank" rel="noopener noreferrer"
-                 class="inline-flex items-center gap-2 px-4 py-2.5 rounded-md bg-white border border-[#E5E7EB] hover:border-[#2563EB] text-xs font-bold text-[#111827] hover:text-[#1E3A8A] transition-colors">
-                <svg class="w-4 h-4 text-[#2563EB]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg> LinkedIn
+                 class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-xs font-bold text-[#111827] hover:text-[#1E3A8A] transition-colors">
+                <svg class="w-3.5 h-3.5 text-[#2563EB]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg> LinkedIn
               </a>
               <a href="https://github.com/fttmp66-0c0o0d0e0r0/myron-huang-portfolio" target="_blank" rel="noopener noreferrer"
-                 class="inline-flex items-center gap-2 px-4 py-2.5 rounded-md bg-[#111827] hover:bg-[#1E3A8A] text-xs font-bold text-white transition-colors">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg> GitHub
+                 class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#111827] hover:bg-[#1E3A8A] text-xs font-bold text-white transition-colors">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg> GitHub
               </a>
             </div>
 
-            <div class="pt-8 border-t border-[#E5E7EB] flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-[#6B7280] font-mono">
+            <div class="pt-12 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-slate-400 font-mono">
               <p>© 2026 Ting-Yen (Myron) Huang · M1461035</p>
               <p>Chang Gung University · Taoyuan &amp; Taipei, Taiwan</p>
             </div>
@@ -786,23 +767,23 @@
 
   <!-- Lightbox Zoom Preview Modal (Preserved & Self-Contained) -->
   <div id="poster-modal" class="fixed inset-0 z-50 bg-[#111827]/85 backdrop-blur-sm hidden items-center justify-center p-4 sm:p-6">
-    <div class="relative max-w-4xl max-h-[92vh] bg-white rounded-lg p-3 sm:p-4 border border-[#E5E7EB] flex flex-col items-center">
-      <div class="w-full flex items-center justify-between pb-2.5 px-2 border-b border-[#E5E7EB]">
+    <div class="relative max-w-4xl max-h-[92vh] bg-white rounded-2xl p-3 sm:p-4 flex flex-col items-center">
+      <div class="w-full flex items-center justify-between pb-2.5 px-2">
         <h3 id="modal-title" class="font-bold text-[#111827] text-sm flex items-center gap-2">
           <i data-lucide="image" class="w-4 h-4 text-[#2563EB]"></i>
           <span id="modal-title-text">Preview</span>
         </h3>
-        <button id="modal-close" type="button" class="p-1.5 rounded-md hover:bg-[#F4F5F7] text-[#4B5563] hover:text-[#111827] transition-colors cursor-pointer" aria-label="Close modal">
+        <button id="modal-close" type="button" class="p-1.5 rounded-full hover:bg-slate-100 text-slate-500 hover:text-[#111827] transition-colors cursor-pointer" aria-label="Close modal">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
       <div class="overflow-auto max-h-[80vh] p-2 w-full flex justify-center">
-        <img id="modal-img" src="" alt="Preview" class="max-w-full h-auto rounded mx-auto">
+        <img id="modal-img" src="" alt="Preview" class="max-w-full h-auto rounded-xl mx-auto">
       </div>
     </div>
   </div>
 
-  <!-- Self-Contained JavaScript -->
+  <!-- Self-Contained JavaScript (EN / 繁中 / 简中 / FR Multilingual Cycle) -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const initIcons = () => {
@@ -810,7 +791,31 @@
       };
       initIcons();
 
-      // 1. Experience Category Filtering
+      // 1. GIF-like Flash Interval for Kinmen Recruitment Badge
+      const kinmenNewPill = document.getElementById('kinmen-new-pill');
+      if (kinmenNewPill) {
+        setInterval(() => {
+          kinmenNewPill.classList.toggle('flash-alt');
+        }, 450);
+      }
+
+      // 2. Consistent Precision Smooth Scroll for About, Experience & Research
+      document.querySelectorAll('.nav-anchor').forEach(link => {
+        link.addEventListener('click', (e) => {
+          const href = link.getAttribute('href');
+          if (href && href.startsWith('#')) {
+            const target = document.querySelector(href);
+            if (target) {
+              e.preventDefault();
+              const topY = target.getBoundingClientRect().top + window.scrollY - 64;
+              window.scrollTo({ top: topY, behavior: 'smooth' });
+              history.pushState(null, '', href);
+            }
+          }
+        });
+      });
+
+      // 3. Experience Category Filtering
       const filterBtns = document.querySelectorAll('.filter-pill');
       const expCards = document.querySelectorAll('.experience-card');
 
@@ -823,7 +828,7 @@
           expCards.forEach(card => {
             const categories = (card.getAttribute('data-category') || '').split(' ');
             if (filterValue === 'all' || categories.includes(filterValue)) {
-              card.style.display = 'grid';
+              card.style.display = 'flex';
             } else {
               card.style.display = 'none';
             }
@@ -831,17 +836,7 @@
         });
       });
 
-      // 2. Smooth Scroll for Scroll-to-Explore Button & Navbar Links
-      const scrollExploreBtn = document.getElementById('scroll-explore-btn');
-      if (scrollExploreBtn) {
-        scrollExploreBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          const aboutEl = document.getElementById('about');
-          if (aboutEl) aboutEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-      }
-
-      // 3. Research Zoom Preview Modal
+      // 4. Research Zoom Preview Modal
       const modal = document.getElementById('poster-modal');
       const modalImg = document.getElementById('modal-img');
       const modalTitleText = document.getElementById('modal-title-text');
@@ -877,16 +872,15 @@
         });
       }
 
-      // 4. Trilingual Support (EN / zh-TW / zh-CN)
+      // 5. Quad-Lingual Support (EN -> zh-TW -> zh-CN -> FR -> EN)
       const i18n = {
         'en': {
           'btn': '繁中',
-          'nav-briefing': 'AI Briefing',
+          'htmlLang': 'en',
           'nav-about': 'About',
           'nav-experience': 'Experience',
           'nav-research': 'Research',
-          'nav-contact': 'Contact',
-          'nav-kinmen': 'Kinmen Challenge &rarr;',
+          'nav-kinmen': 'Kinmen Bike Challenge &rarr;',
           'ai-badge': 'AI BRIEFING',
           'ai-sync': '08:00 TST',
           'ai-title': 'Daily & Weekly AI News',
@@ -909,16 +903,19 @@
           'ai-read-short': 'Read',
           'hero-eyebrow': 'CGU M.S. in AI · Ex-HP · Quanta',
           'hero-slogan': 'Input: Your Idea &rarr; Output: Real AI',
-          'hero-desc': 'Medical Imaging AI Graduate Researcher bridging low-level laptop driver engineering, hardware security validation, and clinical computer vision systems in Taoyuan &amp; Taipei, Taiwan.',
           'hero-scroll': 'Scroll to explore',
-          'hero-kinmen': 'Kinmen Bowknot Cycling Challenge (NT$5,000 Bonus)',
           'about-title': 'About &amp; Certifications',
           'about-loc': 'Taoyuan &amp; Taipei, Taiwan',
           'about-name-label': 'Name',
           'about-program-label': 'Program',
+          'about-program-val': 'Chang Gung University · M.S. in Artificial Intelligence',
           'about-student-label': 'Student ID',
           'cert-title': 'Verified Technical Certifications',
           'cert-count': '3 Credentials',
+          'cert1-desc': 'Enterprise Linux administration &amp; networking.',
+          'cert2-desc': 'Frontend application &amp; web UX engineering.',
+          'cert3-desc': 'Enterprise system implementation standards.',
+          'avatar-role': 'CGU AI Graduate Researcher',
           'exp-title': 'Experience Timeline',
           'filter-all': 'All Roles',
           'filter-software': 'Clinical Software',
@@ -927,37 +924,37 @@
           'filter-ai': 'AI Research',
           'filter-instructor': 'AI Instructor',
           'exp1-cat': 'Clinical Software',
-          'exp1-date': 'Dec 2013 – Jan 2016',
-          'exp1-org': 'Clinico Hearing Aid Co., Ltd.',
+          'exp1-date': '[Dec 2013 – Jan 2016]',
+          'exp1-org': 'MayaMiner Company LTD.',
           'exp1-role': 'Assistant Software Engineer · New Taipei City',
-          'exp1-b1': 'Maintained ENT surgical software &amp; clinical diagnostic applications.',
+          'exp1-b1': 'Co-developed hospital information interface software and anesthesia monitoring systems.',
           'exp1-b2': 'Operated web server infrastructure and hospital network diagnostics.',
           'exp2-cat': 'Commercial Sales',
-          'exp2-date': 'Jul 2016 – Aug 2017',
+          'exp2-date': '[Jul 2016 – Aug 2017]',
           'exp2-org': 'Yung-Ching Realty',
           'exp2-role': 'Manager of Sales · Taipei City',
           'exp2-b1': 'Achieved $415,666 USD debut property sellout within 5 hours.',
           'exp2-b2': 'Led high-net-worth client negotiations and contract legal compliance.',
           'exp3-cat': 'Drivers &amp; Validation',
-          'exp3-date': 'Dec 2019 – Feb 2023',
+          'exp3-date': '[Dec 2019 – Feb 2023]',
           'exp3-org': 'Quanta Computer Inc.',
           'exp3-role': 'Consumer Laptop Driver Engineer · Taoyuan',
           'exp3-b1': 'Managed official device driver releases across global laptop product lines.',
           'exp3-b2': 'Debugged hardware defects jointly with Intel, AMD, and NVIDIA teams.',
           'exp4-cat': 'Drivers &amp; Validation',
-          'exp4-date': '2023 – 2025',
+          'exp4-date': '[2023 – 2025]',
           'exp4-org': 'HP / Intel Security Validation Laboratory',
           'exp4-role': 'Security Validation Engineer · Taipei',
           'exp4-b1': 'Conducted system-level security validation at the joint HP/Intel lab.',
           'exp4-b2': 'Verified Secure Boot, TPM encryption, and enterprise firmware integrity.',
           'exp5-cat': 'AI Research',
-          'exp5-date': 'Feb 2026 – Present',
+          'exp5-date': '[Feb 2026 – Present]',
           'exp5-org': 'Chang Gung University · Brain Ma Lab',
           'exp5-role': 'M.S. Student in AI · Taoyuan',
           'exp5-b1': 'Researching 3D nnDetection for abdominal CT lymph node detection.',
           'exp5-b2': 'Developing real-time endoscopic surgical segmentation for colorectal surgery.',
           'inst-cat': 'AI Instructor',
-          'inst-period': '2026 – Present',
+          'inst-period': '[Jul 2026 - Present]',
           'inst-org': 'KMU &amp; Hungkuang University',
           'inst-role': 'AI Healthcare Instructor &amp; Mentor · Taichung &amp; Kaohsiung',
           'inst-p1': '<strong>KMU 7-Day Camp:</strong> Mentored students &amp; care pros on elderly AI prototypes; won 2nd Place &amp; Best Presentation.',
@@ -972,12 +969,11 @@
         },
         'zh-TW': {
           'btn': '简中',
-          'nav-briefing': 'AI 情報站',
+          'htmlLang': 'zh-Hant',
           'nav-about': '關於我',
           'nav-experience': '經歷',
           'nav-research': '研究',
-          'nav-contact': '聯繫',
-          'nav-kinmen': '金門單車挑戰 &rarr;',
+          'nav-kinmen': '金門單車挑戰者招募中 &rarr;',
           'ai-badge': 'AI 情報站',
           'ai-sync': '08:00 TST',
           'ai-title': '每日 / 每週 AI 新聞精選',
@@ -1000,16 +996,19 @@
           'ai-read-short': '閱讀',
           'hero-eyebrow': '長庚大學 AI 碩士 · 前 HP · 廣達',
           'hero-slogan': '輸入：你的點子 &rarr; 輸出：真實 AI',
-          'hero-desc': '醫療影像 AI 研究生，跨越筆電底層驅動程式工程、硬體資安驗證與臨床電腦視覺系統開發。',
           'hero-scroll': '向下瀏覽作品集',
-          'hero-kinmen': '金門五日單車蝴蝶之旅挑戰賽（加碼獎金 NT$5,000）',
           'about-title': '個人簡介與專業認證',
           'about-loc': '桃園 &amp; 台北 · 台灣',
           'about-name-label': '姓名',
           'about-program-label': '就讀學程',
+          'about-program-val': '長庚大學 · 人工智慧碩士班',
           'about-student-label': '碩士學號',
           'cert-title': '已驗證之專業技術證照',
           'cert-count': '3 張證照',
+          'cert1-desc': '企業級 Linux 系統管理、磁碟分割與網路服務配置。',
+          'cert2-desc': '網頁前端標準開發架構、事件處理與使用者介面設計。',
+          'cert3-desc': '企業級系統建置與核心技術實作官方認證。',
+          'avatar-role': '長庚大學 AI 碩士班研究生',
           'exp-title': '經歷時間軸',
           'filter-all': '全部經歷',
           'filter-software': '臨床醫療軟體',
@@ -1018,37 +1017,37 @@
           'filter-ai': 'AI Research',
           'filter-instructor': 'AI 醫療講師',
           'exp1-cat': '臨床醫療軟體',
-          'exp1-date': 'Dec 2013 – Jan 2016',
-          'exp1-org': '科林助聽器 (Clinico)',
+          'exp1-date': '[Dec 2013 – Jan 2016]',
+          'exp1-org': 'MayaMiner Company LTD.',
           'exp1-role': '助理軟體工程師 · 新北市',
-          'exp1-b1': '維護耳鼻喉科臨床診斷工具與手術相關醫療軟體系統。',
+          'exp1-b1': '協作開發醫院資訊界接軟體與麻醉監測系統。',
           'exp1-b2': '負責醫院端網頁伺服器運作維護與網路環境異常診斷。',
           'exp2-cat': '商務銷售管理',
-          'exp2-date': 'Jul 2016 – Aug 2017',
+          'exp2-date': '[Jul 2016 – Aug 2017]',
           'exp2-org': '永慶房屋 (Yung-Ching Realty)',
           'exp2-role': '業務襄理 · 台北市',
           'exp2-b1': '創下首案接手後 5 小時內以 41.5 萬美元成交紀錄。',
           'exp2-b2': '主導高資產客戶談判、合約法規檢核與資產規劃管理。',
           'exp3-cat': '驅動與系統驗證',
-          'exp3-date': 'Dec 2019 – Feb 2023',
+          'exp3-date': '[Dec 2019 – Feb 2023]',
           'exp3-org': '廣達電腦 (Quanta Computer)',
           'exp3-role': '消費型筆電驅動工程師 · 桃園',
           'exp3-b1': '統籌全球各系列消費性筆記型電腦之官方驅動程式發布流程。',
           'exp3-b2': '與 Intel、AMD、NVIDIA 技術團隊協作解決硬體與相容性異常。',
           'exp4-cat': '驅動與系統驗證',
-          'exp4-date': '2023 – 2025',
+          'exp4-date': '[2023 – 2025]',
           'exp4-org': 'HP / Intel 資安驗證實驗室',
           'exp4-role': '資安系統驗證工程師 · 台北',
           'exp4-b1': '於 HP 與 Intel 聯合實驗室執行商用筆電系統級資安驗證。',
           'exp4-b2': '負責 Secure Boot、TPM 加密機制與韌體完整性弱點檢測。',
           'exp5-cat': 'AI Research',
-          'exp5-date': 'Feb 2026 – Present',
+          'exp5-date': '[Feb 2026 – Present]',
           'exp5-org': '長庚大學 · Brain Ma Lab',
           'exp5-role': '人工智慧碩士班研究生 · 桃園',
           'exp5-b1': '進行 3D nnDetection 應用於腹部 CT 淋巴結自動偵測研究。',
           'exp5-b2': '開發直腸外科微創腹腔鏡手術之即時內視鏡影像分割技術。',
           'inst-cat': 'AI 醫療講師',
-          'inst-period': '2026 – Present',
+          'inst-period': '[Jul 2026 - Present]',
           'inst-org': '高雄醫學大學 &amp; 弘光科技大學護理系',
           'inst-role': '智慧醫療 AI 講師與輔導導師 · 台中 &amp; 高雄',
           'inst-p1': '<strong>KMU 七日夏令營：</strong>指導大學、碩士生與高齡照護業界人士開發 AI 原型與展示影片，帶領兩梯次分獲第二名與最佳簡報獎。',
@@ -1062,13 +1061,12 @@
           'contact-sub': '無幻覺 · 純粹實作落地。歡迎追蹤我的 GitHub 與 LinkedIn，或來信共創有趣專案！'
         },
         'zh-CN': {
-          'btn': 'EN',
-          'nav-briefing': 'AI 情报站',
+          'btn': 'FR',
+          'htmlLang': 'zh-Hans',
           'nav-about': '关于我',
           'nav-experience': '经历',
           'nav-research': '研究',
-          'nav-contact': '联系',
-          'nav-kinmen': '金门单车挑战 &rarr;',
+          'nav-kinmen': '金门单车挑战者招募中 &rarr;',
           'ai-badge': 'AI 情报站',
           'ai-sync': '08:00 TST',
           'ai-title': '每日 / 每周 AI 新闻精选',
@@ -1091,16 +1089,19 @@
           'ai-read-short': '阅读',
           'hero-eyebrow': '长庚大学 AI 硕士 · 前 HP · 广达',
           'hero-slogan': '输入：你的点子 &rarr; 输出：真实 AI',
-          'hero-desc': '医疗影像 AI 研究生，跨越笔电底层驱动程序工程、硬件安全验证与临床计算机视觉系统开发。',
           'hero-scroll': '向下浏览作品集',
-          'hero-kinmen': '金门五日单车蝴蝶之旅挑战赛（加码奖金 NT$5,000）',
           'about-title': '个人简介与专业认证',
           'about-loc': '桃园 &amp; 台北 · 台湾',
           'about-name-label': '姓名',
           'about-program-label': '就读学程',
+          'about-program-val': '长庚大学 · 人工智能硕士班',
           'about-student-label': '硕士学号',
           'cert-title': '已验证之专业技术资质',
           'cert-count': '3 张证书',
+          'cert1-desc': '企业级 Linux 系统管理、磁盘分区与网络服务配置。',
+          'cert2-desc': '网页前端标准开发架构、事件处理与用户界面设计。',
+          'cert3-desc': '企业级系统建设与核心技术实操官方认证。',
+          'avatar-role': '长庚大学 AI 硕士班研究生',
           'exp-title': '经历时间轴',
           'filter-all': '全部经历',
           'filter-software': '临床医疗软件',
@@ -1109,37 +1110,37 @@
           'filter-ai': 'AI Research',
           'filter-instructor': 'AI 医疗讲师',
           'exp1-cat': '临床医疗软件',
-          'exp1-date': 'Dec 2013 – Jan 2016',
-          'exp1-org': '科林助听器 (Clinico)',
+          'exp1-date': '[Dec 2013 – Jan 2016]',
+          'exp1-org': 'MayaMiner Company LTD.',
           'exp1-role': '助理软件工程师 · 新北市',
-          'exp1-b1': '维护耳鼻喉科临床诊断工具与手术相关医疗软件系统。',
+          'exp1-b1': '协作开发医院信息对接软件与麻醉监测系统。',
           'exp1-b2': '负责医院端网页服务器运作维护与网络环境异常诊断。',
           'exp2-cat': '商务销售管理',
-          'exp2-date': 'Jul 2016 – Aug 2017',
+          'exp2-date': '[Jul 2016 – Aug 2017]',
           'exp2-org': '永庆房屋 (Yung-Ching Realty)',
           'exp2-role': '业务襄理 · 台北市',
           'exp2-b1': '创下首案接手后 5 小时内以 41.5 万美元成交纪录。',
           'exp2-b2': '主导高资产客户谈判、合约法规检核与资产规划管理。',
           'exp3-cat': '驱动与系统验证',
-          'exp3-date': 'Dec 2019 – Feb 2023',
+          'exp3-date': '[Dec 2019 – Feb 2023]',
           'exp3-org': '广达电脑 (Quanta Computer)',
           'exp3-role': '消费型笔电驱动工程师 · 桃园',
           'exp3-b1': '统筹全球各系列消费性笔记本电脑之官方驱动程序发布流程。',
           'exp3-b2': '与 Intel、AMD、NVIDIA 技术团队协作解决硬件与兼容性异常。',
           'exp4-cat': '驱动与系统验证',
-          'exp4-date': '2023 – 2025',
+          'exp4-date': '[2023 – 2025]',
           'exp4-org': 'HP / Intel 安全验证实验室',
           'exp4-role': '安全系统验证工程师 · 台北',
           'exp4-b1': '于 HP 与 Intel 联合实验室执行商用笔电系统级安全验证。',
           'exp4-b2': '负责 Secure Boot、TPM 加密机制与固件完整性漏洞检测。',
           'exp5-cat': 'AI Research',
-          'exp5-date': 'Feb 2026 – Present',
+          'exp5-date': '[Feb 2026 – Present]',
           'exp5-org': '长庚大学 · Brain Ma Lab',
           'exp5-role': '人工智能硕士班研究生 · 桃园',
           'exp5-b1': '进行 3D nnDetection 应用于腹部 CT 淋巴结自动检测研究。',
           'exp5-b2': '开发直肠外科微创腹腔镜手术之实时内窥镜影像分割技术。',
           'inst-cat': 'AI 医疗讲师',
-          'inst-period': '2026 – Present',
+          'inst-period': '[Jul 2026 - Present]',
           'inst-org': '高雄医学大学 &amp; 弘光科技大学护理系',
           'inst-role': '智慧医疗 AI 讲师与辅导导师 · 台中 &amp; 高雄',
           'inst-p1': '<strong>KMU 七日夏令营：</strong>指导大学、硕士生与高龄照护业界人士开发 AI 原型与展示视频，带领两梯次分获第二名与最佳简报奖。',
@@ -1151,15 +1152,109 @@
           'km-zoom': '放大查看',
           'contact-title': '输入：你的点子 &rarr; 输出：真实 AI',
           'contact-sub': '无幻觉 · 纯粹实作落地。欢迎关注我的 GitHub 与 LinkedIn，或来信共创有趣项目！'
+        },
+        'fr': {
+          'btn': 'EN',
+          'htmlLang': 'fr',
+          'nav-about': 'À propos',
+          'nav-experience': 'Expérience',
+          'nav-research': 'Recherche',
+          'nav-kinmen': 'Défi Vélo Kinmen &rarr;',
+          'ai-badge': 'VEILLE IA',
+          'ai-sync': '08:00 TST',
+          'ai-title': 'Actualités IA (Quotidien &amp; Hebdo)',
+          'ai-desc': 'Sélection quotidienne et hebdomadaire : avancées mondiales, cybersécurité IA, nouveaux modèles et rumeurs tech.',
+          'ai-cat1-tag': 'Faits Marquants Hebdo',
+          'ai-freq-weekly': 'Hebdo · Mondial',
+          'ai-cat1-title': 'Les modèles multimodaux chirurgicaux établissent une nouvelle référence en robotique clinique',
+          'ai-cat2-tag': 'Sécurité IA Hebdo',
+          'ai-freq-sec': 'Hebdo · Défense',
+          'ai-cat2-title': 'Anthropic et le MIT dévoilent une architecture anti-jailbreak et anti-injection de prompts pour LLM',
+          'ai-cat3-tag': 'Nouvelles Techs IA',
+          'ai-freq-daily': 'Quotidien · Modèles',
+          'ai-cat3-title': 'Les algorithmes de raisonnement MoE open-source égalent les modèles propriétaires en maths et code',
+          'ai-cat4-tag': 'Actu IA Quotidienne',
+          'ai-freq-news': 'Quotidien · Régulation',
+          'ai-cat4-title': 'La FDA met à jour ses directives de suivi adaptatif IA/ML pour l\'imagerie médicale clinique',
+          'ai-cat5-tag': 'Coulisses Silicon Valley',
+          'ai-freq-gossip': 'Hebdo · Confidentiel',
+          'ai-cat5-title': 'La guerre des talents s\'intensifie entre les laboratoires d\'IA de pointe face à des valorisations records',
+          'ai-read-short': 'Lire',
+          'hero-eyebrow': 'Master IA à CGU · Ex-HP · Quanta',
+          'hero-slogan': 'Entrée : Votre Idée &rarr; Sortie : IA Réelle',
+          'hero-scroll': 'Défiler pour explorer',
+          'about-title': 'À propos &amp; Certifications',
+          'about-loc': 'Taoyuan &amp; Taipei, Taïwan',
+          'about-name-label': 'Nom',
+          'about-program-label': 'Formation',
+          'about-program-val': 'Université Chang Gung · Master en Intelligence Artificielle',
+          'about-student-label': 'N° Étudiant',
+          'cert-title': 'Certifications Techniques Vérifiées',
+          'cert-count': '3 Certifications',
+          'cert1-desc': 'Administration Linux d\'entreprise, partitionnement et réseaux.',
+          'cert2-desc': 'Architecture front-end, gestion d\'événements et UX web.',
+          'cert3-desc': 'Validation des standards d\'implémentation des systèmes d\'entreprise.',
+          'avatar-role': 'Chercheur Master IA à CGU',
+          'exp-title': 'Chronologie des Expériences',
+          'filter-all': 'Tous les postes',
+          'filter-software': 'Logiciel Clinique',
+          'filter-business': 'Ventes Commerciales',
+          'filter-hardware': 'Pilotes &amp; Validation',
+          'filter-ai': 'AI Research',
+          'filter-instructor': 'Formateur IA',
+          'exp1-cat': 'Logiciel Clinique',
+          'exp1-date': '[Déc 2013 – Jan 2016]',
+          'exp1-org': 'MayaMiner Company LTD.',
+          'exp1-role': 'Ingénieur Logiciel Adjoint · Nouveau Taipei',
+          'exp1-b1': 'Co-développement de logiciels d\'interface d\'information hospitalière et de systèmes de surveillance d\'anesthésie.',
+          'exp1-b2': 'Exploitation de serveurs web et diagnostics réseau en milieu hospitalier.',
+          'exp2-cat': 'Ventes Commerciales',
+          'exp2-date': '[Juil 2016 – Août 2017]',
+          'exp2-org': 'Yung-Ching Realty',
+          'exp2-role': 'Directeur des Ventes · Taipei',
+          'exp2-b1': 'Vente complète d\'un premier projet immobilier en 5 heures (415 666 USD).',
+          'exp2-b2': 'Négociations clients fortunés et conformité juridique des contrats.',
+          'exp3-cat': 'Pilotes &amp; Validation',
+          'exp3-date': '[Déc 2019 – Fév 2023]',
+          'exp3-org': 'Quanta Computer Inc.',
+          'exp3-role': 'Ingénieur Pilotes PC Portables · Taoyuan',
+          'exp3-b1': 'Gestion des sorties officielles de pilotes pour toutes les gammes grand public.',
+          'exp3-b2': 'Résolution des défauts matériels conjointement avec Intel, AMD et NVIDIA.',
+          'exp4-cat': 'Pilotes &amp; Validation',
+          'exp4-date': '[2023 – 2025]',
+          'exp4-org': 'Laboratoire de Validation Sécurité HP / Intel',
+          'exp4-role': 'Ingénieur Validation Sécurité · Taipei',
+          'exp4-b1': 'Validation sécurité au niveau système au sein du laboratoire commun HP/Intel.',
+          'exp4-b2': 'Tests de Secure Boot, chiffrement TPM et intégrité du firmware.',
+          'exp5-cat': 'AI Research',
+          'exp5-date': '[Fév 2026 – Présent]',
+          'exp5-org': 'Université Chang Gung · Brain Ma Lab',
+          'exp5-role': 'Étudiant Master IA · Taoyuan',
+          'exp5-b1': 'Recherche 3D nnDetection pour la détection des ganglions lymphatiques par scanner CT.',
+          'exp5-b2': 'Développement de segmentation chirurgicale endoscopique en temps réel (colorectal).',
+          'inst-cat': 'Formateur IA',
+          'inst-period': '[Jul 2026 - Present]',
+          'inst-org': 'Université KMU &amp; Université Hungkuang',
+          'inst-role': 'Formateur &amp; Mentor IA Santé · Taichung &amp; Kaohsiung',
+          'inst-p1': '<strong>Camp d\'été KMU (7 jours) :</strong> Encadrement d\'étudiants et pros sur des prototypes IA gériatriques (2e place &amp; Meilleure Présentation).',
+          'inst-p2': '<strong>Soins Infirmiers Hungkuang :</strong> Enseignement des bases de l\'imagerie IA, erreurs pratiques de reconnaissance et innovation en santé.',
+          'research-spotlight-title': 'Recherches en Cours',
+          'res1-title': 'Détection automatisée des ganglions lymphatiques par CT avec nnDetection',
+          'res2-title': 'Real-time endoscopic surgery of vessel prediction',
+          'res-unpublished': 'Recherche en cours · Non publiée',
+          'km-zoom': 'Agrandir',
+          'contact-title': 'Entrée : Votre Idée &rarr; Sortie : IA Réelle',
+          'contact-sub': 'Zéro hallucination, pure ingénierie — suivez mes dépôts ou écrivez-moi pour bâtir des systèmes intelligents.'
         }
       };
 
-      const order = ['en', 'zh-TW', 'zh-CN'];
-      let lang = localStorage.getItem('myron_portfolio_lang_v5') || 'en';
+      const order = ['en', 'zh-TW', 'zh-CN', 'fr'];
+      let lang = localStorage.getItem('myron_portfolio_lang_v7') || 'en';
       const applyLang = (target) => {
         lang = target;
-        localStorage.setItem('myron_portfolio_lang_v5', target);
+        localStorage.setItem('myron_portfolio_lang_v7', target);
         const dict = i18n[target] || i18n['en'];
+        if (dict.htmlLang) document.documentElement.setAttribute('lang', dict.htmlLang);
         document.querySelectorAll('[data-i18n]').forEach(el => {
           const k = el.getAttribute('data-i18n');
           if (dict[k]) el.innerHTML = dict[k];
