@@ -113,8 +113,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const i18nDictionary = {
     'en': {
       'lang-btn-text': '繁體中文',
-      'nav-about': 'About',
-      'nav-experience': 'Experience',
+      'nav-about': 'About Myron TY Huang',
+      'nav-experience': 'Experience Timeline',
       'nav-research': 'Research',
       'kinmen-recruit-btn': 'Kinmen Bowknot Cycling Challenge: Challengers Wanted →',
 
@@ -148,13 +148,13 @@ document.addEventListener('DOMContentLoaded', () => {
       'cert-tag': 'Verified Credentials',
       'cert-title': 'Technical Certifications',
 
-      // Experience Timeline & Filters (AI / Research before AI Instructor)
+      // Experience Timeline & Filters (AI Research before AI Instructor)
       'exp-title': 'Experience Timeline',
       'filter-all': 'All Roles',
       'filter-software': 'Clinical Software',
       'filter-business': 'Commercial Sales',
       'filter-hardware': 'Drivers & Validation',
-      'filter-ai': 'AI / Research',
+      'filter-ai': 'AI Research',
       'filter-instructor': 'AI Instructor',
 
       'exp1-cat': 'Clinical Software',
@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'exp4-b1': 'Conducted system-level security validation at the joint HP/Intel lab.',
       'exp4-b2': 'Verified Secure Boot, TPM encryption, and enterprise firmware integrity.',
 
-      'exp5-cat': 'AI / Research',
+      'exp5-cat': 'AI Research',
       'exp5-date': 'Feb 2026 – Present',
       'exp5-org': 'Chang Gung University · Brain Ma Lab',
       'exp5-role': 'M.S. Student in AI · Taoyuan',
@@ -202,12 +202,14 @@ document.addEventListener('DOMContentLoaded', () => {
       // Simplified Ongoing Research (2-column, Title First + Image Below)
       'research-spotlight-title': 'Ongoing Research',
       'res1-title': 'nnDetection for Automated CT Lymph Node Detection',
-      'res2-title': 'Real-Time Endoscopic Surgical Segmentation (Colorectal Surgery)',
+      'res2-title': 'Real-time endoscopic surgery of vessel prediction',
       'res-unpublished': 'Ongoing Research · Unpublished',
       'km-zoom': 'Zoom',
 
       // Contact & Kinmen Page 2
-      'contact-title': "Let's Connect & Discuss New Possibilities",
+      'contact-tag': 'Zero Hallucinations · Real Code',
+      'contact-title': 'Input: Your Idea &rarr; Output: Real AI',
+      'contact-sub': "Follow my builds or ping my inbox — let's turn bold prompts into shipped systems.",
       'km-back-portfolio': 'Back to Portfolio',
       'km-page-badge': 'Page 2 · Kinmen Cycling Challenge',
       'km-recruit-tag': 'CHALLENGERS WANTED · 120km Bowknot Route',
@@ -249,8 +251,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     'zh-TW': {
       'lang-btn-text': '简体中文',
-      'nav-about': '關於我',
-      'nav-experience': '經歷歷程',
+      'nav-about': '關於 Myron TY Huang',
+      'nav-experience': '經歷時間軸',
       'nav-research': '研究領域',
       'kinmen-recruit-btn': '金門單車蝴蝶之旅挑戰者招募中 →',
 
@@ -290,7 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'filter-software': '臨床醫療軟體',
       'filter-business': '商務銷售管理',
       'filter-hardware': '驅動與系統驗證',
-      'filter-ai': 'AI / 學術研究',
+      'filter-ai': 'AI Research',
       'filter-instructor': 'AI 醫療講師',
 
       'exp1-cat': '臨床醫療軟體',
@@ -321,7 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'exp4-b1': '於 HP 與 Intel 聯合實驗室執行商用筆電系統級資安驗證。',
       'exp4-b2': '負責 Secure Boot、TPM 加密機制與韌體完整性弱點檢測。',
 
-      'exp5-cat': 'AI / 學術研究',
+      'exp5-cat': 'AI Research',
       'exp5-date': 'Feb 2026 – Present',
       'exp5-org': '長庚大學 · Brain Ma Lab',
       'exp5-role': '人工智慧碩士班研究生 · 桃園',
@@ -338,12 +340,14 @@ document.addEventListener('DOMContentLoaded', () => {
       // Simplified Ongoing Research
       'research-spotlight-title': '目前進行中研究 (Ongoing Research)',
       'res1-title': 'nnDetection 應用於腹部 CT 淋巴結自動偵測',
-      'res2-title': '直腸外科微創手術即時內視鏡影像分割預測',
+      'res2-title': '即時內視鏡手術血管預測 (Real-time endoscopic surgery of vessel prediction)',
       'res-unpublished': '目前進行中研究 · 尚未發表',
       'km-zoom': '放大檢視',
 
       // Contact & Kinmen Page 2
-      'contact-title': '聯繫交流 · 探索合作契機',
+      'contact-tag': '無幻覺 · 純粹實作落地',
+      'contact-title': '輸入：你的點子 &rarr; 輸出：真實 AI',
+      'contact-sub': '歡迎追蹤我的 GitHub 與 LinkedIn，或隨時來信把大膽構想寫成系統！',
       'km-back-portfolio': '返回個人主頁',
       'km-page-badge': '第 2 頁 · 金門單車蝴蝶之旅',
       'km-recruit-tag': '挑戰者招募中 · 120km 蝴蝶結路線',
@@ -385,8 +389,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     'zh-CN': {
       'lang-btn-text': 'English',
-      'nav-about': '关于我',
-      'nav-experience': '经历历程',
+      'nav-about': '关于 Myron TY Huang',
+      'nav-experience': '经历时间轴',
       'nav-research': '研究领域',
       'kinmen-recruit-btn': '金门单车蝴蝶之旅挑战者招募中 →',
 
@@ -426,7 +430,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'filter-software': '临床医疗软件',
       'filter-business': '商务销售管理',
       'filter-hardware': '驱动与系统验证',
-      'filter-ai': 'AI / 学术研究',
+      'filter-ai': 'AI Research',
       'filter-instructor': 'AI 医疗讲师',
 
       'exp1-cat': '临床医疗软件',
@@ -457,7 +461,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'exp4-b1': '于 HP 与 Intel 联合实验室执行商用笔电系统级安全验证。',
       'exp4-b2': '负责 Secure Boot、TPM 加密机制与固件完整性漏洞检测。',
 
-      'exp5-cat': 'AI / 学术研究',
+      'exp5-cat': 'AI Research',
       'exp5-date': 'Feb 2026 – Present',
       'exp5-org': '长庚大学 · Brain Ma Lab',
       'exp5-role': '人工智能硕士班研究生 · 桃园',
@@ -474,12 +478,14 @@ document.addEventListener('DOMContentLoaded', () => {
       // Simplified Ongoing Research
       'research-spotlight-title': '目前进行中研究 (Ongoing Research)',
       'res1-title': 'nnDetection 应用于腹部 CT 淋巴结自动检测',
-      'res2-title': '直肠外科微创手术实时内窥镜影像分割预测',
+      'res2-title': '实时内窥镜手术血管预测 (Real-time endoscopic surgery of vessel prediction)',
       'res-unpublished': '目前进行中研究 · 尚未发表',
       'km-zoom': '放大查看',
 
       // Contact & Kinmen Page 2
-      'contact-title': '联系交流 · 探索合作契机',
+      'contact-tag': '无幻觉 · 纯粹实作落地',
+      'contact-title': '输入：你的点子 &rarr; 输出：真实 AI',
+      'contact-sub': '欢迎关注我的 GitHub 与 LinkedIn，或随时来信把大胆构想写成系统！',
       'km-back-portfolio': '返回个人主页',
       'km-page-badge': '第 2 页 · 金门单车蝴蝶之旅',
       'km-recruit-tag': '挑战者招募中 · 120km 蝴蝶结路线',

@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=6">
   <script>
     tailwind.config = {
       theme: {
@@ -164,27 +164,23 @@
       <!-- RIGHT COLUMN (2/3 Width): Personal Portfolio Main Content -->
       <div class="flex-1 min-w-0 space-y-5 xl:pl-5 xl:border-l xl:border-slate-300/80">
         
-        <!-- Sticky Navigation Header Bar (Sharp 12px Corners) -->
+        <!-- Sticky Navigation Header Bar (Solid Opaque White, No Transparency) -->
         <div class="sticky top-0 z-40 w-full">
-          <header class="glass-panel border border-slate-300/80 rounded-xl shadow-sm px-3 sm:px-4 h-14 flex items-center justify-between gap-2 w-full">
-            <!-- Combined Name & About Action Button -->
-            <a href="#about" id="nav-about-btn" class="flex items-center gap-1.5 px-2 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-300/70 text-slate-900 transition-all group flex-shrink-0" title="About Me">
-              <div class="w-7 h-7 rounded-md bg-[#162840] flex items-center justify-center font-bold text-xs text-white flex-shrink-0">
-                MH
-              </div>
-              <span class="font-extrabold text-xs sm:text-sm tracking-tight text-slate-900 hidden sm:inline">Myron</span>
-              <span class="px-2 py-0.5 rounded-md text-xs font-bold bg-[#162840] text-white flex items-center gap-1">
-                <span data-i18n="nav-about">About</span>
-              </span>
-            </a>
-
-            <!-- Navigation Links (Experience & Research) -->
-            <nav class="hidden md:flex items-center gap-1 text-xs font-semibold text-slate-600 flex-shrink-0">
-              <a href="#experience" id="nav-experience-btn" class="px-2.5 py-1.5 rounded-lg hover:text-[#162840] hover:bg-slate-100 transition-all flex items-center gap-1.5 whitespace-nowrap">
-                <i data-lucide="clock" class="w-3.5 h-3.5 text-[#708090]"></i> <span data-i18n="nav-experience">Experience</span>
+          <header class="solid-header bg-white border border-slate-300 rounded-xl shadow-md px-3 sm:px-4 h-14 flex items-center justify-between gap-3 w-full">
+            
+            <!-- Equidistant Left-to-Right Navigation Links -->
+            <nav class="flex items-center gap-3 sm:gap-5 lg:gap-6 flex-shrink-0 overflow-x-auto scrollbar-none">
+              <a href="#about" id="nav-about-btn" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#162840] text-white text-xs font-bold hover:bg-[#233c5e] transition-all whitespace-nowrap">
+                <i data-lucide="user" class="w-3.5 h-3.5 text-slate-200"></i>
+                <span data-i18n="nav-about">About Myron TY Huang</span>
               </a>
-              <a href="#research-spotlight" id="nav-research-btn" class="px-2.5 py-1.5 rounded-lg hover:text-[#162840] hover:bg-slate-100 transition-all flex items-center gap-1.5 whitespace-nowrap">
-                <i data-lucide="microscope" class="w-3.5 h-3.5 text-[#708090]"></i> <span data-i18n="nav-research">Research</span>
+              <a href="#experience" id="nav-experience-btn" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:text-[#162840] hover:bg-slate-100 transition-all whitespace-nowrap">
+                <i data-lucide="clock" class="w-3.5 h-3.5 text-[#708090]"></i>
+                <span data-i18n="nav-experience">Experience Timeline</span>
+              </a>
+              <a href="#research-spotlight" id="nav-research-btn" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:text-[#162840] hover:bg-slate-100 transition-all whitespace-nowrap">
+                <i data-lucide="microscope" class="w-3.5 h-3.5 text-[#708090]"></i>
+                <span data-i18n="nav-research">Research</span>
               </a>
             </nav>
 
@@ -193,7 +189,7 @@
               <a href="mailto:fttmp66@gmail.com"
                  class="inline-flex items-center justify-center text-center gap-1 px-2.5 h-8 text-xs font-bold rounded-lg bg-white text-slate-700 hover:text-[#162840] border border-slate-300 transition-all" title="Email: fttmp66@gmail.com">
                 <i data-lucide="mail" class="w-3.5 h-3.5 text-[#708090]"></i>
-                <span class="leading-none">Gmail</span>
+                <span class="leading-none hidden sm:inline">Gmail</span>
               </a>
 
               <a href="https://github.com/fttmp66-0c0o0d0e0r0/myron-huang-portfolio" target="_blank" rel="noopener noreferrer" id="github-link"
@@ -219,14 +215,14 @@
         <!-- Main Portfolio Content -->
         <main class="relative z-10 w-full pb-8 space-y-10">
 
-          <!-- TOP RIGHT: Eye-Catching Kinmen Recruitment Badge linking to Page 2 (Teal/Cyan/White/Dark GIF-like Flash) -->
+          <!-- TOP RIGHT: Kinmen Recruitment Badge (Dark Base + Metallic Gold Shimmering Text + Flashing NEW Pill) -->
           <div class="flex items-center justify-end">
             <a href="kinmen.html" id="kinmen-campaign-badge"
-               class="kinmen-flash-badge inline-flex items-center gap-2.5 px-4 py-2 rounded-lg text-white text-xs sm:text-sm font-extrabold border-2 transition-all">
+               class="kinmen-flash-badge inline-flex items-center gap-2.5 px-4 py-2 rounded-lg bg-[#0b232e] border-2 border-teal-400 shadow-md transition-all">
               <span id="kinmen-new-pill" class="kinmen-new-pill px-1.5 py-0.5 rounded bg-teal-300 text-[#0b232e] text-[10px] font-black tracking-wider uppercase">
                 NEW
               </span>
-              <span class="tracking-tight" data-i18n="kinmen-recruit-btn">Kinmen Bowknot Cycling Challenge: Challengers Wanted →</span>
+              <span class="metallic-gold-text font-extrabold text-xs sm:text-sm tracking-tight" data-i18n="kinmen-recruit-btn">Kinmen Bowknot Cycling Challenge: Challengers Wanted →</span>
             </a>
           </div>
 
@@ -365,7 +361,7 @@
                   Drivers &amp; Validation
                 </button>
                 <button class="filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap" data-filter="ai" data-i18n="filter-ai">
-                  AI / Research
+                  AI Research
                 </button>
                 <button class="filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap" data-filter="instructor" data-i18n="filter-instructor">
                   AI Instructor
@@ -492,7 +488,7 @@
                 </div>
               </div>
 
-              <!-- 5. Chang Gung University AI / Research (Feb 2026 – Present) [Order: Research first!] -->
+              <!-- 5. Chang Gung University AI Research (Feb 2026 – Present) -->
               <div id="research" class="experience-card bg-white border border-slate-200 hover:border-[#708090] rounded-xl overflow-hidden shadow-xs group scroll-mt-24" data-category="ai">
                 <div class="flex flex-col lg:flex-row items-stretch">
                   <div class="lg:w-5/12 relative overflow-hidden bg-slate-100 h-56 sm:h-64 lg:h-auto lg:min-h-[230px]">
@@ -501,7 +497,7 @@
                   <div class="lg:w-7/12 p-5 sm:p-6 flex flex-col justify-between space-y-3 min-w-0">
                     <div>
                       <div class="flex items-center justify-between gap-2 mb-1.5">
-                        <span class="px-2 py-0.5 rounded-md text-[11px] font-bold bg-slate-100 text-[#162840] border border-slate-200" data-i18n="exp5-cat">AI / Research</span>
+                        <span class="px-2 py-0.5 rounded-md text-[11px] font-bold bg-slate-100 text-[#162840] border border-slate-200" data-i18n="exp5-cat">AI Research</span>
                         <span class="text-xs font-mono font-semibold text-slate-600" data-i18n="exp5-date">Feb 2026 – Present</span>
                       </div>
                       <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 leading-tight" data-i18n="exp5-org">Chang Gung University · Brain Ma Lab</h3>
@@ -521,8 +517,8 @@
                 </div>
               </div>
 
-              <!-- 6. Medical AI Instructor (2026 – Present) [Order: AI Instructor after AI Research, Uniform full height] -->
-              <div class="experience-card bg-white border border-slate-200 hover:border-[#708090] rounded-xl overflow-hidden shadow-xs group" data-category="instructor ai">
+              <!-- 6. Medical AI Instructor (2026 – Present) [Category: instructor ONLY so AI Research filter hides it] -->
+              <div class="experience-card bg-white border border-slate-200 hover:border-[#708090] rounded-xl overflow-hidden shadow-xs group" data-category="instructor">
                 <div class="flex flex-col lg:flex-row items-stretch">
                   <div class="lg:w-5/12 relative overflow-hidden bg-slate-100 h-56 sm:h-64 lg:h-auto lg:min-h-[230px]">
                     <img src="./assets/chibi-instructor.jpg" alt="AI Lecturer Diorama" class="w-full h-full lg:absolute lg:inset-0 object-cover object-center group-hover:scale-105 transition-transform duration-700">
@@ -589,7 +585,7 @@
               <div class="research-card bg-white border border-slate-200 rounded-xl p-5 shadow-xs flex flex-col justify-between space-y-4">
                 <div>
                   <h3 class="text-base sm:text-lg font-extrabold text-slate-900 leading-snug line-clamp-2" data-i18n="res2-title">
-                    Real-Time Endoscopic Surgical Segmentation (Colorectal Surgery)
+                    Real-time endoscopic surgery of vessel prediction
                   </h3>
                   <p class="text-xs font-medium text-[#708090] mt-1" data-i18n="res-unpublished">
                     Ongoing Research · Unpublished
@@ -598,8 +594,8 @@
 
                 <!-- Properly Scaled Image Below Title with Lightbox Zoom -->
                 <div class="relative overflow-hidden rounded-lg bg-slate-950 border border-slate-200 aspect-[4/3] w-full flex items-center justify-center p-2 cursor-pointer poster-lightbox-trigger group"
-                     data-img="./assets/research-laparoscopic-vessel.jpg" data-title="Real-Time Endoscopic Surgical Segmentation (Colorectal Surgery)">
-                  <img src="./assets/research-laparoscopic-vessel.jpg" alt="Real-Time Endoscopic Surgical Segmentation" class="w-full h-full object-contain group-hover:scale-102 transition-transform duration-300">
+                     data-img="./assets/research-laparoscopic-vessel.jpg" data-title="Real-time endoscopic surgery of vessel prediction">
+                  <img src="./assets/research-laparoscopic-vessel.jpg" alt="Real-time endoscopic surgery of vessel prediction" class="w-full h-full object-contain group-hover:scale-102 transition-transform duration-300">
                   <span class="absolute bottom-2.5 right-2.5 bg-white/95 text-slate-900 px-2.5 py-1 rounded-md text-[11px] font-bold border border-slate-300 shadow-sm flex items-center gap-1">
                     <i data-lucide="zoom-in" class="w-3.5 h-3.5 text-[#162840]"></i> <span data-i18n="km-zoom">Zoom</span>
                   </span>
@@ -609,27 +605,45 @@
             </div>
           </section>
 
-          <!-- CONTACT SECTION (Crisp Architectural 12px Card) -->
+          <!-- CONTACT SECTION (3-4 Shades Lighter Morandi Slate-Blue + Creative AI Slogan & Prompt Graphic) -->
           <section id="contact">
-            <div class="bg-[#162840] text-white rounded-xl p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div>
-                <h2 class="text-xl sm:text-2xl font-extrabold tracking-tight" data-i18n="contact-title">
-                  Let's Connect &amp; Discuss New Possibilities
-                </h2>
-                <p class="text-xs text-slate-300 mt-1">Taoyuan &amp; Taipei, Taiwan</p>
+            <div class="bg-gradient-to-r from-[#5f758b] via-[#6d8399] to-[#7c92a8] text-white rounded-xl p-6 sm:p-7 shadow-sm border border-slate-300/60 flex flex-col md:flex-row md:items-center justify-between gap-5">
+              <div class="flex items-center gap-4">
+                <!-- Creative AI Neural / Prompt Node Visual -->
+                <div class="hidden sm:flex w-14 h-14 rounded-xl bg-white/15 border border-white/30 items-center justify-center flex-shrink-0 shadow-xs">
+                  <svg class="w-8 h-8 text-white" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="8" cy="16" r="2.5" fill="currentColor" />
+                    <circle cx="24" cy="9" r="2.5" fill="currentColor" />
+                    <circle cx="24" cy="23" r="2.5" fill="currentColor" />
+                    <path d="M10.5 15 L21.5 10" />
+                    <path d="M10.5 17 L21.5 22" />
+                    <path d="M24 11.5 V20.5" stroke-dasharray="2 2" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-white/20 text-[10px] font-mono font-bold tracking-wider uppercase mb-1">
+                    <span>prompt &gt;_</span> <span data-i18n="contact-tag">Zero Hallucinations · Real Code</span>
+                  </div>
+                  <h2 class="text-lg sm:text-2xl font-extrabold tracking-tight leading-snug" data-i18n="contact-title">
+                    Input: Your Idea &rarr; Output: Real AI
+                  </h2>
+                  <p class="text-xs text-slate-100 mt-0.5" data-i18n="contact-sub">
+                    Follow my builds or ping my inbox — let's turn bold prompts into shipped systems.
+                  </p>
+                </div>
               </div>
 
-              <div class="flex flex-wrap gap-2.5 items-center">
+              <div class="flex flex-wrap gap-2.5 items-center flex-shrink-0">
                 <a href="mailto:fttmp66@gmail.com"
-                   class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-white text-slate-900 font-bold text-xs hover:bg-slate-100 transition-all">
+                   class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-white text-slate-900 font-bold text-xs hover:bg-slate-100 transition-all shadow-xs">
                   <i data-lucide="mail" class="w-4 h-4 text-[#708090]"></i> Gmail
                 </a>
                 <a href="https://www.linkedin.com/in/%E9%BB%83%E5%A9%B7%E7%90%B0-ting-yen-huang-57aa9772/" target="_blank" rel="noopener noreferrer"
-                   class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-white text-[#0077b5] font-bold text-xs hover:bg-slate-100 transition-all">
+                   class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-white text-[#0077b5] font-bold text-xs hover:bg-slate-100 transition-all shadow-xs">
                   <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
                 </a>
                 <a href="https://github.com/fttmp66-0c0o0d0e0r0/myron-huang-portfolio" target="_blank" rel="noopener noreferrer"
-                   class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#11151a] text-white border border-slate-700 font-bold text-xs hover:bg-slate-800 transition-all">
+                   class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#162840] text-white border border-white/25 font-bold text-xs hover:bg-[#11151a] transition-all shadow-xs">
                   <i data-lucide="github" class="w-4 h-4"></i> GitHub
                 </a>
               </div>
@@ -666,6 +680,6 @@
     </div>
   </div>
 
-<script src="script.js"></script>
+<script src="script.js?v=6"></script>
 </body>
 </html>

@@ -25,9 +25,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Cross-browser Backdrop Glass Support */
+/* Solid Opaque Header Bar (Never transparent on scroll) */
+.solid-header {
+  background-color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* Cross-browser Backdrop Glass Support for outer master panel */
 .glass-panel {
-  background-color: rgba(255, 255, 255, 0.92);
+  background-color: rgba(255, 255, 255, 0.94);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
 }
@@ -45,7 +51,7 @@ body {
 /* Focus Highlight without clipping text (Safe on Safari, Firefox, Chrome, Edge) */
 .section-focus-active {
   box-shadow: 0 0 0 3px #162840, 0 12px 30px rgba(22, 40, 64, 0.16) !important;
-  background-color: rgba(255, 255, 255, 0.72);
+  background-color: rgba(255, 255, 255, 0.85);
   transition: box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
@@ -73,7 +79,7 @@ body {
   box-shadow: 0 3px 10px rgba(22, 40, 64, 0.25);
 }
 
-/* Eye-catching Top-Right Kinmen Recruitment Tag: GIF-like Flash & Gleam */
+/* Eye-catching Top-Right Kinmen Recruitment Tag: Dark Navy-Teal + GIF-like Flash + Metallic Gold Text */
 @keyframes kinmenBeaconPulse {
   0%, 100% {
     background-color: #0b232e;
@@ -98,9 +104,19 @@ body {
   }
 }
 
+@keyframes goldShine {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
 .kinmen-flash-badge {
   position: relative;
   overflow: hidden;
+  background-color: #0b232e !important;
   animation: kinmenBeaconPulse 1.1s steps(2, end) infinite;
 }
 
@@ -111,10 +127,21 @@ body {
   left: -60%;
   width: 45%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.32), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
   transform: skewX(-20deg);
   animation: kinmenShimmer 2.2s infinite;
   pointer-events: none;
+}
+
+.metallic-gold-text {
+  background: linear-gradient(110deg, #d4af37 0%, #fff4b8 28%, #c5962c 52%, #fef0a6 76%, #d4af37 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: #f6d365;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.45));
+  animation: goldShine 2.4s linear infinite;
 }
 
 .kinmen-new-pill {
