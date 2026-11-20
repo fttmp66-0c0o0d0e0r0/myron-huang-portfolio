@@ -1369,6 +1369,39 @@
 
       const order = ['en', 'zh-TW', 'zh-CN', 'fr'];
       let lang = localStorage.getItem('myron_portfolio_lang_v7') || 'en';
+
+      // 6. Dynamic Pic. of the Day Loader
+      let podData = null;
+      const renderPod = () => {
+        if (!podData) return;
+        const isZh = (lang === 'zh-TW' || lang === 'zh-CN');
+        const imgEl = document.getElementById('daily-pic-img');
+        const zoomTrigger = document.querySelector('.poster-lightbox-trigger[data-img*="pic-of-day"]');
+        if (imgEl && podData.image_path) {
+          imgEl.src = podData.image_path;
+        }
+        if (zoomTrigger && podData.image_path) {
+          zoomTrigger.setAttribute('data-img', podData.image_path);
+          zoomTrigger.setAttribute('data-title', `Pic. of the day · ${podData.title_display_en || podData.inspiration}`);
+        }
+        const titleEl = document.querySelector('[data-i18n="pod-title"]');
+        if (titleEl) {
+          titleEl.innerText = isZh ? (podData.title_display_zh || podData.inspiration) : (podData.title_display_en || podData.inspiration);
+        }
+        const inspEl = document.querySelector('[data-i18n="pod-inspiration"]');
+        if (inspEl) {
+          inspEl.innerText = `${isZh ? '時事靈感：' : 'Inspiration: '}${podData.inspiration}`;
+        }
+        const conceptEl = document.querySelector('[data-i18n="pod-concept-text"]');
+        if (conceptEl) {
+          conceptEl.innerText = isZh ? podData.design_concept : (podData.design_concept_en || podData.design_concept);
+        }
+        const msgEl = document.querySelector('[data-i18n="pod-message-text"]');
+        if (msgEl) {
+          msgEl.innerText = isZh ? podData.message_conveyed : (podData.message_conveyed_en || podData.message_conveyed);
+        }
+      };
+
       const applyLang = (target) => {
         lang = target;
         localStorage.setItem('myron_portfolio_lang_v7', target);
@@ -1380,6 +1413,7 @@
         });
         const btnText = document.getElementById('lang-btn-text');
         if (btnText && dict.btn) btnText.innerText = dict.btn;
+        renderPod();
         initIcons();
       };
 
@@ -1390,6 +1424,14 @@
         });
       }
       applyLang(lang);
+
+      fetch('./data/pic-of-the-day.json?v=' + Date.now())
+        .then(res => res.json())
+        .then(data => {
+          podData = data;
+          renderPod();
+        })
+        .catch(() => {});
     });
   </script>
 </body>
