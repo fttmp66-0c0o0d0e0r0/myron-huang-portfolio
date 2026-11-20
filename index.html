@@ -60,6 +60,27 @@
       box-shadow: 0 6px 16px -4px rgba(17, 24, 39, 0.08);
     }
 
+    /* Independent Left Sidebar Sleek Scrollbar */
+    .custom-scrollbar {
+      scrollbar-width: thin;
+      scrollbar-color: #94A3B8 #F1F5F9;
+      overscroll-behavior: contain;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #F1F5F9;
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #94A3B8;
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #64748B;
+    }
+
     /* Filter Pills */
     .filter-pill {
       cursor: pointer;
@@ -182,7 +203,7 @@
         </a>
         <a href="https://github.com/fttmp66-0c0o0d0e0r0/myron-huang-portfolio" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub Repository"
            class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-[#111827] flex items-center justify-center transition-colors">
-          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          <svg class="w-3.5 h-3.5" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
         </a>
         <a href="https://www.linkedin.com/in/%E9%BB%83%E5%A9%B7%E7%90%B0-ting-yen-huang-57aa9772/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn Profile"
            class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-[#2563EB] flex items-center justify-center transition-colors">
@@ -211,173 +232,177 @@
   <div class="max-w-[1380px] mx-auto px-6">
     <div class="flex flex-col lg:flex-row items-start gap-8 lg:gap-12">
 
-      <!-- LEFT COLUMN (Restored Image 2 Green Box Version: Structured Categorized AI News Cards) -->
-      <aside id="ai-briefing" class="w-full lg:w-[310px] xl:w-[340px] flex-shrink-0 lg:sticky lg:top-20 py-8 space-y-3.5 scroll-mt-20 min-w-0">
+      <!-- LEFT COLUMN: Featured Daily AI News Capsule (Green Box) + Pic of the Day + LineBot -->
+      <aside id="ai-briefing" class="w-full lg:w-[310px] xl:w-[330px] flex-shrink-0 lg:sticky lg:top-16 lg:h-[calc(100vh-4.5rem)] lg:overflow-y-auto custom-scrollbar py-2 pr-2 scroll-mt-20 min-w-0">
         
-        <!-- Editorial AI Briefing Header Card -->
-        <div class="swiss-card rounded-lg p-4 space-y-2">
+        <!-- Green Box Featured Card -->
+        <div class="swiss-card rounded-xl p-4 sm:p-5 space-y-3.5 border-l-4 border-l-[#2563EB] shadow-sm">
+          <!-- Big Header: AI BRIEFING + 08:00 TST -->
           <div class="flex items-center justify-between gap-2">
-            <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#1E3A8A] text-white font-mono text-[10px] font-bold tracking-wider uppercase">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#1E3A8A] text-white font-mono text-[10px] font-bold tracking-wider uppercase">
               <span class="w-1.5 h-1.5 rounded-full bg-sky-300 animate-pulse"></span>
               <span data-i18n="ai-badge">AI BRIEFING</span>
             </span>
-            <span class="font-mono text-[11px] font-semibold text-[#4B5563] bg-[#F4F5F7] px-2 py-0.5 rounded border border-[#E5E7EB] flex items-center gap-1">
+            <span class="font-mono text-[11px] font-semibold text-[#4B5563] bg-[#F4F5F7] px-2 py-0.5 rounded border border-[#E5E7EB] flex items-center gap-1" title="Daily Update at 08:00 TST">
               <i data-lucide="clock" class="w-3 h-3 text-[#2563EB]"></i>
               <span data-i18n="ai-sync">08:00 TST</span>
             </span>
           </div>
-          <div>
-            <h2 class="text-base font-extrabold text-[#111827] tracking-tight" data-i18n="ai-title">
-              Daily &amp; Weekly AI News
-            </h2>
-            <p class="text-xs text-[#4B5563] mt-0.5 leading-snug line-clamp-2" data-i18n="ai-desc">
-              Daily AI tech &amp; news curated alongside weekly global milestones, AI security, and insider rumors.
-            </p>
-          </div>
-        </div>
 
-        <!-- 5 Categorized AI News Cards -->
-        <div class="space-y-2.5">
-
-          <!-- 1. Weekly AI Milestones (Nature Medicine) -->
-          <a href="https://www.nature.com/subjects/machine-learning" target="_blank" rel="noopener noreferrer"
-             class="news-sidebar-card group block rounded-lg p-3.5 border-l-4 border-l-[#1E3A8A]">
-            <div class="flex items-center justify-between gap-2 mb-1.5">
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[#1E3A8A]/8 text-[#1E3A8A] border border-[#1E3A8A]/20 flex items-center gap-1">
-                <i data-lucide="globe" class="w-3 h-3"></i>
-                <span data-i18n="ai-cat1-tag">Weekly AI Milestones</span>
-              </span>
-              <span class="text-[10px] font-mono text-[#6B7280]" data-i18n="ai-freq-weekly">Weekly · Global</span>
-            </div>
-            <h3 class="text-xs font-bold text-[#111827] group-hover:text-[#2563EB] transition-colors line-clamp-2 leading-snug" data-i18n="ai-cat1-title">
-              Multimodal Surgical Foundation Models Set New Global Clinical Robotics Benchmark
-            </h3>
-            <div class="mt-2 flex items-center justify-between text-[10px] text-[#6B7280]">
-              <span class="font-medium">Nature Medicine</span>
-              <span class="font-mono font-semibold text-[#1E3A8A] inline-flex items-center gap-0.5">
-                <span data-i18n="ai-read-short">Read</span> <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
-              </span>
-            </div>
-          </a>
-
-          <!-- 2. Weekly AI Security (MIT Tech Review) -->
-          <a href="https://www.technologyreview.com/topic/artificial-intelligence/" target="_blank" rel="noopener noreferrer"
-             class="news-sidebar-card group block rounded-lg p-3.5 border-l-4 border-l-[#6b4858]">
-            <div class="flex items-center justify-between gap-2 mb-1.5">
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[#f6eff2] text-[#593847] border border-[#e3cfd8] flex items-center gap-1">
-                <i data-lucide="shield-check" class="w-3 h-3"></i>
-                <span data-i18n="ai-cat2-tag">Weekly AI Security</span>
-              </span>
-              <span class="text-[10px] font-mono text-[#6B7280]" data-i18n="ai-freq-sec">Weekly · Defense</span>
-            </div>
-            <h3 class="text-xs font-bold text-[#111827] group-hover:text-[#593847] transition-colors line-clamp-2 leading-snug" data-i18n="ai-cat2-title">
-              Anthropic &amp; MIT Unveil Next-Gen LLM Jailbreak &amp; Prompt Injection Defense Architecture
-            </h3>
-            <div class="mt-2 flex items-center justify-between text-[10px] text-[#6B7280]">
-              <span class="font-medium">MIT Tech Review</span>
-              <span class="font-mono font-semibold text-[#6b4858] inline-flex items-center gap-0.5">
-                <span data-i18n="ai-read-short">Read</span> <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
-              </span>
-            </div>
-          </a>
-
-          <!-- 3. Daily AI New Tech (Hugging Face Blog) -->
-          <a href="https://huggingface.co/blog" target="_blank" rel="noopener noreferrer"
-             class="news-sidebar-card group block rounded-lg p-3.5 border-l-4 border-l-[#2f6668]">
-            <div class="flex items-center justify-between gap-2 mb-1.5">
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[#ecf5f5] text-[#224f50] border border-[#c8e0e0] flex items-center gap-1">
-                <i data-lucide="cpu" class="w-3 h-3"></i>
-                <span data-i18n="ai-cat3-tag">Daily AI New Tech</span>
-              </span>
-              <span class="text-[10px] font-mono text-[#6B7280]" data-i18n="ai-freq-daily">Daily · Models</span>
-            </div>
-            <h3 class="text-xs font-bold text-[#111827] group-hover:text-[#224f50] transition-colors line-clamp-2 leading-snug" data-i18n="ai-cat3-title">
-              Open MoE Reasoning Algorithms Reach Frontier Math &amp; Code Inference Parity
-            </h3>
-            <div class="mt-2 flex items-center justify-between text-[10px] text-[#6B7280]">
-              <span class="font-medium">Hugging Face Blog</span>
-              <span class="font-mono font-semibold text-[#2f6668] inline-flex items-center gap-0.5">
-                <span data-i18n="ai-read-short">Read</span> <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
-              </span>
-            </div>
-          </a>
-
-          <!-- 4. Daily AI News (FDA Official) -->
-          <a href="https://www.fda.gov/medical-devices/software-medical-device-samd/artificial-intelligence-and-machine-learning-software-medical-device" target="_blank" rel="noopener noreferrer"
-             class="news-sidebar-card group block rounded-lg p-3.5 border-l-4 border-l-[#2563EB]">
-            <div class="flex items-center justify-between gap-2 mb-1.5">
+          <!-- Subtitle: Daily AI News & Today's Topic -->
+          <div class="space-y-1.5 pt-1">
+            <div class="flex items-center gap-2">
               <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[#2563EB]/8 text-[#2563EB] border border-[#2563EB]/20 flex items-center gap-1">
                 <i data-lucide="newspaper" class="w-3 h-3"></i>
                 <span data-i18n="ai-cat4-tag">Daily AI News</span>
               </span>
               <span class="text-[10px] font-mono text-[#6B7280]" data-i18n="ai-freq-news">Daily · Policy</span>
             </div>
-            <h3 class="text-xs font-bold text-[#111827] group-hover:text-[#2563EB] transition-colors line-clamp-2 leading-snug" data-i18n="ai-cat4-title">
+            <h2 class="text-xs sm:text-sm font-bold text-[#111827] leading-snug" data-i18n="ai-cat4-title">
               FDA Updates Adaptive Clinical AI/ML Monitoring Guidance for Medical Imaging Systems
-            </h3>
-            <div class="mt-2 flex items-center justify-between text-[10px] text-[#6B7280]">
-              <span class="font-medium">FDA Official</span>
-              <span class="font-mono font-semibold text-[#2563EB] inline-flex items-center gap-0.5">
-                <span data-i18n="ai-read-short">Read</span> <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
-              </span>
-            </div>
-          </a>
+            </h2>
+            <p class="text-[11px] text-[#4B5563] leading-relaxed pt-1" data-i18n="ai-daily-desc">
+              New predetermined change control plan (PCCP) protocols streamline continuous learning software deployments in diagnostic radiology.
+            </p>
+          </div>
 
-          <!-- 5. Weekly AI Gossip (TechCrunch AI) -->
-          <a href="https://techcrunch.com/category/artificial-intelligence/" target="_blank" rel="noopener noreferrer"
-             class="news-sidebar-card group block rounded-lg p-3.5 border-l-4 border-l-[#856742]">
-            <div class="flex items-center justify-between gap-2 mb-1.5">
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[#f7f3ec] text-[#694f30] border border-[#e3d7c5] flex items-center gap-1">
-                <i data-lucide="flame" class="w-3 h-3"></i>
-                <span data-i18n="ai-cat5-tag">Weekly AI Gossip</span>
-              </span>
-              <span class="text-[10px] font-mono text-[#6B7280]" data-i18n="ai-freq-gossip">Weekly · Insider</span>
-            </div>
-            <h3 class="text-xs font-bold text-[#111827] group-hover:text-[#694f30] transition-colors line-clamp-2 leading-snug" data-i18n="ai-cat5-title">
-              Silicon Valley Talent War Intensifies Across Frontier Labs Amid Multi-Billion Valuations
-            </h3>
-            <div class="mt-2 flex items-center justify-between text-[10px] text-[#6B7280]">
-              <span class="font-medium">TechCrunch AI</span>
-              <span class="font-mono font-semibold text-[#856742] inline-flex items-center gap-0.5">
-                <span data-i18n="ai-read-short">Read</span> <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
-              </span>
-            </div>
-          </a>
-
+          <!-- More Link to AI Briefing Page -->
+          <div class="pt-2 border-t border-[#E5E7EB] flex items-center justify-between">
+            <span class="text-[10px] font-mono text-[#6B7280]">FDA Official</span>
+            <a href="ai-briefing.html" class="inline-flex items-center gap-1 text-xs font-bold text-[#2563EB] hover:text-[#1E3A8A] transition-colors group">
+              <span data-i18n="ai-more-link">More</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
+            </a>
+          </div>
         </div>
+
+        <!-- Pic. of day Card (Rich Chromatic Daily Abstract Visual Agent) -->
+        <div class="swiss-card rounded-xl p-4 sm:p-5 space-y-3.5 mt-3.5 border-l-4 border-l-[#8B5CF6] shadow-sm">
+          <!-- Card Header: Pic. of the day badge + Daily Visual Tag -->
+          <div class="flex items-center justify-between gap-2">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#6D28D9] text-white font-mono text-[10px] font-bold tracking-wider uppercase">
+              <i data-lucide="sparkles" class="w-3 h-3 text-[#FDE047]"></i>
+              <span data-i18n="pod-badge">Pic. of the day</span>
+            </span>
+            <span class="font-mono text-[10px] font-semibold text-[#6D28D9] bg-[#EDE9FE] px-2 py-0.5 rounded border border-[#DDD6FE]" data-i18n="pod-tag">
+              Abstract Series
+            </span>
+          </div>
+
+          <!-- Daily Artwork Preview Image with Zoom Trigger -->
+          <div class="relative overflow-hidden rounded-lg aspect-[4/3] bg-slate-900 group cursor-pointer poster-lightbox-trigger"
+               data-img="./assets/pic-of-day.jpg" data-title="Pic. of the day · Global Energy & Neural Flow">
+            <img id="daily-pic-img" src="./assets/pic-of-day.jpg" alt="Pic. of the day - Daily Global Affairs Abstract Art"
+                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-between p-2.5 text-white">
+              <span class="text-[10px] font-mono font-bold inline-flex items-center gap-1">
+                <i data-lucide="maximize-2" class="w-3 h-3"></i>
+                <span data-i18n="pod-click-zoom">Click to expand</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- Description, Design Concept & Message -->
+          <div class="space-y-2 pt-0.5">
+            <div>
+              <h3 class="text-xs sm:text-sm font-bold text-[#111827] leading-snug" data-i18n="pod-title">
+                Global Energy &amp; Neural Flow
+              </h3>
+              <p class="text-[10px] font-mono text-purple-700 font-semibold mt-0.5" data-i18n="pod-inspiration">
+                Inspiration: Planetary Power &amp; Neural Networks
+              </p>
+            </div>
+
+            <!-- 1. 設計概念 (Design Concept) -->
+            <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-100 space-y-1">
+              <span class="text-[10px] font-mono font-bold text-slate-700 flex items-center gap-1 uppercase tracking-wider">
+                <i data-lucide="compass" class="w-3 h-3 text-[#1E3A8A]"></i>
+                <span data-i18n="pod-concept-label">Design Concept</span>
+              </span>
+              <p class="text-[11px] text-[#4B5563] leading-snug line-clamp-2" data-i18n="pod-concept-text">
+                Organic fluid impasto merges with rational geometry, weaving rich chromatic pigments with luminous algorithmic light filaments.
+              </p>
+            </div>
+
+            <!-- 2. 想傳達什麼 (What It Conveys) -->
+            <div class="p-2.5 rounded-lg bg-purple-50/60 border border-purple-100/80 space-y-1">
+              <span class="text-[10px] font-mono font-bold text-purple-900 flex items-center gap-1 uppercase tracking-wider">
+                <i data-lucide="sparkles" class="w-3 h-3 text-[#9333EA]"></i>
+                <span data-i18n="pod-message-label">What It Conveys</span>
+              </span>
+              <p class="text-[11px] text-[#4B5563] leading-snug line-clamp-2" data-i18n="pod-message-text">
+                Conveys dynamic balance between technological progress and human coexistence, celebrating innovation and luminous global connectivity.
+              </p>
+            </div>
+          </div>
+
+          <!-- Footer Metadata -->
+          <div class="pt-2 border-t border-[#E5E7EB] flex items-center justify-between text-[10px] font-mono text-[#6B7280]">
+            <span data-i18n="pod-agent-label">AI Visual Agent</span>
+            <span class="font-semibold text-[#6D28D9]" data-i18n="pod-time">08:00 TST</span>
+          </div>
+        </div>
+
+        <!-- 3. CGU GenAI Term Project Proposal: What's UP! 長庚大小事 LINE Bot -->
+        <div class="swiss-card rounded-xl p-4 sm:p-5 space-y-3 mt-3.5 border-l-4 border-l-[#06C755] shadow-sm">
+          <!-- Card Header -->
+          <div class="flex items-center justify-between gap-2">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#06C755] text-white font-mono text-[10px] font-bold tracking-wider uppercase">
+              <i data-lucide="bot" class="w-3 h-3"></i>
+              <span data-i18n="linebot-badge">CGU Collab Project</span>
+            </span>
+            <span class="font-mono text-[10px] font-semibold text-[#04A346] bg-[#ECFDF5] px-2 py-0.5 rounded border border-[#A7F3D0]" data-i18n="linebot-status">
+              Term Proposal
+            </span>
+          </div>
+
+          <!-- Project Title & Subtitle -->
+          <div class="space-y-1.5 pt-0.5">
+            <h3 class="text-sm font-bold text-[#111827] leading-snug flex items-center justify-between gap-1">
+              <span data-i18n="linebot-title">What's UP! 長庚大小事</span>
+              <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-[#F4F5F7] text-slate-600 border border-[#E5E7EB]">LINE Bot</span>
+            </h3>
+            <p class="text-[11px] text-[#4B5563] leading-relaxed line-clamp-3" data-i18n="linebot-desc">
+              長庚多語校園知識 LINE Bot 提案：專為外籍生打造，每日自動爬取校方公告建構自我更新 RAG 知識庫與 Human-in-the-loop 驗證機制。
+            </p>
+          </div>
+
+          <!-- Tech Tags -->
+          <div class="flex flex-wrap gap-1.5 pt-1">
+            <span class="px-2 py-0.5 rounded text-[9px] font-mono font-semibold bg-slate-100 text-slate-600">Multilingual RAG</span>
+            <span class="px-2 py-0.5 rounded text-[9px] font-mono font-semibold bg-slate-100 text-slate-600">AI Agent</span>
+            <span class="px-2 py-0.5 rounded text-[9px] font-mono font-semibold bg-slate-100 text-slate-600">LINE API</span>
+          </div>
+
+          <!-- Footer Link (Open in New Page) -->
+          <div class="pt-2.5 border-t border-[#E5E7EB] flex items-center justify-between">
+            <span class="text-[10px] font-mono text-[#6B7280]">Fall 2026 · Collab</span>
+            <a href="https://iamkylee.github.io/learning-space/notes/cgu-campus-linebot.html" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-1 text-xs font-bold text-[#04A346] hover:text-[#06C755] transition-colors group"
+               title="Open What's UP! Proposal in new tab">
+              <span data-i18n="linebot-link">View Proposal</span>
+              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+            </a>
+          </div>
+        </div>
+
       </aside>
 
       <!-- RIGHT COLUMN: HERO + PROFILE (Image 4 Orange Box Style) + AIRY DE-BOXED TIMELINE / RESEARCH / FOOTER -->
       <main class="flex-1 min-w-0 max-w-4xl mx-auto">
 
-        <!-- HERO SECTION (Red-Boxed Bio Paragraph & Hero Kinmen Button Removed) -->
-        <section id="hero" class="pt-16 pb-28 sm:pt-24 sm:pb-36">
-          <div class="space-y-6">
-            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 font-mono text-[11px] font-semibold tracking-wider text-[#1E3A8A] uppercase">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#2563EB]"></span>
-              <span data-i18n="hero-eyebrow">CGU M.S. in AI · Ex-HP · Quanta</span>
-            </span>
-
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#111827] leading-[1.1]">
+        <!-- HERO SECTION (Eyebrow Removed, Name Pulled Up, Font Reduced 2pt) -->
+        <section id="hero" class="pt-2 pb-4 sm:pt-3 sm:pb-5">
+          <div class="space-y-3">
+            <h1 class="text-[30px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-tight text-[#111827] leading-[1.1]">
               Ting-Yen (Myron) Huang
-              <span class="block text-2xl sm:text-3xl font-bold text-slate-400 mt-2">黃婷琰</span>
+              <span class="block text-[19px] sm:text-[25px] font-bold text-slate-400 mt-1.5">黃婷琰</span>
             </h1>
-
-            <p class="text-base sm:text-lg font-medium text-[#1E3A8A] font-mono tracking-tight" data-i18n="hero-slogan">
-              Input: Your Idea &rarr; Output: Real AI
-            </p>
-
-            <div class="pt-4">
-              <a href="#about" class="nav-anchor inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-xs font-mono font-semibold text-[#111827] hover:text-[#1E3A8A] transition-colors">
-                <span data-i18n="hero-scroll">Scroll to explore</span>
-                <span aria-hidden="true">&darr;</span>
-              </a>
-            </div>
           </div>
         </section>
 
-        <!-- 01 / ABOUT & CERTIFICATIONS (Restored Image 4 Orange Box Version) -->
-        <section id="about" class="py-24 sm:py-32 scroll-mt-16">
+        <!-- 01 / ABOUT & CERTIFICATIONS (Pulled up under Hero) -->
+        <section id="about" class="pt-2 pb-20 sm:pt-4 sm:pb-28 scroll-mt-16">
           <div class="space-y-8">
             <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-[#E5E7EB] pb-4">
               <div>
@@ -494,16 +519,19 @@
           </div>
         </section>
 
-        <!-- 02 / EXPERIENCE TIMELINE (Airy Borderless Story Stream, Magazine-Style Compact Chibi Images) -->
-        <section id="experience" class="py-24 sm:py-32 scroll-mt-16">
-          <div class="space-y-12">
+        <!-- 02 / EXPERIENCE TIMELINE (Aligned with 01 / Profile Header & Spacing) -->
+        <section id="experience" class="pt-2 pb-20 sm:pt-4 sm:pb-28 scroll-mt-16">
+          <div class="space-y-8">
             
-            <div class="space-y-5">
-              <div>
-                <span class="font-mono text-xs font-bold tracking-widest text-[#2563EB] uppercase">02 / Career &amp; Academic Path</span>
-                <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#111827] mt-1.5" data-i18n="exp-title">
-                  Experience Timeline
-                </h2>
+            <div class="space-y-6">
+              <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-[#E5E7EB] pb-4">
+                <div>
+                  <span class="font-mono text-xs font-bold tracking-widest text-[#2563EB] uppercase">02 / Career &amp; Academic Path</span>
+                  <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#111827] mt-1" data-i18n="exp-title">
+                    Experience Timeline
+                  </h2>
+                </div>
+                <span class="font-mono text-xs text-[#6B7280]" data-i18n="exp-count">6 Milestones · 2013 – Present</span>
               </div>
 
               <!-- Soft Borderless Pill Filters -->
@@ -674,14 +702,17 @@
           </div>
         </section>
 
-        <!-- 03 / ONGOING RESEARCH (Unframed Images, Title & Info Below Images) -->
-        <section id="research" class="py-24 sm:py-32 scroll-mt-16">
-          <div class="space-y-10">
-            <div>
-              <span class="font-mono text-xs font-bold tracking-widest text-[#2563EB] uppercase">03 / Medical Vision</span>
-              <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#111827] mt-1.5" data-i18n="research-spotlight-title">
-                Ongoing Research
-              </h2>
+        <!-- 03 / ONGOING RESEARCH (Aligned with 01 / Profile Header & Spacing) -->
+        <section id="research" class="pt-2 pb-20 sm:pt-4 sm:pb-28 scroll-mt-16">
+          <div class="space-y-8">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-[#E5E7EB] pb-4">
+              <div>
+                <span class="font-mono text-xs font-bold tracking-widest text-[#2563EB] uppercase">03 / Medical Vision</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#111827] mt-1" data-i18n="research-spotlight-title">
+                  Ongoing Research
+                </h2>
+              </div>
+              <span class="font-mono text-xs text-[#6B7280]" data-i18n="res-count">2 Active Projects · CGU Brain Ma Lab</span>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -750,7 +781,7 @@
               </a>
               <a href="https://github.com/fttmp66-0c0o0d0e0r0/myron-huang-portfolio" target="_blank" rel="noopener noreferrer"
                  class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#111827] hover:bg-[#1E3A8A] text-xs font-bold text-white transition-colors">
-                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg> GitHub
+                <svg class="w-3.5 h-3.5" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg> GitHub
               </a>
             </div>
 
@@ -897,6 +928,26 @@
           'ai-cat4-tag': 'Daily AI News',
           'ai-freq-news': 'Daily · Policy',
           'ai-cat4-title': 'FDA Updates Adaptive Clinical AI/ML Monitoring Guidance for Medical Imaging Systems',
+          'ai-daily-desc': 'New predetermined change control plan (PCCP) protocols streamline continuous learning software deployments in diagnostic radiology.',
+          'ai-more-link': 'More',
+          'pod-badge': 'Pic. of the day',
+          'pod-tag': 'Abstract Series',
+          'pod-click-zoom': 'Click to expand',
+          'pod-title': 'Global Energy &amp; Neural Flow',
+          'pod-inspiration': 'Inspiration: Planetary Power &amp; Neural Networks',
+          'pod-creation-label': 'Creation &amp; Medium',
+          'pod-creation-text': 'Synthesized by daily AI visual agent through rich chromatic impasto, palette knife layering, and luminous algorithmic light filaments.',
+          'pod-concept-label': 'Design Concept',
+          'pod-concept-text': 'Organic fluid impasto merges with rational geometry, weaving rich chromatic pigments with luminous algorithmic light filaments.',
+          'pod-message-label': 'What It Conveys',
+          'pod-message-text': 'Conveys dynamic balance between technological progress and human coexistence, celebrating innovation and luminous global connectivity.',
+          'pod-agent-label': 'Daily AI Visual Agent',
+          'pod-time': '08:00 TST',
+          'linebot-badge': 'CGU Collab Project',
+          'linebot-status': 'Term Proposal',
+          'linebot-title': 'What\'s UP! Campus Bot',
+          'linebot-desc': 'A self-updating multilingual LINE bot for CGU: crawls official campus announcements into a dynamic RAG knowledge base for international students with Human-in-the-loop verification.',
+          'linebot-link': 'View Proposal',
           'ai-cat5-tag': 'Weekly AI Gossip',
           'ai-freq-gossip': 'Weekly · Insider',
           'ai-cat5-title': 'Silicon Valley Talent War Intensifies Across Frontier Labs Amid Multi-Billion Valuations',
@@ -917,6 +968,7 @@
           'cert3-desc': 'Enterprise system implementation standards.',
           'avatar-role': 'CGU AI Graduate Researcher',
           'exp-title': 'Experience Timeline',
+          'exp-count': '6 Milestones · 2013 – Present',
           'filter-all': 'All Roles',
           'filter-software': 'Clinical Software',
           'filter-business': 'Commercial Sales',
@@ -960,6 +1012,7 @@
           'inst-p1': '<strong>KMU 7-Day Camp:</strong> Mentored students &amp; care pros on elderly AI prototypes; won 2nd Place &amp; Best Presentation.',
           'inst-p2': '<strong>Hungkuang Nursing:</strong> Taught AI imaging fundamentals, practical recognition errors, and daily care innovation.',
           'research-spotlight-title': 'Ongoing Research',
+          'res-count': '2 Active Projects · CGU Brain Ma Lab',
           'res1-title': 'nnDetection for Automated CT Lymph Node Detection',
           'res2-title': 'Real-time endoscopic surgery of vessel prediction',
           'res-unpublished': 'Ongoing Research · Unpublished',
@@ -987,9 +1040,29 @@
           'ai-cat3-tag': '每日 AI 新技術 · 模型演算法',
           'ai-freq-daily': '每日 · 模型',
           'ai-cat3-title': '開源 MoE 推理演算法突破，數學與程式生成效能追平頂尖閉源模型',
-          'ai-cat4-tag': '每日 AI News · 綜合要聞',
+          'ai-cat4-tag': '每日 AI News',
           'ai-freq-news': '每日 · 政策',
-          'ai-cat4-title': 'FDA 更新適應性醫療影像 AI/ML 即時安全監控與監管指南',
+          'ai-cat4-title': 'FDA 發布醫療影像 AI/ML 適應性臨床監測最新指引',
+          'ai-daily-desc': '規範預先定義之變更控制計畫 (PCCP) 標準，為醫院環境中具持續學習能力之放射科輔助診斷系統建立落地流程。',
+          'ai-more-link': '更多情報',
+          'pod-badge': 'Pic. of the day',
+          'pod-tag': '全球時事抽象系列',
+          'pod-click-zoom': '點擊放大檢視',
+          'pod-title': '全球能源脈動與行星神經流',
+          'pod-inspiration': '時事靈感：全球潔淨能源轉型與行星級神經網絡',
+          'pod-creation-label': '創造描述與技法',
+          'pod-creation-text': '由 AI Visual Agent 每日定時轉譯全球時事，以高飽和厚塗油彩筆觸、多層次流體色塊與高光演算法纖維交織渲染而成。',
+          'pod-concept-label': '設計概念',
+          'pod-concept-text': '「有機流體 × 理性光網」：以厚塗油彩交織演算法星芒，融合生態能量與科技秩序。',
+          'pod-message-label': '想傳達的意念',
+          'pod-message-text': '傳達「科技進步與全球共存的動態平衡」，在 AI 高速演進中展現人類創新韌性與美好聯結。',
+          'pod-agent-label': 'AI 每日產圖 Agent',
+          'pod-time': '每日 08:00 TST',
+          'linebot-badge': '長庚團隊合作提案',
+          'linebot-status': '期末提案計畫',
+          'linebot-title': 'What\'s UP! 長庚大小事',
+          'linebot-desc': '長庚多語校園知識 LINE Bot 提案：專為外籍學生打造，每日自動爬取校方公告建構自我更新 RAG 知識庫與 Human-in-the-loop 驗證機制。',
+          'linebot-link': '閱讀提案全文',
           'ai-cat5-tag': '每週 AI 八卦 · 產業內幕',
           'ai-freq-gossip': '每週 · 內幕',
           'ai-cat5-title': '矽谷頂尖 AI 實驗室爆高薪挖角戰，新創估值飆破數十億美元',
@@ -1010,6 +1083,7 @@
           'cert3-desc': '企業級系統建置與核心技術實作官方認證。',
           'avatar-role': '長庚大學 AI 碩士班研究生',
           'exp-title': '經歷時間軸',
+          'exp-count': '6 項經歷里程碑 · 2013 – 至今',
           'filter-all': '全部經歷',
           'filter-software': '臨床醫療軟體',
           'filter-business': '商務銷售管理',
@@ -1053,6 +1127,7 @@
           'inst-p1': '<strong>KMU 七日夏令營：</strong>指導大學、碩士生與高齡照護業界人士開發 AI 原型與展示影片，帶領兩梯次分獲第二名與最佳簡報獎。',
           'inst-p2': '<strong>弘光科大護理系：</strong>教授 AI 影像基礎，引導學生透過實作辨別模型誤差與限制，將影像辨識創新應用於生活照護。',
           'research-spotlight-title': '目前進行中研究',
+          'res-count': '2 項進行中研究 · 長庚大學馬腦實驗室',
           'res1-title': 'nnDetection 應用於腹部 CT 淋巴結自動偵測',
           'res2-title': '即時內視鏡手術血管預測 (Real-time endoscopic surgery of vessel prediction)',
           'res-unpublished': '目前進行中研究 · 尚未發表',
@@ -1080,9 +1155,29 @@
           'ai-cat3-tag': '每日 AI 新技术 · 模型算法',
           'ai-freq-daily': '每日 · 模型',
           'ai-cat3-title': '开源 MoE 推理算法突破，数学与代码生成效能追平顶尖闭源模型',
-          'ai-cat4-tag': '每日 AI News · 综合要闻',
+          'ai-cat4-tag': '每日 AI News',
           'ai-freq-news': '每日 · 政策',
-          'ai-cat4-title': 'FDA 更新自适应医疗影像 AI/ML 实时安全监控与监管指南',
+          'ai-cat4-title': 'FDA 发布医疗影像 AI/ML 适应性临床监测最新指引',
+          'ai-daily-desc': '规范预先定义之变更控制计划 (PCCP) 标准，为医院环境中具持续学习能力之放射科辅助诊断系统建立落地流程。',
+          'ai-more-link': '更多情报',
+          'pod-badge': 'Pic. of the day',
+          'pod-tag': '全球时事抽象系列',
+          'pod-click-zoom': '点击放大查看',
+          'pod-title': '全球能源脉动与行星神经流',
+          'pod-inspiration': '时事灵感：全球洁净能源转型与行星级神经网络',
+          'pod-creation-label': '创造描述与技法',
+          'pod-creation-text': '由 AI Visual Agent 每日定时转译全球时事，以高饱和厚涂油彩笔触、多层次流体色块与高光算法纤维交织渲染而成。',
+          'pod-concept-label': '设计概念',
+          'pod-concept-text': '“有机流体 × 理性光网”：以厚涂油彩交织算法星芒，融合生态能量与科技秩序。',
+          'pod-message-label': '想传达的意念',
+          'pod-message-text': '传达“科技进步与全球共存的动态平衡”，在 AI 高速演进中展现人类创新韧性与美好联结。',
+          'pod-agent-label': 'AI 每日产图 Agent',
+          'pod-time': '每日 08:00 TST',
+          'linebot-badge': '长庚团队合作提案',
+          'linebot-status': '期末提案计划',
+          'linebot-title': 'What\'s UP! 长庚大小事',
+          'linebot-desc': '长庚多语校园知识 LINE Bot 提案：专为外籍学生打造，每日自动爬取校方公告建构自我更新 RAG 知识库与 Human-in-the-loop 验证机制。',
+          'linebot-link': '阅读提案全文',
           'ai-cat5-tag': '每周 AI 八卦 · 产业内幕',
           'ai-freq-gossip': '每周 · 内幕',
           'ai-cat5-title': '硅谷顶尖 AI 实验室爆高薪挖角战，新创估值飙破数十亿美元',
@@ -1103,6 +1198,7 @@
           'cert3-desc': '企业级系统建设与核心技术实操官方认证。',
           'avatar-role': '长庚大学 AI 硕士班研究生',
           'exp-title': '经历时间轴',
+          'exp-count': '6 项经历里程碑 · 2013 – 至今',
           'filter-all': '全部经历',
           'filter-software': '临床医疗软件',
           'filter-business': '商务销售管理',
@@ -1146,6 +1242,7 @@
           'inst-p1': '<strong>KMU 七日夏令营：</strong>指导大学、硕士生与高龄照护业界人士开发 AI 原型与展示视频，带领两梯次分获第二名与最佳简报奖。',
           'inst-p2': '<strong>弘光科大护理系：</strong>教授 AI 图像基础，引导学生通过实操辨别模型误差与限制，将图像识别创新应用于生活照护。',
           'research-spotlight-title': '目前进行中研究',
+          'res-count': '2 项进行中研究 · 长庚大学马脑实验室',
           'res1-title': 'nnDetection 应用于腹部 CT 淋巴结自动检测',
           'res2-title': '实时内窥镜手术血管预测 (Real-time endoscopic surgery of vessel prediction)',
           'res-unpublished': '目前进行中研究 · 尚未发表',
@@ -1176,6 +1273,26 @@
           'ai-cat4-tag': 'Actu IA Quotidienne',
           'ai-freq-news': 'Quotidien · Régulation',
           'ai-cat4-title': 'La FDA met à jour ses directives de suivi adaptatif IA/ML pour l\'imagerie médicale clinique',
+          'ai-daily-desc': 'De nouveaux protocoles de plans de contrôle des changements prédéterminés encadrent les déploiements d\'algorithmes apprenants.',
+          'ai-more-link': 'En savoir plus',
+          'pod-badge': 'Pic. of the day',
+          'pod-tag': 'Série Abstraite',
+          'pod-click-zoom': 'Cliquer pour agrandir',
+          'pod-title': 'Énergie Mondiale &amp; Flux Neuronal',
+          'pod-inspiration': 'Inspiration : Transition Énergétique &amp; Réseaux Planétaires',
+          'pod-creation-label': 'Création &amp; Médium',
+          'pod-creation-text': 'Synthétisé par l\'agent visuel IA via des empâtements chromatiques riches, couteau à palette et filaments algorithmiques lumineux.',
+          'pod-concept-label': 'Concept de Design',
+          'pod-concept-text': 'Fluidité organique et géométrie rationnelle : empâtements riches entrelacés de filaments algorithmiques lumineux.',
+          'pod-message-label': 'Message Transmis',
+          'pod-message-text': 'Transmet l\'équilibre dynamique entre innovation technologique et coexistence humaine à l\'ère de l\'IA.',
+          'pod-agent-label': 'Agent Visuel IA Quotidien',
+          'pod-time': '08:00 TST',
+          'linebot-badge': 'Projet Collectif CGU',
+          'linebot-status': 'Proposition de Projet',
+          'linebot-title': 'What\'s UP! Bot CGU',
+          'linebot-desc': 'Bot LINE multilingue auto-actualisé pour l\'Université Chang Gung : exploration quotidienne des annonces via RAG avec boucle de rétroaction humaine.',
+          'linebot-link': 'Consulter le Projet',
           'ai-cat5-tag': 'Coulisses Silicon Valley',
           'ai-freq-gossip': 'Hebdo · Confidentiel',
           'ai-cat5-title': 'La guerre des talents s\'intensifie entre les laboratoires d\'IA de pointe face à des valorisations records',
@@ -1196,6 +1313,7 @@
           'cert3-desc': 'Validation des standards d\'implémentation des systèmes d\'entreprise.',
           'avatar-role': 'Chercheur Master IA à CGU',
           'exp-title': 'Chronologie des Expériences',
+          'exp-count': '6 Jalons Clés · 2013 – Présent',
           'filter-all': 'Tous les postes',
           'filter-software': 'Logiciel Clinique',
           'filter-business': 'Ventes Commerciales',
@@ -1239,6 +1357,7 @@
           'inst-p1': '<strong>Camp d\'été KMU (7 jours) :</strong> Encadrement d\'étudiants et pros sur des prototypes IA gériatriques (2e place &amp; Meilleure Présentation).',
           'inst-p2': '<strong>Soins Infirmiers Hungkuang :</strong> Enseignement des bases de l\'imagerie IA, erreurs pratiques de reconnaissance et innovation en santé.',
           'research-spotlight-title': 'Recherches en Cours',
+          'res-count': '2 Projets Actifs · Lab Brain Ma CGU',
           'res1-title': 'Détection automatisée des ganglions lymphatiques par CT avec nnDetection',
           'res2-title': 'Real-time endoscopic surgery of vessel prediction',
           'res-unpublished': 'Recherche en cours · Non publiée',

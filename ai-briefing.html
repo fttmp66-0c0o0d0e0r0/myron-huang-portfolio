@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Briefing | Ting-Yen (Myron) Huang</title>
+  <meta name="description" content="Daily & Weekly AI Briefing curated by Ting-Yen (Myron) Huang - Global AI milestones, security defense, model algorithms, and industry insights.">
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #FCFCFC;
+      color: #111827;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .glass-nav {
+      background-color: rgba(252, 252, 252, 0.92);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+    }
+    .swiss-card {
+      background-color: #FFFFFF;
+      border: 1px solid #E5E7EB;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+    .swiss-card:hover {
+      border-color: #93C5FD;
+    }
+    .news-card {
+      background-color: #FFFFFF;
+      border: 1px solid #E5E7EB;
+      transition: all 0.2s ease;
+    }
+    .news-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px -6px rgba(17, 24, 39, 0.08);
+      border-color: #CBD5E1;
+    }
+    .filter-pill {
+      cursor: pointer;
+      user-select: none;
+      background-color: #F1F5F9;
+      color: #475569;
+      transition: all 0.2s ease;
+    }
+    .filter-pill:hover {
+      background-color: #E2E8F0;
+      color: #1E3A8A;
+    }
+    .filter-pill.active {
+      background-color: #1E3A8A;
+      color: #FFFFFF;
+    }
+    @keyframes kinmenBeaconPulse {
+      0%, 100% {
+        background-color: #0b232e;
+        box-shadow: 0 0 0 0 rgba(45, 212, 191, 0.55), 0 4px 14px rgba(11, 35, 46, 0.3);
+        transform: translateY(0);
+      }
+      50% {
+        background-color: #133b4a;
+        box-shadow: 0 0 18px 2px rgba(45, 212, 191, 0.7), 0 6px 20px rgba(15, 76, 92, 0.45);
+        transform: translateY(-1px);
+      }
+    }
+    @keyframes kinmenShimmer {
+      0% { left: -60%; }
+      60%, 100% { left: 140%; }
+    }
+    @keyframes goldShine {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+    .kinmen-flash-badge {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #2dd4bf;
+      animation: kinmenBeaconPulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    .kinmen-flash-badge::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -60%;
+      width: 45%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+      transform: skewX(-22deg);
+      animation: kinmenShimmer 3.2s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .kinmen-new-pill {
+      box-shadow: 0 0 8px rgba(94, 234, 212, 0.85);
+      transition: transform 0.2s ease;
+    }
+    .kinmen-new-pill.flash-alt {
+      background-color: #fef08a;
+      color: #713f12;
+      box-shadow: 0 0 12px rgba(250, 204, 21, 0.95);
+      transform: scale(1.08);
+    }
+    .metallic-gold-text {
+      background: linear-gradient(90deg, #FDE68A 0%, #F59E0B 35%, #FFFBEB 50%, #D97706 70%, #FDE68A 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: goldShine 3s linear infinite;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-[#FCFCFC] text-[#111827] font-sans antialiased selection:bg-[#1E3A8A] selection:text-white">
+
+  <!-- TOP HEADER -->
+  <header class="glass-nav sticky top-0 z-40 border-b border-[#E5E7EB]">
+    <div class="max-w-[1380px] mx-auto px-6 h-16 flex items-center justify-between gap-4">
+      
+      <!-- Left: Back to Portfolio -->
+      <a href="index.html" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 text-xs font-mono font-bold text-[#111827] hover:text-[#1E3A8A] transition-colors group">
+        <i data-lucide="arrow-left" class="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform"></i>
+        <span data-i18n="nav-back">Back to Portfolio</span>
+      </a>
+
+      <!-- Center: Page Indicator -->
+      <div class="hidden sm:flex items-center gap-2 text-xs font-mono font-semibold text-slate-500">
+        <span class="w-2 h-2 rounded-full bg-[#2563EB] animate-pulse"></span>
+        <span data-i18n="page-indicator">AI BRIEFING ARCHIVE · DAILY &amp; WEEKLY</span>
+      </div>
+
+      <!-- Right: Social, Language Switcher & Kinmen Badge -->
+      <div class="flex items-center gap-2.5 flex-shrink-0">
+        <button id="lang-toggle-btn" type="button"
+                class="h-8 px-3 rounded-full bg-slate-100 hover:bg-slate-200 text-[11px] font-mono font-semibold text-slate-700 transition-colors cursor-pointer whitespace-nowrap"
+                title="Switch Language (EN / 繁中 / 简中 / FR)">
+          <span id="lang-btn-text">繁中</span>
+        </button>
+
+        <a href="kinmen.html" id="kinmen-campaign-badge"
+           class="kinmen-flash-badge inline-flex items-center gap-2 h-8 px-3.5 rounded-full text-xs font-extrabold whitespace-nowrap">
+          <span id="kinmen-new-pill" class="kinmen-new-pill px-1.5 py-0.5 rounded-full bg-teal-300 text-[#0b232e] text-[9px] font-black tracking-wider uppercase">
+            NEW
+          </span>
+          <span class="metallic-gold-text tracking-tight" data-i18n="nav-kinmen">Kinmen Bike Challenge &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-[1100px] mx-auto px-6 py-10 sm:py-16 space-y-10">
+
+    <!-- PAGE HERO BANNER -->
+    <section class="space-y-4 border-b border-[#E5E7EB] pb-8">
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#1E3A8A] text-white font-mono text-xs font-bold tracking-wider uppercase">
+          <span class="w-1.5 h-1.5 rounded-full bg-sky-300 animate-pulse"></span>
+          <span data-i18n="ai-badge">AI BRIEFING</span>
+        </span>
+        <span class="font-mono text-xs font-semibold text-[#4B5563] bg-[#F4F5F7] px-3 py-1 rounded-full border border-[#E5E7EB] flex items-center gap-1.5" title="Updated Daily at 08:00 TST">
+          <i data-lucide="clock" class="w-3.5 h-3.5 text-[#2563EB]"></i>
+          <span data-i18n="ai-sync-full">Daily Update · 08:00 TST (UTC+8)</span>
+        </span>
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#111827]" data-i18n="b-hero-title">
+        Daily &amp; Weekly AI Intelligence
+      </h1>
+      <p class="text-sm sm:text-base text-slate-600 max-w-3xl leading-relaxed" data-i18n="b-hero-desc">
+        Comprehensive curated intelligence covering weekly global milestones, AI security defense architectures, daily frontier reasoning models, clinical medical AI policies, and Silicon Valley insider reports.
+      </p>
+
+      <!-- Category Filter Pills -->
+      <div class="pt-4 flex items-center gap-2 overflow-x-auto whitespace-nowrap scrollbar-none" id="briefing-filters">
+        <button type="button" class="filter-pill active px-3.5 py-1.5 rounded-full text-xs font-semibold" data-cat="all" data-i18n="b-filter-all">All Briefings</button>
+        <button type="button" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-semibold" data-cat="milestone" data-i18n="b-filter-milestone">Global Milestones</button>
+        <button type="button" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-semibold" data-cat="security" data-i18n="b-filter-security">AI Security</button>
+        <button type="button" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-semibold" data-cat="tech" data-i18n="b-filter-tech">Daily Tech</button>
+        <button type="button" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-semibold" data-cat="news" data-i18n="b-filter-news">Daily News</button>
+        <button type="button" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-semibold" data-cat="gossip" data-i18n="b-filter-gossip">Weekly Gossip</button>
+      </div>
+    </section>
+
+    <!-- 5 CATEGORIZED NEWS CARDS GRID -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="briefing-cards">
+
+      <!-- 1. Weekly AI Milestones (Nature Medicine) -->
+      <article class="news-card rounded-xl p-5 border-l-4 border-l-[#1E3A8A] flex flex-col justify-between space-y-4" data-cat="milestone">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between gap-2">
+            <span class="px-2.5 py-1 rounded text-[11px] font-mono font-bold bg-[#eff6ff] text-[#1E3A8A] border border-[#dbeafe] flex items-center gap-1.5">
+              <i data-lucide="globe" class="w-3.5 h-3.5"></i>
+              <span data-i18n="ai-cat1-tag">Weekly AI Milestones</span>
+            </span>
+            <span class="text-[11px] font-mono text-[#6B7280]" data-i18n="ai-freq-weekly">Weekly · Global</span>
+          </div>
+          <h2 class="text-base sm:text-lg font-bold text-[#111827] leading-snug" data-i18n="ai-cat1-title">
+            Multimodal Surgical Foundation Models Set New Global Clinical Robotics Benchmark
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed" data-i18n="ai-cat1-desc">
+            Peer-reviewed breakthrough demonstrates autonomous endoscopic instrument guidance and sub-millimeter tissue segmentation across multi-center trials.
+          </p>
+        </div>
+        <div class="pt-3 border-t border-[#E5E7EB] flex items-center justify-between text-xs text-[#6B7280]">
+          <span class="font-medium text-[#111827]">Nature Medicine</span>
+          <a href="https://www.nature.com/nm/" target="_blank" rel="noopener noreferrer"
+             class="font-mono font-bold text-[#1E3A8A] hover:underline inline-flex items-center gap-1">
+            <span data-i18n="ai-read-full">Read Source</span> <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- 2. Weekly AI Security (MIT Tech Review) -->
+      <article class="news-card rounded-xl p-5 border-l-4 border-l-[#991B1B] flex flex-col justify-between space-y-4" data-cat="security">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between gap-2">
+            <span class="px-2.5 py-1 rounded text-[11px] font-mono font-bold bg-[#fef2f2] text-[#991B1B] border border-[#fecaca] flex items-center gap-1.5">
+              <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+              <span data-i18n="ai-cat2-tag">Weekly AI Security</span>
+            </span>
+            <span class="text-[11px] font-mono text-[#6B7280]" data-i18n="ai-freq-sec">Weekly · Defense</span>
+          </div>
+          <h2 class="text-base sm:text-lg font-bold text-[#111827] leading-snug" data-i18n="ai-cat2-title">
+            Anthropic &amp; MIT Unveil Next-Gen LLM Jailbreak &amp; Prompt Injection Defense Architecture
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed" data-i18n="ai-cat2-desc">
+            Novel circuit-level activation steering prevents adversarial token manipulation without degrading reasoning capabilities or speed.
+          </p>
+        </div>
+        <div class="pt-3 border-t border-[#E5E7EB] flex items-center justify-between text-xs text-[#6B7280]">
+          <span class="font-medium text-[#111827]">MIT Tech Review</span>
+          <a href="https://www.technologyreview.com/" target="_blank" rel="noopener noreferrer"
+             class="font-mono font-bold text-[#991B1B] hover:underline inline-flex items-center gap-1">
+            <span data-i18n="ai-read-full">Read Source</span> <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- 3. Daily AI New Tech (Hugging Face Blog) -->
+      <article class="news-card rounded-xl p-5 border-l-4 border-l-[#065F46] flex flex-col justify-between space-y-4" data-cat="tech">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between gap-2">
+            <span class="px-2.5 py-1 rounded text-[11px] font-mono font-bold bg-[#ecfdf5] text-[#065F46] border border-[#a7f3d0] flex items-center gap-1.5">
+              <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
+              <span data-i18n="ai-cat3-tag">Daily AI New Tech</span>
+            </span>
+            <span class="text-[11px] font-mono text-[#6B7280]" data-i18n="ai-freq-daily">Daily · Models</span>
+          </div>
+          <h2 class="text-base sm:text-lg font-bold text-[#111827] leading-snug" data-i18n="ai-cat3-title">
+            Open MoE Reasoning Algorithms Reach Frontier Math &amp; Code Inference Parity
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed" data-i18n="ai-cat3-desc">
+            Sparse activation routing with RL verification delivers proprietary-grade mathematical logic on consumer hardware benchmarks.
+          </p>
+        </div>
+        <div class="pt-3 border-t border-[#E5E7EB] flex items-center justify-between text-xs text-[#6B7280]">
+          <span class="font-medium text-[#111827]">Hugging Face Blog</span>
+          <a href="https://huggingface.co/blog" target="_blank" rel="noopener noreferrer"
+             class="font-mono font-bold text-[#065F46] hover:underline inline-flex items-center gap-1">
+            <span data-i18n="ai-read-full">Read Source</span> <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- 4. Daily AI News (FDA Official) -->
+      <article class="news-card rounded-xl p-5 border-l-4 border-l-[#2563EB] flex flex-col justify-between space-y-4" data-cat="news">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between gap-2">
+            <span class="px-2.5 py-1 rounded text-[11px] font-mono font-bold bg-[#eff6ff] text-[#2563EB] border border-[#bfdbfe] flex items-center gap-1.5">
+              <i data-lucide="newspaper" class="w-3.5 h-3.5"></i>
+              <span data-i18n="ai-cat4-tag">Daily AI News</span>
+            </span>
+            <span class="text-[11px] font-mono text-[#6B7280]" data-i18n="ai-freq-news">Daily · Policy</span>
+          </div>
+          <h2 class="text-base sm:text-lg font-bold text-[#111827] leading-snug" data-i18n="ai-cat4-title">
+            FDA Updates Adaptive Clinical AI/ML Monitoring Guidance for Medical Imaging Systems
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed" data-i18n="ai-cat4-desc">
+            New predetermined change control plan (PCCP) protocols streamline continuous learning software deployments in diagnostic radiology.
+          </p>
+        </div>
+        <div class="pt-3 border-t border-[#E5E7EB] flex items-center justify-between text-xs text-[#6B7280]">
+          <span class="font-medium text-[#111827]">FDA Official</span>
+          <a href="https://www.fda.gov/medical-devices/software-medical-device-samd/artificial-intelligence-and-machine-learning-software-medical-device" target="_blank" rel="noopener noreferrer"
+             class="font-mono font-bold text-[#2563EB] hover:underline inline-flex items-center gap-1">
+            <span data-i18n="ai-read-full">Read Source</span> <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- 5. Weekly AI Gossip (TechCrunch AI) -->
+      <article class="news-card rounded-xl p-5 border-l-4 border-l-[#856742] flex flex-col justify-between space-y-4 md:col-span-2" data-cat="gossip">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between gap-2">
+            <span class="px-2.5 py-1 rounded text-[11px] font-mono font-bold bg-[#f7f3ec] text-[#694f30] border border-[#e3d7c5] flex items-center gap-1.5">
+              <i data-lucide="flame" class="w-3.5 h-3.5"></i>
+              <span data-i18n="ai-cat5-tag">Weekly AI Gossip</span>
+            </span>
+            <span class="text-[11px] font-mono text-[#6B7280]" data-i18n="ai-freq-gossip">Weekly · Insider</span>
+          </div>
+          <h2 class="text-base sm:text-lg font-bold text-[#111827] leading-snug" data-i18n="ai-cat5-title">
+            Silicon Valley Talent War Intensifies Across Frontier Labs Amid Multi-Billion Valuations
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed" data-i18n="ai-cat5-desc">
+            Top research scientists and infra architects command unprecedented multi-million dollar equity packages as sovereign AI clusters enter construction.
+          </p>
+        </div>
+        <div class="pt-3 border-t border-[#E5E7EB] flex items-center justify-between text-xs text-[#6B7280]">
+          <span class="font-medium text-[#111827]">TechCrunch AI</span>
+          <a href="https://techcrunch.com/category/artificial-intelligence/" target="_blank" rel="noopener noreferrer"
+             class="font-mono font-bold text-[#856742] hover:underline inline-flex items-center gap-1">
+            <span data-i18n="ai-read-full">Read Source</span> <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- BACK TO TOP / PORTFOLIO FOOTER -->
+    <footer class="pt-10 border-t border-[#E5E7EB] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500">
+      <div>
+        <span>&copy; Ting-Yen (Myron) Huang · AI &amp; Systems</span>
+      </div>
+      <a href="index.html" class="inline-flex items-center gap-1.5 font-bold text-[#1E3A8A] hover:underline">
+        <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+        <span data-i18n="nav-back">Back to Main Portfolio</span>
+      </a>
+    </footer>
+
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+
+      // Kinmen Flashing Badge
+      const kinmenNewPill = document.getElementById('kinmen-new-pill');
+      if (kinmenNewPill) {
+        setInterval(() => {
+          kinmenNewPill.classList.toggle('flash-alt');
+        }, 450);
+      }
+
+      // Filter functionality
+      const filterBtns = document.querySelectorAll('#briefing-filters .filter-pill');
+      const cards = document.querySelectorAll('#briefing-cards article');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const cat = btn.getAttribute('data-cat');
+          cards.forEach(card => {
+            if (cat === 'all' || card.getAttribute('data-cat') === cat) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Quad-Lingual i18n
+      const i18n = {
+        'en': {
+          'btn': '繁中',
+          'htmlLang': 'en',
+          'nav-back': 'Back to Portfolio',
+          'page-indicator': 'AI BRIEFING ARCHIVE · DAILY & WEEKLY',
+          'nav-kinmen': 'Kinmen Bike Challenge &rarr;',
+          'ai-badge': 'AI BRIEFING',
+          'ai-sync-full': 'Daily Update · 08:00 TST (UTC+8)',
+          'b-hero-title': 'Daily & Weekly AI Intelligence',
+          'b-hero-desc': 'Comprehensive curated intelligence covering weekly global milestones, AI security defense architectures, daily frontier reasoning models, clinical medical AI policies, and Silicon Valley insider reports.',
+          'b-filter-all': 'All Briefings',
+          'b-filter-milestone': 'Global Milestones',
+          'b-filter-security': 'AI Security',
+          'b-filter-tech': 'Daily Tech',
+          'b-filter-news': 'Daily News',
+          'b-filter-gossip': 'Weekly Gossip',
+          'ai-cat1-tag': 'Weekly AI Milestones',
+          'ai-freq-weekly': 'Weekly · Global',
+          'ai-cat1-title': 'Multimodal Surgical Foundation Models Set New Global Clinical Robotics Benchmark',
+          'ai-cat1-desc': 'Peer-reviewed breakthrough demonstrates autonomous endoscopic instrument guidance and sub-millimeter tissue segmentation across multi-center trials.',
+          'ai-cat2-tag': 'Weekly AI Security',
+          'ai-freq-sec': 'Weekly · Defense',
+          'ai-cat2-title': 'Anthropic & MIT Unveil Next-Gen LLM Jailbreak & Prompt Injection Defense Architecture',
+          'ai-cat2-desc': 'Novel circuit-level activation steering prevents adversarial token manipulation without degrading reasoning capabilities or speed.',
+          'ai-cat3-tag': 'Daily AI New Tech',
+          'ai-freq-daily': 'Daily · Models',
+          'ai-cat3-title': 'Open MoE Reasoning Algorithms Reach Frontier Math & Code Inference Parity',
+          'ai-cat3-desc': 'Sparse activation routing with RL verification delivers proprietary-grade mathematical logic on consumer hardware benchmarks.',
+          'ai-cat4-tag': 'Daily AI News',
+          'ai-freq-news': 'Daily · Policy',
+          'ai-cat4-title': 'FDA Updates Adaptive Clinical AI/ML Monitoring Guidance for Medical Imaging Systems',
+          'ai-cat4-desc': 'New predetermined change control plan (PCCP) protocols streamline continuous learning software deployments in diagnostic radiology.',
+          'ai-cat5-tag': 'Weekly AI Gossip',
+          'ai-freq-gossip': 'Weekly · Insider',
+          'ai-cat5-title': 'Silicon Valley Talent War Intensifies Across Frontier Labs Amid Multi-Billion Valuations',
+          'ai-cat5-desc': 'Top research scientists and infra architects command unprecedented multi-million dollar equity packages as sovereign AI clusters enter construction.',
+          'ai-read-full': 'Read Source'
+        },
+        'zh-TW': {
+          'btn': '简中',
+          'htmlLang': 'zh-Hant',
+          'nav-back': '返回主作品集',
+          'page-indicator': 'AI 情報專欄 · 每日與每週精選',
+          'nav-kinmen': '金門單車挑戰者招募中 &rarr;',
+          'ai-badge': 'AI 情報站',
+          'ai-sync-full': '中原標準時間每天 08:00 自動更新',
+          'b-hero-title': '每日 / 每週全球 AI 新聞情報',
+          'b-hero-desc': '專注整理具有全球重大影響力的 AI 突破、資安防禦技術、最新模型演算法進展、醫療臨床監管法規與矽谷產業動態。',
+          'b-filter-all': '全部情報',
+          'b-filter-milestone': '全球重大大事',
+          'b-filter-security': 'AI 資安技術',
+          'b-filter-tech': '每日新技術',
+          'b-filter-news': '每日 AI News',
+          'b-filter-gossip': '每週 AI 八卦',
+          'ai-cat1-tag': '每週 AI 大事 · 全球影響',
+          'ai-freq-weekly': '每週 · 全球',
+          'ai-cat1-title': '次世代多模態基礎模型樹立全球臨床手術機器人新里程碑',
+          'ai-cat1-desc': '經同行評審之重大研究證實：模型已實現多中心微創手術器械自動導引與亞毫米級病灶組織精準分割。',
+          'ai-cat2-tag': '每週 AI 資安 · 防禦應用',
+          'ai-freq-sec': '每週 · 防禦',
+          'ai-cat2-title': 'Anthropic 與 MIT 發表新型 LLM 越獄與提示注入防禦技術架構',
+          'ai-cat2-desc': '運用電路級神經元激活引導機制，於推論階段即時阻斷對抗性惡意 Token 注入，且不犧牲模型推理品質。',
+          'ai-cat3-tag': '每日 AI 新技術 · 模型技術',
+          'ai-freq-daily': '每日 · 模型',
+          'ai-cat3-title': '開源 MoE 推理演算法於前沿數學與程式碼基準測試逼近商用領先模型',
+          'ai-cat3-desc': '結合稀疏激活路由架構與強化學習自我驗證機制，在消費級硬體上展現出前所未見的頂級符號邏輯推導能力。',
+          'ai-cat4-tag': '每日 AI News · 政策大小事',
+          'ai-freq-news': '每日 · 政策',
+          'ai-cat4-title': 'FDA 發布醫療影像 AI/ML 適應性臨床監測最新指引',
+          'ai-cat4-desc': '規範預先定義之變更控制計畫 (PCCP) 標準，為醫院環境中具持續學習能力之放射科輔助診斷系統建立落地流程。',
+          'ai-cat5-tag': '每週 AI 八卦 · 產業內幕',
+          'ai-freq-gossip': '每週 · 內幕',
+          'ai-cat5-title': '前沿實驗室估值飆升數十億，矽谷頂級 AI 核心架構師搶奪戰全面升級',
+          'ai-cat5-desc': '隨著主權級運算叢集開工，頂尖前沿模型研究員與基礎設施架構師紛紛獲開數百萬美元全額現金加股權合約。',
+          'ai-read-full': '閱讀完整來源'
+        },
+        'zh-CN': {
+          'btn': 'FR',
+          'htmlLang': 'zh-Hans',
+          'nav-back': '返回主作品集',
+          'page-indicator': 'AI 情报专栏 · 每日与每周精选',
+          'nav-kinmen': '金门单车挑战者招募中 &rarr;',
+          'ai-badge': 'AI 情报站',
+          'ai-sync-full': '中原标准时间每天 08:00 自动更新',
+          'b-hero-title': '每日 / 每周全球 AI 新闻情报',
+          'b-hero-desc': '专注整理具有全球重大影响力的 AI 突破、资安防御技术、最新模型算法进展、医疗临床监管法规与硅谷产业动态。',
+          'b-filter-all': '全部情报',
+          'b-filter-milestone': '全球重大大事',
+          'b-filter-security': 'AI 资安技术',
+          'b-filter-tech': '每日新技术',
+          'b-filter-news': '每日 AI News',
+          'b-filter-gossip': '每周 AI 八卦',
+          'ai-cat1-tag': '每周 AI 大事 · 全球影响',
+          'ai-freq-weekly': '每周 · 全球',
+          'ai-cat1-title': '次世代多模态基础模型树立全球临床手术机器人新里程碑',
+          'ai-cat1-desc': '经同行评审之重大研究证实：模型已实现多中心微创手术器械自动导引与亚毫米级病灶组织精准分割。',
+          'ai-cat2-tag': '每周 AI 资安 · 防御应用',
+          'ai-freq-sec': '每周 · 防御',
+          'ai-cat2-title': 'Anthropic 与 MIT 发表新型 LLM 越狱与提示注入防御技术架构',
+          'ai-cat2-desc': '运用电路级神经元激活引导机制，于推理阶段实时阻断对抗性恶意 Token 注入，且不牺牲模型推理品质。',
+          'ai-cat3-tag': '每日 AI 新技术 · 模型技术',
+          'ai-freq-daily': '每日 · 模型',
+          'ai-cat3-title': '开源 MoE 推理算法于前沿数学与代码基准测试逼近商用领先模型',
+          'ai-cat3-desc': '结合稀疏激活路由架构与强化学习自我验证机制，在消费级硬件上展现出前所未见之顶级符号逻辑推导能力。',
+          'ai-cat4-tag': '每日 AI News · 政策大小事',
+          'ai-freq-news': '每日 · 政策',
+          'ai-cat4-title': 'FDA 发布医疗影像 AI/ML 适应性临床监测最新指引',
+          'ai-cat4-desc': '规范预先定义之变更控制计划 (PCCP) 标准，为医院环境中具持续学习能力之放射科辅助诊断系统建立落地流程。',
+          'ai-cat5-tag': '每周 AI 八卦 · 产业内幕',
+          'ai-freq-gossip': '每周 · 内幕',
+          'ai-cat5-title': '前沿实验室估值飙升数十亿，硅谷顶级 AI 核心架构师抢夺战全面升级',
+          'ai-cat5-desc': '随着主权级运算集群开工，顶尖前沿模型研究员与基础设施架构师纷纷获开数百万美元全额现金加股权合约。',
+          'ai-read-full': '阅读完整来源'
+        },
+        'fr': {
+          'btn': 'EN',
+          'htmlLang': 'fr',
+          'nav-back': 'Retour au Portfolio',
+          'page-indicator': 'ARCHIVES VEILLE IA · QUOTIDIEN & HEBDO',
+          'nav-kinmen': 'Défi Vélo Kinmen &rarr;',
+          'ai-badge': 'VEILLE IA',
+          'ai-sync-full': 'Mise à jour quotidienne · 08:00 TST (UTC+8)',
+          'b-hero-title': 'Actualités & Veille IA Mondiale',
+          'b-hero-desc': 'Veille stratégique complète : avancées mondiales en IA, architectures de cyber-défense, algorithmes de raisonnement MoE, politiques médicales cliniques et coulisses tech de la Silicon Valley.',
+          'b-filter-all': 'Toutes les actualités',
+          'b-filter-milestone': 'Avancées Mondiales',
+          'b-filter-security': 'Cybersécurité IA',
+          'b-filter-tech': 'Techs Quotidiennes',
+          'b-filter-news': 'Actus & Politiques',
+          'b-filter-gossip': 'Coulisses Silicon Valley',
+          'ai-cat1-tag': 'Faits Marquants Hebdo',
+          'ai-freq-weekly': 'Hebdo · Mondial',
+          'ai-cat1-title': 'Les modèles multimodaux chirurgicaux établissent une nouvelle référence en robotique clinique',
+          'ai-cat1-desc': 'Une percée évaluée par des pairs démontre un guidage robotique autonome et une segmentation tissulaire submillimétrique.',
+          'ai-cat2-tag': 'Sécurité IA Hebdo',
+          'ai-freq-sec': 'Hebdo · Défense',
+          'ai-cat2-title': 'Anthropic et le MIT dévoilent une architecture anti-jailbreak et anti-injection de prompts pour LLM',
+          'ai-cat2-desc': 'Le guidage des activations neuronales au niveau des circuits bloque les attaques par injection de prompts sans dégrader le raisonnement.',
+          'ai-cat3-tag': 'Nouvelles Techs IA',
+          'ai-freq-daily': 'Quotidien · Modèles',
+          'ai-cat3-title': 'Les algorithmes de raisonnement MoE open-source égalent les modèles propriétaires en maths et code',
+          'ai-cat3-desc': 'Le routage par activation parcimonieuse couplé à la vérification par renforcement offre une logique mathématique de pointe.',
+          'ai-cat4-tag': 'Actu IA Quotidienne',
+          'ai-freq-news': 'Quotidien · Régulation',
+          'ai-cat4-title': 'La FDA met à jour ses directives de suivi adaptatif IA/ML pour l\'imagerie médicale clinique',
+          'ai-cat4-desc': 'De nouveaux protocoles de plans de contrôle des changements prédéterminés encadrent les déploiements d\'algorithmes apprenants.',
+          'ai-cat5-tag': 'Coulisses Silicon Valley',
+          'ai-freq-gossip': 'Hebdo · Confidentiel',
+          'ai-cat5-title': 'La guerre des talents s\'intensifie entre les laboratoires d\'IA de pointe face à des valorisations records',
+          'ai-cat5-desc': 'Des packages en actions de plusieurs millions de dollars sont offerts aux chercheurs et architectes d\'infrastructure de pointe.',
+          'ai-read-full': 'Consulter la Source'
+        }
+      };
+
+      const order = ['en', 'zh-TW', 'zh-CN', 'fr'];
+      let lang = localStorage.getItem('myron_portfolio_lang_v7') || 'en';
+      const applyLang = (target) => {
+        lang = target;
+        localStorage.setItem('myron_portfolio_lang_v7', target);
+        const dict = i18n[target] || i18n['en'];
+        if (dict.htmlLang) document.documentElement.setAttribute('lang', dict.htmlLang);
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const k = el.getAttribute('data-i18n');
+          if (dict[k]) el.innerHTML = dict[k];
+        });
+        const nextLang = order[(order.indexOf(target) + 1) % order.length];
+        const btnText = document.getElementById('lang-btn-text');
+        if (btnText) btnText.innerText = (i18n[nextLang] && i18n[nextLang].btn) ? i18n[nextLang].btn : nextLang.toUpperCase();
+        lucide.createIcons();
+      };
+
+      applyLang(lang);
+      const langBtn = document.getElementById('lang-toggle-btn');
+      if (langBtn) {
+        langBtn.addEventListener('click', () => {
+          const next = order[(order.indexOf(lang) + 1) % order.length];
+          applyLang(next);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

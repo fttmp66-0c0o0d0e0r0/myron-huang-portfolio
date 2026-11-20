@@ -7,5 +7,7 @@ desktop.ini
 scratch/
 *.log
 *.tmp
+__pycache__/
+*.pyc
 run_local.bat
 *.zip

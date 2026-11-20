@@ -1,0 +1,36 @@
+name: Daily Pic of the Day Agent
+
+on:
+  schedule:
+    # Runs daily at 00:00 UTC (08:00 TST)
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Allows manual trigger from GitHub Actions UI
+
+permissions:
+  contents: write
+
+jobs:
+  generate-pic-of-the-day:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run Daily Visual Agent
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HUGGINGFACE_API_KEY: ${{ secrets.HUGGINGFACE_API_KEY }}
+        run: |
+          python scripts/daily_pic_agent.py
+
+      - name: Commit and Push Daily Artwork
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/pic-of-day.jpg data/pic-of-the-day.json "Daily Pic/"
+          git diff --staged --quiet || (git commit -m "chore(agent): update Pic of the Day for $(date -u +'%Y-%m-%d')" && git push origin main)
